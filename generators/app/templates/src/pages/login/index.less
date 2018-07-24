@@ -1,0 +1,143 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: @bg-color;
+  padding-bottom: 35px;
+}
+
+.header {
+  height: 150px;
+  max-width: 1790px;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 623px;
+  height: 687px;
+  padding: 98px 110px 36px;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.11);
+
+  form {
+    height: 400px;
+  }
+
+  p {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgb(204, 204, 204);
+    text-align: center;
+  }
+}
+
+.submitBtn {
+  width: 266px;
+  height: 57px;
+  border-radius: 100px;
+  font-weight: 100;
+  span {
+    font-size: 24px;
+  }
+}
+
+.labelIcon {
+  font-size: 36px;
+  color: @primary-color;
+  line-height: 40px;
+}
+
+.remembermeLine {
+  margin-bottom: 45px;
+  font-size: 18px;
+  span {
+    padding: 0;
+  }
+  a {
+    color: @black-1;
+  }
+}
+
+.remembermeCheckbox {
+  span {
+    margin-right: 5px;
+    font-size: 18px;
+  }
+}
+
+.welcomeTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 36px;
+    color: @primary-color;
+  }
+}
+
+@media (max-width: 1600px) {
+  .header {
+    height: 80px;
+    padding: 33px 30px 0px 30px;
+  }
+
+  .labelIcon {
+    font-size: 26px;
+    line-height: 40px;
+  }
+
+  .form {
+    width: 436px;
+    height: 510px;
+    padding: 50px 60px 30px;
+    form {
+      height: 325px;
+    }
+  }
+
+  .submitBtn {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    span {
+      font-size: 18px;
+    }
+  }
+
+  .remembermeLine {
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+
+  .remembermeCheckbox {
+    span {
+      margin-right: 5px;
+      font-size: 14px;
+    }
+  }
+
+  .formItem {
+    height: 64px;
+    margin-bottom: 6.5px;
+  }
+
+  .welcomeTitle {
+    span {
+      font-size: 26px;
+    }
+  }
+}

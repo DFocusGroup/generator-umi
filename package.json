@@ -1,0 +1,24 @@
+{
+  "name": "generator-umi",
+  "version": "1.0.0",
+  "description": "umi project generator",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leftstick/generator-umi.git"
+  },
+  "author": "Howard.Zuo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leftstick/generator-umi/issues"
+  },
+  "homepage": "https://github.com/leftstick/generator-umi#readme"
+}

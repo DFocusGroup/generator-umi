@@ -1,0 +1,11 @@
+#npm
+node_modules
+
+#umi
+.umi
+.umi-production
+dist
+
+#misc
+.DS_Store
+package-lock.json

@@ -1,0 +1,14 @@
+#dev
+.vscode
+.git
+
+#npm
+node_modules
+package-lock.json
+
+#gen
+dist
+npm-debug.log
+
+#mock
+mock

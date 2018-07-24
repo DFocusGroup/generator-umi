@@ -1,0 +1,41 @@
+const OPEN_PAGES = ['/login', '/', '/404']
+
+export default {
+  theme: './src/themes/index.js',
+  copy: [
+    {
+      from: './src/assets/antd-iconfont/*',
+      to: './antd-iconfont/',
+      flatten: true
+    }
+  ],
+  plugins: [
+    'umi-plugin-dva',
+    [
+      'umi-plugin-routes',
+      {
+        exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//, /helpers\//],
+        update(routes) {
+          setAuthRoute(routes)
+          return routes
+        }
+      }
+    ]
+  ],
+  extraBabelPlugins: [['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }]]
+}
+
+function setAuthRoute(routes) {
+  if (!routes || !routes.length) {
+    return
+  }
+
+  routes.forEach(route => {
+    if (route.exact && route.path && !OPEN_PAGES.includes(route.path)) {
+      route.Route = './src/components/Auth/AuthRoute.js'
+    }
+    if (route.routes) {
+      setAuthRoute(route.routes)
+    }
+  })
+}

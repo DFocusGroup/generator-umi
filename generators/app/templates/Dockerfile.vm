@@ -1,0 +1,11 @@
+FROM node:10.6.0-alpine
+
+WORKDIR /usr/src/app
+
+COPY . /usr/src/app/
+
+RUN npm config set loglevel http ; npm install --unsafe-perm --registry=<%= answers.registry %>; npm run build ; sh ./shells/delunuseddeps.sh
+
+EXPOSE 3000
+
+CMD npm run serve > out.log
