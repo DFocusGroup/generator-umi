@@ -42,7 +42,7 @@ npm start
 docker build --no-cache -t <imagename>:<version> .
 
 # run docker image
-docker run -p <exposed port>:3000 -e "STORAGE_DOMAIN=.cmb.dfocus.tech" -e "API_HOST=http://backend-address" -d <imagename>:<version>
+docker run -p <exposed port>:3000 -e "STORAGE_DOMAIN=.yourdomain.com" -e "API_HOST=http://backend-address" -d <imagename>:<version>
 ```
 
 ## LICENSE
