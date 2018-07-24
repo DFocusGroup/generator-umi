@@ -1,6 +1,4 @@
-generator-umi
-
-======================
+# generator-umi
 
 [![NPM version][npm-image]][npm-url]
 ![][david-url]
