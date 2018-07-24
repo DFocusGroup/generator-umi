@@ -1,23 +1,22 @@
-# Initial page
+generator-umi
 
-## Getting Super Powers
+======================
 
-Becoming a super hero is a fairly straight forward process:
+[![NPM version][npm-image]][npm-url]
+![][david-url]
+![][dt-url]
+![][license-url]
 
-```
-$ give me super-powers
-```
+Yeoman generator for umi project
 
-{% hint style="info" %}
- Super-powers are granted randomly so please submit an issue if you're not happy with yours.
-{% endhint %}
+> Read documentation here: [http://leftstick.github.io/generator-es6-angular](http://leftstick.github.io/generator-es6-angular)
 
-Once you're strong enough, save the world:
+## LICENSE
 
-```
-// Ain't no code for that yet, sorry
-echo 'You got to trust me on this, I saved the world'
-```
+[MIT License](https://raw.githubusercontent.com/leftstick/generator-umi/master/LICENSE)
 
-
-
+[npm-url]: https://npmjs.org/package/generator-umi
+[npm-image]: https://badge.fury.io/js/generator-umi.png
+[david-url]: https://david-dm.org/leftstick/generator-umi.png
+[dt-url]: https://img.shields.io/npm/dt/generator-umi.svg
+[license-url]: https://img.shields.io/npm/l/generator-umi.svg
