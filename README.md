@@ -9,7 +9,43 @@ generator-umi
 
 Yeoman generator for umi project
 
-> Read documentation here: [http://leftstick.github.io/generator-es6-angular](http://leftstick.github.io/generator-es6-angular)
+> Read documentation here: [https://leftstick.gitbook.io/generator-umi](https://leftstick.gitbook.io/generator-umi)
+
+![](./docs/generator.gif)
+
+# Installation
+
+```bash
+sudo npm install -g yo generator-umi
+```
+
+# Usage
+
+## Create new umi app
+
+```bash
+yo umi
+```
+
+> answer questions `generator-umi` required
+
+**Nice work**
+
+## Start debugging
+
+```bash
+npm start
+```
+
+## Release with docker image
+
+```bash
+# create Docker Image
+docker build --no-cache -t <imagename>:<version> .
+
+# run docker image
+docker run -p <exposed port>:3000 -e "STORAGE_DOMAIN=.cmb.dfocus.tech" -e "API_HOST=http://backend-address" -d <imagename>:<version>
+```
 
 ## LICENSE
 
