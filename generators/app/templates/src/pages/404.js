@@ -34,7 +34,7 @@ class NotFoundPage extends Component {
   }
 }
 
-export default connect(({ loading, errorInfo, app }) => {
+export default connect(({ loading, app }) => {
   return {
     locale: app.locale.errorInfo,
     locationQuery: app.locationQuery

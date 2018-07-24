@@ -10,8 +10,10 @@ const DEPENDENCIES = [
   'dva-model-extend',
   'express',
   'js-cookie',
+  'lodash',
   'moment',
   'path-to-regexp',
+  'query-string',
   'react-helmet',
   'replace-in-file'
 ]

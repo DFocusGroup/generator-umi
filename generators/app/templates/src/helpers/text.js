@@ -10,11 +10,3 @@ export function getTitle(locale, titleKey) {
 
   return locale[namespace][key]
 }
-
-export function leftPadding(text, length, pad) {
-  const txt = `${text}`
-  if (txt.length >= length) {
-    return txt
-  }
-  return new Array(length - txt.length).fill(pad).join('') + txt
-}

@@ -1,7 +1,8 @@
 import { isProduction } from '../helpers/env'
 
 /**
- * 所有的 *_PLACEHOLDER，都需要在docker镜像启动时被修改成用户指定的值
+ * 所有的 *_PLACEHOLDER，在npm run serve启动时，都需要指定运行时需要的值
+ * 这个在“Use docker for release”时非常好用，可以针对不同的运行环境使用同一个镜像，指定不同的环境变量
  */
 
 export const OPEN_PAGES = ['/login', '/', '/404']

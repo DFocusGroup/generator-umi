@@ -55,6 +55,13 @@ export default extend(commonModel, {
       const { locationPathname } = yield select(_ => _.app)
 
       yield put({
+        type: 'users/updateState',
+        payload: {
+          currentUser: null
+        }
+      })
+
+      yield put({
         type: 'redirectTo',
         payload: {
           to: '/login',
