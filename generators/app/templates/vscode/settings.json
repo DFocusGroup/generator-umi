@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "tslint.enable": false,
+  "javascript.validate.enable": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "html.format.enable": false
+}

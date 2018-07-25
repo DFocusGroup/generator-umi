@@ -69,6 +69,12 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
+        name: 'vscode',
+        message: 'Use vscode preference?',
+        default: true
+      },
+      {
+        type: 'confirm',
         name: 'docker',
         message: 'Use docker for release?',
         default: true
@@ -100,6 +106,9 @@ module.exports = class extends Generator {
       this.fs.copyTpl(this.templatePath('Dockerfile.vm'), this.destinationPath('Dockerfile'), this.answer)
       this.fs.copyTpl(this.templatePath('shells'), this.destinationPath('shells'), this.answer)
     }
+    if (answers.vscode) {
+      this.fs.copy(this.templatePath('vscode'), this.destinationPath('.vscode'))
+    }
 
     this.fs.copy(this.templatePath('.eslintrc'), this.destinationPath('.eslintrc'))
     this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'))
@@ -127,6 +136,14 @@ module.exports = class extends Generator {
   }
 
   end() {
-    this.log.ok(`Project ${this.answer.answers.name} generated!!!`)
+    const { answers } = this.answer
+
+    this.log.ok(`Project ${answers.name} generated!!!`)
+
+    if (answers.vscode) {
+      this.log.info(
+        'You should have vscode extension https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode installed'
+      )
+    }
   }
 }
