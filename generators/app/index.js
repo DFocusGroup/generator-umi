@@ -13,7 +13,6 @@ const DEPENDENCIES = [
   'lodash',
   'moment',
   'path-to-regexp',
-  'query-string',
   'react-helmet',
   'replace-in-file'
 ]
@@ -138,12 +137,14 @@ module.exports = class extends Generator {
   end() {
     const { answers } = this.answer
 
-    this.log.ok(`Project ${answers.name} generated!!!`)
-
+    console.log()
     if (answers.vscode) {
       this.log.info(
-        'You should have vscode extension https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode installed'
+        'Make sure you have vscode extension https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode installed'
       )
+      console.log()
     }
+
+    this.log.ok(`Project ${answers.name} generated!!!`)
   }
 }
