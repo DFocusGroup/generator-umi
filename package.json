@@ -1,6 +1,6 @@
 {
   "name": "generator-umi",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "umi project generator",
   "files": [
     "generators"
@@ -9,7 +9,7 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "yeoman-generator": "^3.1.0"
+    "yeoman-generator": "^3.1.1"
   },
   "repository": {
     "type": "git",

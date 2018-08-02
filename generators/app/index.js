@@ -101,7 +101,7 @@ module.exports = class extends Generator {
     const { answers } = this.answer
 
     if (answers.docker) {
-      this.fs.copy(this.templatePath('.dockerignore'), this.destinationPath('.dockerignore'))
+      this.fs.copy(this.templatePath('dockerignore'), this.destinationPath('.dockerignore'))
       this.fs.copyTpl(this.templatePath('Dockerfile.vm'), this.destinationPath('Dockerfile'), this.answer)
       this.fs.copyTpl(this.templatePath('shells'), this.destinationPath('shells'), this.answer)
     }
@@ -109,11 +109,11 @@ module.exports = class extends Generator {
       this.fs.copy(this.templatePath('vscode'), this.destinationPath('.vscode'))
     }
 
-    this.fs.copy(this.templatePath('.eslintrc'), this.destinationPath('.eslintrc'))
-    this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'))
-    this.fs.copy(this.templatePath('.prettierrc'), this.destinationPath('.prettierrc'))
+    this.fs.copy(this.templatePath('eslintrc'), this.destinationPath('.eslintrc'))
+    this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'))
+    this.fs.copy(this.templatePath('prettierrc'), this.destinationPath('.prettierrc'))
 
-    this.fs.copyTpl(this.templatePath('.umirc.js.vm'), this.destinationPath('.umirc.js'), this.answer)
+    this.fs.copyTpl(this.templatePath('umirc.js.vm'), this.destinationPath('.umirc.js'), this.answer)
 
     this.fs.copyTpl(this.templatePath('package.json.vm'), this.destinationPath('package.json'), this.answer)
 
