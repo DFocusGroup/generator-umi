@@ -47,10 +47,10 @@ docker run -p <exposed port>:3000 -e "STORAGE_DOMAIN=.yourdomain.com" -e "API_HO
 
 ## LICENSE
 
-[MIT License](https://raw.githubusercontent.com/leftstick/generator-umi/master/LICENSE)
+[MIT License](https://raw.githubusercontent.com/DFocusFE/generator-umi/master/LICENSE)
 
 [npm-url]: https://npmjs.org/package/generator-umi
 [npm-image]: https://badge.fury.io/js/generator-umi.png
-[david-url]: https://david-dm.org/leftstick/generator-umi.png
+[david-url]: https://david-dm.org/DFocusFE/generator-umi.png
 [dt-url]: https://img.shields.io/npm/dt/generator-umi.svg
 [license-url]: https://img.shields.io/npm/l/generator-umi.svg
