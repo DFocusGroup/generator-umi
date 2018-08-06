@@ -1,5 +1,23 @@
 /* eslint-disable */
+<% if (answers.mobileOnly) { %>
+export default {
+  app: {
+    LOADING: '加载中...'
+  },
+  errorInfo: {
+    LOAD_ERROR: '加载失败',
+    PAGE_NOT_FOUND_ERROR: '您访问的页面不存在，请确认连接是否正确',
+    BACK_TO_HOME: '回到首页'
+  },
+  overview: {
+    WELCOME: '欢迎欢迎',
+    CARD_TITLE: '卡片',
+    CARD_CONTENT: '这里可以放置卡片内容',
+    CARD_FOOTER: '卡片底部'
+  }
+}
 
+<% } else { %>
 export default {
   app: {
     LOG_OUT: '注销',
@@ -37,3 +55,5 @@ export default {
     ACCOUNT_PWD_ERROR: '用户名或者密码错误！'
   }
 }
+
+<% } %>

@@ -17,6 +17,22 @@ const DEPENDENCIES = [
   'replace-in-file'
 ]
 
+const DEPENDENCIES_MOBILE = [
+  'antd-mobile',
+  'axios',
+  'classnames',
+  'dva',
+  'dva-model-extend',
+  'express',
+  'js-cookie',
+  'lodash',
+  'moment',
+  'path-to-regexp',
+  'rc-form',
+  'react-helmet',
+  'replace-in-file'
+]
+
 const DEV_DEPENDENCIES = [
   'babel-plugin-import',
   'eslint',
@@ -79,6 +95,12 @@ module.exports = class extends Generator {
         default: true
       },
       {
+        type: 'confirm',
+        name: 'mobileOnly',
+        message: 'Is mobile only application?',
+        default: false
+      },
+      {
         type: 'list',
         name: 'registry',
         message: 'Which registry would you use?',
@@ -113,23 +135,77 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'))
     this.fs.copy(this.templatePath('prettierrc'), this.destinationPath('.prettierrc'))
 
-    this.fs.copyTpl(this.templatePath('umirc.js.vm'), this.destinationPath('.umirc.js'), this.answer)
+    if (answers.mobileOnly) {
+      this.fs.copyTpl(this.templatePath('umirc.js.mobile.vm'), this.destinationPath('.umirc.js'), this.answer)
+    } else {
+      this.fs.copyTpl(this.templatePath('umirc.js.vm'), this.destinationPath('.umirc.js'), this.answer)
+    }
 
     this.fs.copyTpl(this.templatePath('package.json.vm'), this.destinationPath('package.json'), this.answer)
 
-    this.fs.copyTpl(this.templatePath('src'), this.destinationPath('src'), this.answer)
+    if (answers.mobileOnly) {
+      this.fs.copyTpl(
+        this.templatePath('src/assets/favicon.png'),
+        this.destinationPath('src/assets/favicon.png'),
+        this.answer
+      )
+      this.fs.copyTpl(
+        this.templatePath('src/assets/logo.svg'),
+        this.destinationPath('src/assets/logo.svg'),
+        this.answer
+      )
+      this.fs.copyTpl(
+        this.templatePath('src/components/LanguageSwitch'),
+        this.destinationPath('src/components/LanguageSwitch'),
+        this.answer
+      )
+      this.fs.copyTpl(this.templatePath('src/config'), this.destinationPath('src/config'), this.answer)
+      this.fs.copyTpl(this.templatePath('src/helpers'), this.destinationPath('src/helpers'), this.answer)
+      this.fs.copyTpl(
+        this.templatePath('src/layouts/index.js'),
+        this.destinationPath('src/layouts/index.js'),
+        this.answer
+      )
+      this.fs.copyTpl(
+        this.templatePath('src/layouts/OpenPageLayout.js'),
+        this.destinationPath('src/layouts/OpenPageLayout.js'),
+        this.answer
+      )
+      this.fs.copyTpl(this.templatePath('src/locale'), this.destinationPath('src/locale'), this.answer)
+      this.fs.copyTpl(this.templatePath('src/models/app.js'), this.destinationPath('src/models/app.js'), this.answer)
+
+      this.fs.copyTpl(
+        this.templatePath('src/pages/overview/index.js'),
+        this.destinationPath('src/pages/overview/index.js'),
+        this.answer
+      )
+      this.fs.copyTpl(this.templatePath('src/pages/404.js'), this.destinationPath('src/pages/404.js'), this.answer)
+      this.fs.copyTpl(this.templatePath('src/pages/404.less'), this.destinationPath('src/pages/404.less'), this.answer)
+      this.fs.copyTpl(
+        this.templatePath('src/pages/document.ejs'),
+        this.destinationPath('src/pages/document.ejs'),
+        this.answer
+      )
+      this.fs.copyTpl(this.templatePath('src/pages/index.js'), this.destinationPath('src/pages/index.js'), this.answer)
+      this.fs.copyTpl(this.templatePath('src/themes'), this.destinationPath('src/themes'), this.answer)
+      this.fs.copyTpl(this.templatePath('src/dva.js'), this.destinationPath('src/dva.js'), this.answer)
+    } else {
+      this.fs.copyTpl(this.templatePath('src'), this.destinationPath('src'), this.answer)
+    }
 
     this.fs.copyTpl(this.templatePath('server'), this.destinationPath('server'), this.answer)
     this.fs.copyTpl(this.templatePath('mock'), this.destinationPath('mock'), this.answer)
   }
 
   install() {
-    this.npmInstall(DEPENDENCIES, {
-      registry: this.answer.answers.registry,
+    const { answers } = this.answer
+
+    this.npmInstall(answers.mobileOnly ? DEPENDENCIES_MOBILE : DEPENDENCIES, {
+      registry: answers.registry,
       save: true
     })
     this.npmInstall(DEV_DEPENDENCIES, {
-      registry: this.answer.answers.registry,
+      registry: answers.registry,
       'save-dev': true
     })
   }

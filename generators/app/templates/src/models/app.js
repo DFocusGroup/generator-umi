@@ -1,4 +1,47 @@
-import queryString from 'query-string'
+<% if (answers.mobileOnly) { %>import queryString from 'query-string'
+import moment from 'moment'
+
+import extend from 'dva-model-extend'
+
+import commonModel from '../helpers/commonModel'
+import locale from '../locale'
+import { getLanguage, setLanguage } from '../helpers/storage'
+
+export default extend(commonModel, {
+  namespace: 'app',
+  state: {
+    lang: getLanguage(),
+    locale: locale[getLanguage()],
+    locationPathname: '',
+    locationQuery: {},
+    pageTitle: ''
+  },
+  subscriptions: {
+    setHistory({ dispatch, history }) {
+      return history.listen(location => {
+        dispatch({
+          type: 'updateState',
+          payload: {
+            locationPathname: location.pathname,
+            locationQuery: queryString.parse(location.search)
+          }
+        })
+      })
+    }
+  },
+  reducers: {
+    switchLanguage(state, { payload }) {
+      setLanguage(payload)
+      moment.locale(payload === 'zh' ? 'zh-cn' : 'en')
+      return {
+        ...state,
+        lang: payload,
+        locale: locale[payload]
+      }
+    }
+  }
+})
+<% } else { %>import queryString from 'query-string'
 import moment from 'moment'
 import throttle from 'lodash/throttle'
 
@@ -82,3 +125,4 @@ export default extend(commonModel, {
     }
   }
 })
+<% } %>

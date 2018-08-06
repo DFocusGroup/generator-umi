@@ -1,13 +1,21 @@
 import PropTypes from 'prop-types'
 import Redirect from 'umi/redirect'
 import pathToRegexp from 'path-to-regexp'
-import { isOpenPages } from '../helpers/env'
-
 import OpenPageLayout from './OpenPageLayout'
-import AuthRequiredLayout from './AuthRequiredLayout'
-
-export default function Layout({ location, route, children }) {
-  if (isOpenPages(location.pathname)) {
+<% if (!answers.mobileOnly) { %>import AuthRequiredLayout from './AuthRequiredLayout'
+import { isOpenPages } from '../helpers/env'
+<% } %>export default function Layout({ location, route, children }) {
+  <% if (answers.mobileOnly) { %>if (checkIfPageExist(route, location)) {
+    return <OpenPageLayout>{children}</OpenPageLayout>
+  }
+  return (
+    <Redirect
+      to={{
+        pathname: '/404',
+        search: `?from=${encodeURIComponent(location.pathname)}`
+      }}
+    />
+  )<% } else { %>if (isOpenPages(location.pathname)) {
     return <OpenPageLayout>{children}</OpenPageLayout>
   }
   if (checkIfPageExist(route, location)) {
@@ -20,7 +28,7 @@ export default function Layout({ location, route, children }) {
         search: `?from=${encodeURIComponent(location.pathname)}`
       }}
     />
-  )
+  )<% } %>
 }
 
 Layout.propTypes = {

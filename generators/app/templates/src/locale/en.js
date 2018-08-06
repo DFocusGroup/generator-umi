@@ -1,5 +1,23 @@
 /* eslint-disable */
+<% if (answers.mobileOnly) { %>
+export default {
+  app: {
+    LOADING: 'Loading...'
+  },
+  errorInfo: {
+    LOAD_ERROR: 'Loading error',
+    PAGE_NOT_FOUND_ERROR: 'The page you are openning is not exist, please verify URL',
+    BACK_TO_HOME: 'Back to home'
+  },
+  overview: {
+    WELCOME: 'Welcome',
+    CARD_TITLE: 'Card',
+    CARD_CONTENT: 'Put content here',
+    CARD_FOOTER: 'Card footer'
+  }
+}
 
+<% } else { %>
 export default {
   app: {
     LOG_OUT: 'Sign out',
@@ -37,3 +55,5 @@ export default {
     ACCOUNT_PWD_ERROR: 'Account or Password is incorrect!'
   }
 }
+
+<% } %>

@@ -1,0 +1,13 @@
+export default {
+  theme: './src/themes/index.js',
+  plugins: [
+    'umi-plugin-dva',
+    [
+      'umi-plugin-routes',
+      {
+        exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//, /helpers\//]
+      }
+    ]
+  ],
+  extraBabelPlugins: [['import', { libraryName: 'antd-mobile', libraryDirectory: 'es', style: 'css' }]]
+}

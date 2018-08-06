@@ -1,4 +1,36 @@
-import { Select } from 'antd'
+<% if (answers.mobileOnly) { %>import PropTypes from 'prop-types'
+import classnames from 'classnames'
+
+import styles from './index.less'
+
+function LanguageSwitch(props) {
+  const { onLangChange, currentLang } = props
+  return (
+    <div>
+      <span
+        className={classnames(styles.switch, { [styles.active]: currentLang === 'zh' })}
+        onClick={() => onLangChange('zh')}
+      >
+        中
+      </span>{' '}
+      |{' '}
+      <span
+        className={classnames(styles.switch, { [styles.active]: currentLang === 'en' })}
+        onClick={() => onLangChange('en')}
+      >
+        En
+      </span>
+    </div>
+  )
+}
+
+LanguageSwitch.propTypes = {
+  currentLang: PropTypes.string,
+  onLangChange: PropTypes.func
+}
+
+export default LanguageSwitch
+<% } else { %>import { Select } from 'antd'
 import { connect } from 'dva'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
@@ -76,3 +108,4 @@ DropdownSwitch.propTypes = {
 }
 
 export default LanguageSwitch
+<% } %>

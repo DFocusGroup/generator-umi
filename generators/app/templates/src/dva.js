@@ -1,6 +1,7 @@
 import router from 'umi/router'
 import PageNotFoundError from './helpers/errors/PageNotFoundError'
-import { message } from 'antd'
+<% if (answers.mobileOnly) { %>import { Toast } from 'antd-mobile'<% } else { %>import { message } from 'antd'<% } %>
+
 import debounce from 'lodash/debounce'
 
 export function config() {
@@ -14,7 +15,7 @@ export function config() {
           }
         })
       }
-      message.error(err.message)
+      <% if (answers.mobileOnly) { %>Toast.fail(err.message)<% } else { %>message.error(err.message)<% } %>
     }, 200)
   }
 }
