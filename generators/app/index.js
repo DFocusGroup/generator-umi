@@ -43,7 +43,9 @@ const DEV_DEPENDENCIES = [
   'prettier',
   'umi',
   'umi-plugin-dva',
-  'umi-plugin-routes'
+  'umi-plugin-routes',
+  'lint-staged',
+  'husky'
 ]
 
 module.exports = class extends Generator {

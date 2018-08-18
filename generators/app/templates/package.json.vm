@@ -5,6 +5,10 @@
   "scripts": {
     "start": "umi dev",
     "build": "umi build",
-    "serve": "node ./server/index.js"
+    "serve": "node ./server/index.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": "eslint --max-warnings=0"
   }
 }
