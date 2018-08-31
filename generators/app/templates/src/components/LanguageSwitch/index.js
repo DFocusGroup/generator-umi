@@ -1,5 +1,4 @@
-<% if (answers.mobileOnly) { %>import PropTypes from 'prop-types'
-import { setLocale, getLocale } from 'umi/locale'
+<% if (answers.mobileOnly) { %>import { setLocale, getLocale } from 'umi/locale'
 import classnames from 'classnames'
 
 import styles from './index.less'
