@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { connect } from 'dva'
 import PropTypes from 'prop-types'
 import { Form, Row, Button, Col, Input, Checkbox, Icon } from 'antd'
+import { formatMessage, FormattedMessage, getLocale } from 'umi/locale'
 
 import { setDoNotRememberme, getDoNotRememberme, removeDoNotRememberme } from '../../helpers/storage'
 
@@ -11,15 +12,22 @@ import LanguageSwitch from '../../components/LanguageSwitch'
 import GlobalFooter from '../../components/GlobalFooter'
 
 class Login extends Component {
+  static propTypes = {
+    form: PropTypes.shape({
+      getFieldDecorator: PropTypes.func,
+      validateFieldsAndScroll: PropTypes.func
+    }),
+    login: PropTypes.object,
+    dispatch: PropTypes.func,
+    loading: PropTypes.object
+  }
+
   constructor(props) {
     super(props)
 
     this.state = {
       rememberme: !getDoNotRememberme()
     }
-  }
-  switchLang = lang => {
-    this.props.dispatch({ type: 'app/switchLanguage', payload: lang })
   }
 
   goLogin = e => {
@@ -49,7 +57,7 @@ class Login extends Component {
   }
 
   render() {
-    const { locale, form, loading, lang } = this.props
+    const { form, loading } = this.props
 
     const { getFieldDecorator } = form
 
@@ -58,12 +66,14 @@ class Login extends Component {
     return (
       <div className={styles.login}>
         <div className={styles.header}>
-          <LanguageSwitch onLangChange={this.switchLang} currentLang={lang} />
+          <LanguageSwitch currentLang={getLocale()} />
         </div>
 
         <div className={styles.form}>
           <div className={styles.welcomeTitle}>
-            <span>{locale.WELCOME_TITLE}</span>
+            <span>
+              <FormattedMessage id="login.WELCOME_TITLE" />
+            </span>
           </div>
           <Form onSubmit={this.goLogin}>
             <Form.Item className={styles.formItem}>
@@ -76,20 +86,28 @@ class Login extends Component {
                     rules: [
                       {
                         required: true,
-                        message: locale.ACCOUNT_EMPTY_ERROR
+                        message: formatMessage({
+                          id: 'login.ACCOUNT_EMPTY_ERROR'
+                        })
                       },
                       {
                         type: 'email',
-                        message: locale.ACCOUNT_FORMAT_ERROR
+                        message: formatMessage({
+                          id: 'login.ACCOUNT_FORMAT_ERROR'
+                        })
                       },
                       {
                         max: 50,
-                        message: locale.ACCOUNT_LENGTH_ERROR
+                        message: formatMessage({
+                          id: 'login.ACCOUNT_LENGTH_ERROR'
+                        })
                       }
                     ]
                   })(
                     <Input
-                      placeholder={locale.ACCOUNT_PLACEHOLDER}
+                      placeholder={formatMessage({
+                        id: 'login.ACCOUNT_PLACEHOLDER'
+                      })}
                       size={document.body.clientWidth >= 1600 ? 'large' : 'default'}
                       className={styles.input}
                     />
@@ -102,11 +120,15 @@ class Login extends Component {
                 rules: [
                   {
                     required: true,
-                    message: locale.PASSWORD_EMPTY_ERROR
+                    message: formatMessage({
+                      id: 'login.PASSWORD_EMPTY_ERROR'
+                    })
                   },
                   {
                     pattern: /^\S{6,16}$/,
-                    message: locale.PASSWORD_FORMAT_ERROR
+                    message: formatMessage({
+                      id: 'login.PASSWORD_FORMAT_ERROR'
+                    })
                   }
                 ]
               })(
@@ -117,7 +139,9 @@ class Login extends Component {
                   <Col span={20}>
                     <Input
                       type="password"
-                      placeholder={locale.PASSWORD_PLACEHOLDER}
+                      placeholder={formatMessage({
+                        id: 'login.PASSWORD_PLACEHOLDER'
+                      })}
                       size={document.body.clientWidth >= 1600 ? 'large' : 'default'}
                       className={styles.input}
                     />
@@ -131,7 +155,7 @@ class Login extends Component {
                 className={styles.remembermeCheckbox}
                 onChange={this.handleRememberme}
               >
-                {locale.REMEMBER_ME_TXT}
+                <FormattedMessage id="login.REMEMBER_ME_TXT" />
               </Checkbox>
             </Row>
             <Row type="flex" justify="center">
@@ -142,7 +166,7 @@ class Login extends Component {
                 loading={isLoading}
                 className={styles.submitBtn}
               >
-                {locale.SIGNIN_BTN_TXT}
+                <FormattedMessage id="login.SIGNIN_BTN_TXT" />
               </Button>
             </Row>
           </Form>
@@ -154,23 +178,9 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
-  form: PropTypes.shape({
-    getFieldDecorator: PropTypes.func,
-    validateFieldsAndScroll: PropTypes.func
-  }),
-  login: PropTypes.object,
-  dispatch: PropTypes.func,
-  locale: PropTypes.object,
-  loading: PropTypes.object,
-  lang: PropTypes.string
-}
-
 export default connect(({ loading, login, app }) => {
   return {
     loading,
-    login,
-    lang: app.lang,
-    locale: app.locale.login
+    login
   }
 })(Form.create()(Login))

@@ -2,6 +2,7 @@ import { connect } from 'dva'
 import { Link } from 'react-router-dom'
 import { Layout, Menu, Avatar } from 'antd'
 import PropTypes from 'prop-types'
+import { getLocale, FormattedMessage } from 'umi/locale'
 
 import LanguageSwitch from '../LanguageSwitch'
 import styles from './index.less'
@@ -12,11 +13,7 @@ const KEYS_MAP = {
 }
 
 function GlobalHeader(props) {
-  const { lang, dispatch, locale, locationPathname, currentUser } = props
-
-  function changeLang(language) {
-    dispatch({ type: 'app/switchLanguage', payload: language })
-  }
+  const { dispatch, locationPathname, currentUser } = props
 
   function signout() {
     dispatch({ type: 'app/signout' })
@@ -31,7 +28,9 @@ function GlobalHeader(props) {
       <div className={styles.navigation}>
         <Menu mode="horizontal" selectedKeys={[KEYS_MAP[locationPathname]]} style={{ width: '100%' }}>
           <Menu.Item key="OVERVIEW">
-            <Link to="/overview">{locale.OVERVIEW}</Link>
+            <Link to="/overview">
+              <FormattedMessage id="app.OVERVIEW" />
+            </Link>
           </Menu.Item>
           <Menu.Item key="line1">|</Menu.Item>
         </Menu>
@@ -40,7 +39,7 @@ function GlobalHeader(props) {
       <div className={styles.rightmenu}>
         <span className={styles.leftborder}>
           <span>
-            <LanguageSwitch useDropdown currentLang={lang} onLangChange={changeLang} />
+            <LanguageSwitch useDropdown currentLang={getLocale()} />
           </span>
         </span>
 
@@ -52,7 +51,9 @@ function GlobalHeader(props) {
               </Avatar>
             }
           >
-            <Menu.Item key="logout">{locale.LOG_OUT}</Menu.Item>
+            <Menu.Item key="logout">
+              <FormattedMessage id="app.LOG_OUT" />
+            </Menu.Item>
           </Menu.SubMenu>
         </Menu>
       </div>
@@ -61,8 +62,6 @@ function GlobalHeader(props) {
 }
 
 GlobalHeader.propTypes = {
-  lang: PropTypes.string,
-  locale: PropTypes.object,
   locationPathname: PropTypes.string,
   currentUser: PropTypes.shape({
     name: PropTypes.string
@@ -72,8 +71,6 @@ GlobalHeader.propTypes = {
 
 export default connect(({ app, users }) => {
   return {
-    lang: app.lang,
-    locale: app.locale.app,
     locationPathname: app.locationPathname,
     currentUser: users.currentUser
   }

@@ -4,14 +4,10 @@ import moment from 'moment'
 import extend from 'dva-model-extend'
 
 import commonModel from '../helpers/commonModel'
-import locale from '../locale'
-import { getLanguage, setLanguage } from '../helpers/storage'
 
 export default extend(commonModel, {
   namespace: 'app',
   state: {
-    lang: getLanguage(),
-    locale: locale[getLanguage()],
     locationPathname: '',
     locationQuery: {},
     pageTitle: ''
@@ -29,17 +25,7 @@ export default extend(commonModel, {
       })
     }
   },
-  reducers: {
-    switchLanguage(state, { payload }) {
-      setLanguage(payload)
-      moment.locale(payload === 'zh' ? 'zh-cn' : 'en')
-      return {
-        ...state,
-        lang: payload,
-        locale: locale[payload]
-      }
-    }
-  }
+  reducers: { }
 })
 <% } else { %>import queryString from 'query-string'
 import moment from 'moment'
@@ -48,14 +34,11 @@ import throttle from 'lodash/throttle'
 import extend from 'dva-model-extend'
 
 import commonModel from '../helpers/commonModel'
-import locale from '../locale'
-import { getLanguage, setLanguage, clearAll } from '../helpers/storage'
+import { clearAll } from '../helpers/storage'
 
 export default extend(commonModel, {
   namespace: 'app',
   state: {
-    lang: getLanguage(),
-    locale: locale[getLanguage()],
     locationPathname: '',
     locationQuery: {},
     pageTitle: '',
@@ -113,16 +96,6 @@ export default extend(commonModel, {
       })
     }
   },
-  reducers: {
-    switchLanguage(state, { payload }) {
-      setLanguage(payload)
-      moment.locale(payload === 'zh' ? 'zh-cn' : 'en')
-      return {
-        ...state,
-        lang: payload,
-        locale: locale[payload]
-      }
-    }
-  }
+  reducers: { }
 })
 <% } %>

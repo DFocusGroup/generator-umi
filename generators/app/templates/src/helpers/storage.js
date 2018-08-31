@@ -18,14 +18,6 @@ export function clearAll() {
   }
 }
 
-export function getLanguage() {
-  return get(STORAGE_LANGUAGE_KEY, 'zh')
-}
-
-export function setLanguage(lang) {
-  set(STORAGE_LANGUAGE_KEY, lang)
-}
-
 function set(key, value) {
   if (localStorage) {
     return localStorage.setItem(key, value)
@@ -85,13 +77,5 @@ export function getDoNotRememberme() {
 
 export function removeDoNotRememberme() {
   return cookies.remove('donotrememberme')
-}
-
-export function getLanguage() {
-  return cookies.get('platform-lang') || 'zh'
-}
-
-export function setLanguage(lang) {
-  cookies.set('platform-lang', lang, DEFAULT_COOKIE_OPTS)
 }
 <% } %>

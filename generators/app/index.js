@@ -34,12 +34,19 @@ const DEPENDENCIES_MOBILE = [
 ]
 
 const DEV_DEPENDENCIES = [
+  'babel-eslint@7',
   'babel-plugin-import',
-  'eslint',
   'eslint-config-prettier',
-  'eslint-config-umi',
   'eslint-plugin-prettier',
+  'eslint@4',
+  'eslint-config-umi',
+  'eslint-plugin-flowtype@2',
+  'eslint-plugin-import@2',
+  'eslint-plugin-jsx-a11y@5',
+  'eslint-plugin-react@7',
   'less-vars-to-js',
+  'typescript@2',
+  'redbox-react@1',
   'prettier',
   'umi',
   'umi-plugin-dva',

@@ -1,12 +1,11 @@
-export function getTitle(locale, titleKey) {
+import { formatMessage } from 'umi/locale'
+
+export function getTitle(titleKey) {
   if (!titleKey) {
     return ''
   }
-  const [namespace, key] = titleKey.split('.')
 
-  if (!locale[namespace]) {
-    return ''
-  }
-
-  return locale[namespace][key]
+  return formatMessage({
+    id: titleKey
+  })
 }

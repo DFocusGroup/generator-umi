@@ -1,5 +1,6 @@
 import { message } from 'antd'
 import extend from 'dva-model-extend'
+import { formatMessage } from 'umi/locale'
 
 import commonModel from '../helpers/commonModel'
 import { getCurrentUser } from '../services/user'
@@ -14,8 +15,11 @@ export default extend(commonModel, {
   effects: {
     *initCurrentUser({ payload }, { put, call, select }) {
       if (!getToken()) {
-        const { TOKEN_EXPIRED } = yield select(_ => _.app.locale.app)
-        message.warn(TOKEN_EXPIRED)
+        message.warn(
+          formatMessage({
+            id: 'app.TOKEN_EXPIRED'
+          })
+        )
         yield put({
           type: 'updateState',
           payload: {
@@ -40,8 +44,11 @@ export default extend(commonModel, {
     *queryCurrentUser({ payload }, { put, call, select }) {
       const { success, data } = yield call(getCurrentUser)
       if (!success || !data) {
-        const { TOKEN_EXPIRED } = yield select(_ => _.app.locale.app)
-        message.warn(TOKEN_EXPIRED)
+        message.warn(
+          formatMessage({
+            id: 'app.TOKEN_EXPIRED'
+          })
+        )
         clearAll()
         return yield put({
           type: 'app/redirectTo',

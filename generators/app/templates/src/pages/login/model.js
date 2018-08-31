@@ -1,6 +1,7 @@
 import { routerRedux } from 'dva/router'
 import { message } from 'antd'
 import extend from 'dva-model-extend'
+import { formatMessage } from 'umi/locale'
 
 import commonModel from '../../helpers/commonModel'
 import * as loginService from './service'
@@ -39,7 +40,7 @@ export default extend(commonModel, {
   },
   effects: {
     *login({ payload }, { put, call, select }) {
-      const { locationQuery, locale } = yield select(_ => _.app)
+      const { locationQuery } = yield select(_ => _.app)
       const { data, errorCode } = yield call(loginService.login, payload)
 
       const { from } = locationQuery
@@ -63,7 +64,11 @@ export default extend(commonModel, {
 
       if (errorCode === 501) {
         // 账号或密码错误，
-        message.error(locale.login.ACCOUNT_PWD_ERROR)
+        message.error(
+          formatMessage({
+            id: 'login.ACCOUNT_PWD_ERROR'
+          })
+        )
       }
     }
   },

@@ -2,38 +2,41 @@
 import PropTypes from 'prop-types'
 import { WhiteSpace, WingBlank, Flex, Card } from 'antd-mobile'
 import { connect } from 'dva'
+import { formatMessage, FormattedMessage } from 'umi/locale'
 
 import LanguageSwitch from '../../components/LanguageSwitch'
 
 class Overview extends Component {
   static propTypes = {
     loading: PropTypes.object,
-    lang: PropTypes.string,
-    locale: PropTypes.object,
     dispatch: PropTypes.func
   }
 
   render() {
-    const { locale, lang, dispatch } = this.props
+    const { dispatch } = this.props
     return (
       <WingBlank size="md">
         <WhiteSpace size="lg" />
 
         <Flex justify="end">
-          <LanguageSwitch currentLang={lang} onLangChange={l => dispatch({ type: 'app/switchLanguage', payload: l })} />
+          <LanguageSwitch />
         </Flex>
 
         <Flex justify="center" align="center">
-          {locale.WELCOME}
+          <FormattedMessage id="overview.WELCOME" />
         </Flex>
         <WhiteSpace size="lg" />
 
         <Card>
-          <Card.Header title={locale.CARD_TITLE} />
+          <Card.Header title={formatMessage({
+            id: 'overview.CARD_TITLE'
+          })} />
           <Card.Body>
-            <div>{locale.CARD_CONTENT}</div>
+            <div><FormattedMessage id="overview.CARD_CONTENT" /></div>
           </Card.Body>
-          <Card.Footer content={locale.CARD_FOOTER} />
+          <Card.Footer content={formatMessage({
+            id: 'overview.CARD_FOOTER'
+          })} />
         </Card>
       </WingBlank>
     )
@@ -42,22 +45,20 @@ class Overview extends Component {
 
 export default connect(({ app, loading }) => {
   return {
-    loading,
-    lang: app.lang,
-    locale: app.locale.overview
+    loading
   }
 })(Overview)
 <% } else { %>import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Table } from 'antd'
 import { connect } from 'dva'
+import { formatMessage, FormattedMessage } from 'umi/locale'
 
 import styles from './index.less'
 
 class Overview extends Component {
   static propTypes = {
     loading: PropTypes.object,
-    locale: PropTypes.object,
     overview: PropTypes.object,
     dispatch: PropTypes.func
   }
@@ -70,27 +71,40 @@ class Overview extends Component {
   }
 
   getColumns = () => {
-    const { locale } = this.props
     return [
       {
-        title: locale.NO,
+        title: formatMessage({
+          id: 'overview.NO'
+        }),
         dataIndex: 'id',
         key: 'id'
       },
       {
-        title: locale.TASK,
+        title: formatMessage({
+          id: 'overview.TASK'
+        }),
         dataIndex: 'task',
         key: 'task'
       },
       {
-        title: locale.COMPLETED_STATUS,
+        title: formatMessage({
+          id: 'overview.COMPLETED_STATUS'
+        }),
         dataIndex: 'completed',
         key: 'completed',
         render: (text, record) => {
           if (record.completed) {
-            return <span className={styles.finished}>{locale.FINISHED}</span>
+            return (
+              <span className={styles.finished}>
+                <FormattedMessage id="overview.FINISHED" />
+              </span>
+            )
           }
-          return <span className={styles.unfinished}>{locale.UNFINISHED}</span>
+          return (
+            <span className={styles.unfinished}>
+              <FormattedMessage id="overview.UNFINISHED" />
+            </span>
+          )
         }
       }
     ]
@@ -109,8 +123,7 @@ class Overview extends Component {
 export default connect(({ overview, app, loading }) => {
   return {
     loading,
-    overview,
-    locale: app.locale.overview
+    overview
   }
 })(Overview)
 <% } %>
