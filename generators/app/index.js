@@ -48,9 +48,8 @@ const DEV_DEPENDENCIES = [
   'typescript@2',
   'redbox-react@1',
   'prettier',
-  'umi',
-  'umi-plugin-dva',
-  'umi-plugin-routes',
+  'umi@next',
+  'umi-plugin-react@next',
   'lint-staged',
   'husky'
 ]
@@ -180,7 +179,7 @@ module.exports = class extends Generator {
         this.destinationPath('src/layouts/OpenPageLayout.js'),
         this.answer
       )
-      this.fs.copyTpl(this.templatePath('src/locale'), this.destinationPath('src/locale'), this.answer)
+      this.fs.copyTpl(this.templatePath('src/locales'), this.destinationPath('src/locales'), this.answer)
       this.fs.copyTpl(this.templatePath('src/models/app.js'), this.destinationPath('src/models/app.js'), this.answer)
 
       this.fs.copyTpl(

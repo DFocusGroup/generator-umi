@@ -10,14 +10,14 @@ function LanguageSwitch() {
   return (
     <div>
       <span
-        className={classnames(styles.switch, { [styles.active]: currentLang === 'zh' })}
+        className={classnames(styles.switch, { [styles.active]: currentLang === 'zh-CN' })}
         onClick={() => setLocale('zh-CN')}
       >
         中
       </span>{' '}
       |{' '}
       <span
-        className={classnames(styles.switch, { [styles.active]: currentLang === 'en' })}
+        className={classnames(styles.switch, { [styles.active]: currentLang === 'en-US' })}
         onClick={() => setLocale('en-US')}
       >
         En
@@ -59,14 +59,14 @@ function PlainSwitch(props) {
   return (
     <div>
       <span
-        className={classnames(styles.switch, { [styles.active]: currentLang === 'zh' })}
+        className={classnames(styles.switch, { [styles.active]: currentLang === 'zh-CN' })}
         onClick={() => setLocale('zh-CN')}
       >
         简体中文
       </span>{' '}
       |{' '}
       <span
-        className={classnames(styles.switch, { [styles.active]: currentLang === 'en' })}
+        className={classnames(styles.switch, { [styles.active]: currentLang === 'en-US' })}
         onClick={() => setLocale('en-US')}
       >
         English

@@ -25,7 +25,7 @@ export default extend(commonModel, {
       })
     }
   },
-  reducers: { }
+  reducers: {}
 })
 <% } else { %>import queryString from 'query-string'
 import moment from 'moment'
@@ -96,6 +96,6 @@ export default extend(commonModel, {
       })
     }
   },
-  reducers: { }
+  reducers: {}
 })
 <% } %>

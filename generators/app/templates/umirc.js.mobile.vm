@@ -1,13 +1,33 @@
 export default {
   theme: './src/themes/index.js',
   plugins: [
-    'umi-plugin-dva',
     [
-      'umi-plugin-routes',
+      'umi-plugin-react',
       {
-        exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//, /helpers\//]
+        dva: {
+          immer: false
+        },
+        antd: true,
+        routes: {
+          exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//, /helpers\//]
+        },
+        polyfills: [],
+        locale: {
+          default: 'zh-CN',
+          baseNavigator: true,
+          antd: true
+        },
+        library: 'react',
+        dynamicImport: {
+          webpackChunkName: true,
+          level: 2
+        },
+        dll: {},
+        hardSource: true,
+        pwa: false,
+        hd: false,
+        fastClick: true
       }
     ]
-  ],
-  extraBabelPlugins: [['import', { libraryName: 'antd-mobile', libraryDirectory: 'es', style: true }]]
+  ]
 }
