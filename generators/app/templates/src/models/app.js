@@ -1,5 +1,4 @@
 <% if (answers.mobileOnly) { %>import queryString from 'query-string'
-import moment from 'moment'
 
 import extend from 'dva-model-extend'
 
@@ -28,7 +27,6 @@ export default extend(commonModel, {
   reducers: {}
 })
 <% } else { %>import queryString from 'query-string'
-import moment from 'moment'
 import throttle from 'lodash/throttle'
 
 import extend from 'dva-model-extend'

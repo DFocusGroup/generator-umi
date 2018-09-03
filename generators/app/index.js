@@ -48,8 +48,8 @@ const DEV_DEPENDENCIES = [
   'typescript@2',
   'redbox-react@1',
   'prettier',
-  'umi@next',
-  'umi-plugin-react@next',
+  'umi@2',
+  'umi-plugin-react@1',
   'lint-staged',
   'husky'
 ]
