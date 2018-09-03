@@ -49,7 +49,7 @@ function resolveFromRoot(...relativePath) {
 
 function replaceWithEnv() {
   const options = {
-    files: resolveFromRoot('dist/static/*.js')
+    files: resolveFromRoot('dist/*.js')
   }
 
   const keys = Object.keys(ENVS)
