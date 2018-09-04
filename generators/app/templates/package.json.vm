@@ -6,9 +6,15 @@
     "start": "umi dev",
     "build": "umi build",
     "serve": "node ./server/index.js",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "commitmsg": "commitlint -E GIT_PARAMS"
   },
   "lint-staged": {
-    "*.js": "eslint --max-warnings=0"
+    "*.js": "eslint --max-warnings=0 --ignore-pattern !.umirc.js"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-angular"
+    ]
   }
 }

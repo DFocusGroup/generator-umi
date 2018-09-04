@@ -3,10 +3,8 @@ const fs = require('fs')
 const Generator = require('yeoman-generator')
 
 const DEPENDENCIES = [
-  'antd',
   'axios',
   'classnames',
-  'dva',
   'dva-model-extend',
   'express',
   'js-cookie',
@@ -18,10 +16,8 @@ const DEPENDENCIES = [
 ]
 
 const DEPENDENCIES_MOBILE = [
-  'antd-mobile',
   'axios',
   'classnames',
-  'dva',
   'dva-model-extend',
   'express',
   'js-cookie',
@@ -34,6 +30,8 @@ const DEPENDENCIES_MOBILE = [
 ]
 
 const DEV_DEPENDENCIES = [
+  '@commitlint/cli',
+  '@commitlint/config-angular',
   'babel-eslint@7',
   'babel-plugin-import',
   'eslint-config-prettier',
