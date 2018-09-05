@@ -22,6 +22,19 @@ export function destoryGlobalSpinner() {
     document.head.removeChild(splash)
   }
   if (spinner) {
-    document.body.removeChild(spinner)
+    spinner.parentNode.removeChild(spinner)
   }
+}
+
+export function addGlobalSpinnerStyle() {
+  const splash = document.querySelector('#splash-spinner')
+  if (splash) {
+    return
+  }
+  const style = document.createElement('style')
+  style.id = 'splash-spinner'
+  /* eslint-disable-next-line  */
+  style.innerHTML = `.spinner {position: fixed;border: 4px solid #f3f3f3;border-top: 4px solid #3498db;border-radius: 50%;top: 40%;left: 50%;margin-left: -22.5px;width: 45px;height: 45px;animation: spin 1s linear infinite;} @keyframes spin {0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); }}`
+
+  document.head.appendChild(style)
 }
