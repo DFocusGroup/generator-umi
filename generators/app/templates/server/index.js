@@ -23,7 +23,6 @@ const index = readFile(resolveFromRoot('dist', 'index.html'), { encoding: 'utf8'
 const PORT = 3000
 
 app.use('/', serve('dist'))
-app.use('/antd-iconfont/', serve('dist/static/antd-iconfont'))
 
 app.get('*', indexHandler)
 

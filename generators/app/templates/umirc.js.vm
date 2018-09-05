@@ -3,13 +3,6 @@ const OPEN_PAGES = ['/login', '/', '/404']
 export default {
   hash: true,
   theme: './src/themes/index.js',
-  copy: [
-    {
-      from: './src/assets/antd-iconfont/*',
-      to: './antd-iconfont/',
-      flatten: true
-    }
-  ],
   plugins: [
     [
       'umi-plugin-react',
