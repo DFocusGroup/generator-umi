@@ -30,7 +30,7 @@ export default {
           level: 2
         },
         dll: {
-          exclude: ['replace-in-file']
+          exclude: ['replace-in-file', 'express']
         },
         hardSource: true,
         pwa: false,
