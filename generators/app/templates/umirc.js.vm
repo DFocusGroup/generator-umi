@@ -1,6 +1,7 @@
 const OPEN_PAGES = ['/login', '/', '/404']
 
 export default {
+  hash: true,
   theme: './src/themes/index.js',
   copy: [
     {
