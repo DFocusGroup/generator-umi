@@ -48,7 +48,7 @@ function setAuthRoute(routes) {
 
   routes.forEach(route => {
     if (route.exact && route.path && !OPEN_PAGES.includes(route.path)) {
-      route.Route = './src/components/Auth/AuthRoute.js'
+      route.Routes = ['./src/components/Auth/AuthRoute.js']
     }
     if (route.routes) {
       setAuthRoute(route.routes)
