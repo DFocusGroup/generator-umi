@@ -22,7 +22,9 @@ export default {
           webpackChunkName: true,
           level: 2
         },
-        dll: {},
+        dll: {
+          exclude: ['replace-in-file']
+        },
         hardSource: true,
         pwa: false,
         hd: false,
