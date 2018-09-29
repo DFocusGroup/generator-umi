@@ -12,7 +12,6 @@ export default {
         routes: {
           exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//, /helpers\//]
         },
-        polyfills: [],
         locale: {
           default: 'zh-CN',
           baseNavigator: true,
@@ -22,9 +21,6 @@ export default {
         dynamicImport: {
           webpackChunkName: true,
           level: 2
-        },
-        dll: {
-          exclude: ['replace-in-file', 'express']
         },
         hardSource: true,
         pwa: false,

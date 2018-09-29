@@ -5,9 +5,13 @@
   "scripts": {
     "start": "umi dev",
     "build": "umi build",
-    "serve": "node ./server/index.js",
-    "precommit": "lint-staged",
-    "commitmsg": "commitlint -E GIT_PARAMS"
+    "serve": "node ./server/index.js"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.js": "eslint --max-warnings=0 --ignore-pattern !.umirc.js"
