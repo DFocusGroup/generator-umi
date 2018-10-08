@@ -5,6 +5,7 @@ const Generator = require('yeoman-generator')
 const DEPENDENCIES = [
   'axios',
   'classnames',
+  'dva@2',
   'dva-model-extend',
   'express',
   'js-cookie',
@@ -18,6 +19,7 @@ const DEPENDENCIES = [
 const DEPENDENCIES_MOBILE = [
   'axios',
   'classnames',
+  'dva@2',
   'dva-model-extend',
   'express',
   'js-cookie',
@@ -35,7 +37,7 @@ const DEV_DEPENDENCIES = [
   'babel-eslint@7',
   'babel-plugin-import',
   'eslint-config-prettier',
-  'eslint-plugin-prettier',
+  'eslint-plugin-prettier@2',
   'eslint@4',
   'eslint-config-umi',
   'eslint-plugin-flowtype@2',
