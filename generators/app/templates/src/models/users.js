@@ -1,13 +1,11 @@
 import { message } from 'antd'
-import extend from 'dva-model-extend'
 import { formatMessage } from 'umi/locale'
 
-import commonModel from '../helpers/commonModel'
+import { withMixin } from '../helpers/dva'
 import { getCurrentUser } from '../services/user'
 import { clearAll, getToken } from '../helpers/storage'
 
-export default extend(commonModel, {
-  namespace: 'users',
+export default withMixin({
   state: {
     currentUser: null
   },
@@ -17,7 +15,7 @@ export default extend(commonModel, {
       if (!getToken()) {
         message.warn(
           formatMessage({
-            id: 'app.TOKEN_EXPIRED'
+            id: 'APP_TOKEN_EXPIRED'
           })
         )
         yield put({
@@ -46,7 +44,7 @@ export default extend(commonModel, {
       if (!success || !data) {
         message.warn(
           formatMessage({
-            id: 'app.TOKEN_EXPIRED'
+            id: 'APP_TOKEN_EXPIRED'
           })
         )
         clearAll()

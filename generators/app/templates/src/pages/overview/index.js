@@ -1,3 +1,6 @@
+/**
+ * title: Overview
+ */
 <% if (answers.mobileOnly) { %>import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { WhiteSpace, WingBlank, Flex, Card } from 'antd-mobile'
@@ -13,7 +16,6 @@ class Overview extends Component {
   }
 
   render() {
-    const { dispatch } = this.props
     return (
       <WingBlank size="md">
         <WhiteSpace size="lg" />
@@ -23,20 +25,26 @@ class Overview extends Component {
         </Flex>
 
         <Flex justify="center" align="center">
-          <FormattedMessage id="overview.WELCOME" />
+          <FormattedMessage id="OVERVIEW_WELCOME" />
         </Flex>
         <WhiteSpace size="lg" />
 
         <Card>
-          <Card.Header title={formatMessage({
-            id: 'overview.CARD_TITLE'
-          })} />
+          <Card.Header
+            title={formatMessage({
+              id: 'OVERVIEW_CARD_TITLE'
+            })}
+          />
           <Card.Body>
-            <div><FormattedMessage id="overview.CARD_CONTENT" /></div>
+            <div>
+              <FormattedMessage id="OVERVIEW_CARD_CONTENT" />
+            </div>
           </Card.Body>
-          <Card.Footer content={formatMessage({
-            id: 'overview.CARD_FOOTER'
-          })} />
+          <Card.Footer
+            content={formatMessage({
+              id: 'OVERVIEW_CARD_FOOTER'
+            })}
+          />
         </Card>
       </WingBlank>
     )
@@ -74,21 +82,21 @@ class Overview extends Component {
     return [
       {
         title: formatMessage({
-          id: 'overview.NO'
+          id: 'OVERVIEW_NO'
         }),
         dataIndex: 'id',
         key: 'id'
       },
       {
         title: formatMessage({
-          id: 'overview.TASK'
+          id: 'OVERVIEW_TASK'
         }),
         dataIndex: 'task',
         key: 'task'
       },
       {
         title: formatMessage({
-          id: 'overview.COMPLETED_STATUS'
+          id: 'OVERVIEW_COMPLETED_STATUS'
         }),
         dataIndex: 'completed',
         key: 'completed',
@@ -96,13 +104,13 @@ class Overview extends Component {
           if (record.completed) {
             return (
               <span className={styles.finished}>
-                <FormattedMessage id="overview.FINISHED" />
+                <FormattedMessage id="OVERVIEW_FINISHED" />
               </span>
             )
           }
           return (
             <span className={styles.unfinished}>
-              <FormattedMessage id="overview.UNFINISHED" />
+              <FormattedMessage id="OVERVIEW_UNFINISHED" />
             </span>
           )
         }

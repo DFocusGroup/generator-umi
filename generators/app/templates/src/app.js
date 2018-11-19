@@ -4,8 +4,8 @@ import PageNotFoundError from './helpers/errors/PageNotFoundError'
 
 import debounce from 'lodash/debounce'
 
-export function config() {
-  return {
+export const dva = {
+  config: {
     onError: debounce(function(err, dispatch) {
       if (err instanceof PageNotFoundError) {
         return router.push({

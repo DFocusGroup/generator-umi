@@ -1,30 +1,13 @@
-import extend from 'dva-model-extend'
-
-import commonModel from '../../helpers/commonModel'
+import { withMixin } from '../../helpers/dva'
 
 import { getTodoList } from './service'
 
-export default extend(commonModel, {
+export default withMixin({
   namespace: 'overview',
   state: {
     todoList: []
   },
-  subscriptions: {
-    setup({ history, dispatch }) {
-      return history.listen(location => {
-        if (location.pathname !== '/overview') {
-          return
-        }
-
-        dispatch({
-          type: 'app/updateState',
-          payload: {
-            pageTitle: 'overview.PAGE_TITLE'
-          }
-        })
-      })
-    }
-  },
+  subscriptions: {},
   effects: {
     *queryTodoList({ payload }, { put, call, all, select }) {
       const { success, data } = yield call(getTodoList)

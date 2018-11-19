@@ -29,7 +29,7 @@ function GlobalHeader(props) {
         <Menu mode="horizontal" selectedKeys={[KEYS_MAP[locationPathname]]} style={{ width: '100%' }}>
           <Menu.Item key="OVERVIEW">
             <Link to="/overview">
-              <FormattedMessage id="app.OVERVIEW" />
+              <FormattedMessage id="APP_OVERVIEW" />
             </Link>
           </Menu.Item>
           <Menu.Item key="line1">|</Menu.Item>
@@ -52,7 +52,7 @@ function GlobalHeader(props) {
             }
           >
             <Menu.Item key="logout">
-              <FormattedMessage id="app.LOG_OUT" />
+              <FormattedMessage id="APP_LOG_OUT" />
             </Menu.Item>
           </Menu.SubMenu>
         </Menu>

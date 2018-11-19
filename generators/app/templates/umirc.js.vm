@@ -1,4 +1,3 @@
-const OPEN_PAGES = ['/login', '/', '/404']
 
 export default {
   hash: true,
@@ -12,11 +11,7 @@ export default {
         },
         antd: true,
         routes: {
-          exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//, /helpers\//],
-          update(routes) {
-            setAuthRoute(routes)
-            return routes
-          }
+          exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//, /helpers\//]
         },
         locale: {
           default: 'zh-CN',
@@ -28,26 +23,14 @@ export default {
           webpackChunkName: true,
           level: 2
         },
-        hardSource: true,
+        title: {
+          defaultTitle: '<%= answers.name %>'
+        },
+        hardSource: false,
         pwa: false,
         hd: false,
         fastClick: false
       }
     ]
   ]
-}
-
-function setAuthRoute(routes) {
-  if (!routes || !routes.length) {
-    return
-  }
-
-  routes.forEach(route => {
-    if (route.exact && route.path && !OPEN_PAGES.includes(route.path)) {
-      route.Routes = ['./src/components/Auth/AuthRoute.js']
-    }
-    if (route.routes) {
-      setAuthRoute(route.routes)
-    }
-  })
 }

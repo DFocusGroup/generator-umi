@@ -2,5 +2,6 @@
   "editor.formatOnSave": true,
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
-  "html.format.enable": false
+  "html.format.enable": false,
+  "prettier.disableLanguages": ["vue", "html"]
 }

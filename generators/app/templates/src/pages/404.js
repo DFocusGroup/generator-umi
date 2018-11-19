@@ -25,14 +25,14 @@ class NotFoundPage extends Component {
       <div className={styles.content}>
         <h1>404</h1>
         <p>
-          <FormattedMessage id="errorInfo.LOAD_ERROR" />
+          <FormattedMessage id="ERROR_LOAD_ERROR" />
         </p>
         <p className={styles.explanation}>
-          <FormattedMessage id="errorInfo.PAGE_NOT_FOUND_ERROR" />
+          <FormattedMessage id="ERROR_LOAD_ERRORPAGE_NOT_FOUND_ERROR" />
         </p>
         {this.getFromPath()}
         <Link to="/">
-          <FormattedMessage id="errorInfo.BACK_TO_HOME" />
+          <FormattedMessage id="ERROR_LOAD_ERRORBACK_TO_HOME" />
         </Link>
       </div>
     )

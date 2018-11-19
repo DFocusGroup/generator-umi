@@ -1,11 +1,8 @@
 <% if (answers.mobileOnly) { %>import queryString from 'query-string'
 
-import extend from 'dva-model-extend'
+import { withMixin } from '../helpers/dva'
 
-import commonModel from '../helpers/commonModel'
-
-export default extend(commonModel, {
-  namespace: 'app',
+export default withMixin({
   state: {
     locationPathname: '',
     locationQuery: {},
@@ -29,18 +26,16 @@ export default extend(commonModel, {
 <% } else { %>import queryString from 'query-string'
 import throttle from 'lodash/throttle'
 
-import extend from 'dva-model-extend'
-
-import commonModel from '../helpers/commonModel'
+import { withMixin } from '../helpers/dva'
 import { clearAll } from '../helpers/storage'
 
-export default extend(commonModel, {
-  namespace: 'app',
+export default withMixin({
   state: {
     locationPathname: '',
     locationQuery: {},
     pageTitle: '',
-    screenWidth: window.innerWidth
+    screenWidth: window.innerWidth,
+    screenHeight: window.innerHeight,
   },
   subscriptions: {
     setHistory({ dispatch, history }) {
@@ -56,11 +51,12 @@ export default extend(commonModel, {
     },
     screenResize({ dispatch, history }) {
       const screenResizeHandler = () => {
-        const { innerWidth } = window
+        const { innerWidth, innerHeight } = window
         dispatch({
           type: 'updateState',
           payload: {
-            screenWidth: innerWidth
+            screenWidth: innerWidth,
+            screenHeight: innerHeight
           }
         })
       }

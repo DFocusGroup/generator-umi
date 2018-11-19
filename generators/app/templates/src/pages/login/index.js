@@ -1,10 +1,13 @@
+/**
+ * title: Login
+ */
 import { Component } from 'react'
 import { connect } from 'dva'
 import PropTypes from 'prop-types'
 import { Form, Row, Button, Col, Input, Checkbox, Icon } from 'antd'
 import { formatMessage, FormattedMessage, getLocale } from 'umi/locale'
 
-import { setDoNotRememberme, getDoNotRememberme, removeDoNotRememberme } from '../../helpers/storage'
+import { getToken, setDoNotRememberme, getDoNotRememberme, removeDoNotRememberme } from '../../helpers/storage'
 
 import styles from './index.less'
 
@@ -27,6 +30,19 @@ class Login extends Component {
 
     this.state = {
       rememberme: !getDoNotRememberme()
+    }
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props
+    // redirect to default page if token was received
+    if (getToken()) {
+      dispatch({
+        type: 'app/redirectTo',
+        payload: {
+          to: '/'
+        }
+      })
     }
   }
 
@@ -72,7 +88,7 @@ class Login extends Component {
         <div className={styles.form}>
           <div className={styles.welcomeTitle}>
             <span>
-              <FormattedMessage id="login.WELCOME_TITLE" />
+              <FormattedMessage id="LOGIN_WELCOME_TITLE" />
             </span>
           </div>
           <Form onSubmit={this.goLogin}>
@@ -87,26 +103,26 @@ class Login extends Component {
                       {
                         required: true,
                         message: formatMessage({
-                          id: 'login.ACCOUNT_EMPTY_ERROR'
+                          id: 'LOGIN_ACCOUNT_EMPTY_ERROR'
                         })
                       },
                       {
                         type: 'email',
                         message: formatMessage({
-                          id: 'login.ACCOUNT_FORMAT_ERROR'
+                          id: 'LOGIN_ACCOUNT_FORMAT_ERROR'
                         })
                       },
                       {
                         max: 50,
                         message: formatMessage({
-                          id: 'login.ACCOUNT_LENGTH_ERROR'
+                          id: 'LOGIN_ACCOUNT_LENGTH_ERROR'
                         })
                       }
                     ]
                   })(
                     <Input
                       placeholder={formatMessage({
-                        id: 'login.ACCOUNT_PLACEHOLDER'
+                        id: 'LOGIN_ACCOUNT_PLACEHOLDER'
                       })}
                       size={document.body.clientWidth >= 1600 ? 'large' : 'default'}
                       className={styles.input}
@@ -121,13 +137,13 @@ class Login extends Component {
                   {
                     required: true,
                     message: formatMessage({
-                      id: 'login.PASSWORD_EMPTY_ERROR'
+                      id: 'LOGIN_PASSWORD_EMPTY_ERROR'
                     })
                   },
                   {
                     pattern: /^\S{6,16}$/,
                     message: formatMessage({
-                      id: 'login.PASSWORD_FORMAT_ERROR'
+                      id: 'LOGIN_PASSWORD_FORMAT_ERROR'
                     })
                   }
                 ]
@@ -140,7 +156,7 @@ class Login extends Component {
                     <Input
                       type="password"
                       placeholder={formatMessage({
-                        id: 'login.PASSWORD_PLACEHOLDER'
+                        id: 'LOGIN_PASSWORD_PLACEHOLDER'
                       })}
                       size={document.body.clientWidth >= 1600 ? 'large' : 'default'}
                       className={styles.input}
@@ -155,7 +171,7 @@ class Login extends Component {
                 className={styles.remembermeCheckbox}
                 onChange={this.handleRememberme}
               >
-                <FormattedMessage id="login.REMEMBER_ME_TXT" />
+                <FormattedMessage id="LOGIN_REMEMBER_ME_TXT" />
               </Checkbox>
             </Row>
             <Row type="flex" justify="center">
@@ -166,7 +182,7 @@ class Login extends Component {
                 loading={isLoading}
                 className={styles.submitBtn}
               >
-                <FormattedMessage id="login.SIGNIN_BTN_TXT" />
+                <FormattedMessage id="LOGIN_SIGNIN_BTN_TXT" />
               </Button>
             </Row>
           </Form>

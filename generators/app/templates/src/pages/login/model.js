@@ -1,43 +1,16 @@
 import { routerRedux } from 'dva/router'
 import { message } from 'antd'
-import extend from 'dva-model-extend'
 import { formatMessage } from 'umi/locale'
 
-import commonModel from '../../helpers/commonModel'
+import { withMixin } from '../../helpers/dva'
 import * as loginService from './service'
 
-import { setToken, getToken } from '../../helpers/storage'
+import { setToken } from '../../helpers/storage'
 
-export default extend(commonModel, {
+export default withMixin({
   namespace: 'login',
-  state: {
-    captchaDataURL: ''
-  },
-  subscriptions: {
-    setup({ history, dispatch }) {
-      history.listen(location => {
-        if (location.pathname !== '/login') {
-          return
-        }
-
-        if (getToken()) {
-          return dispatch({
-            type: 'redirectTo',
-            payload: {
-              to: '/'
-            }
-          })
-        }
-
-        dispatch({
-          type: 'app/updateState',
-          payload: {
-            pageTitle: 'login.PAGE_TITLE'
-          }
-        })
-      })
-    }
-  },
+  state: {},
+  subscriptions: {},
   effects: {
     *login({ payload }, { put, call, select }) {
       const { locationQuery } = yield select(_ => _.app)
@@ -53,20 +26,18 @@ export default extend(commonModel, {
         })
         setToken(data.token)
         if (!from || from === '/') {
-          yield put(routerRedux.push('/'))
+          return yield put(routerRedux.push('/'))
         } else if (from.startsWith('/')) {
-          yield put(routerRedux.push(from))
-        } else {
-          window.location.href = from
+          return yield put(routerRedux.push(from))
         }
-        return
+        return (window.location.href = from)
       }
 
       if (errorCode === 501) {
         // 账号或密码错误，
         message.error(
           formatMessage({
-            id: 'login.ACCOUNT_PWD_ERROR'
+            id: 'LOGIN_ACCOUNT_PWD_ERROR'
           })
         )
       }

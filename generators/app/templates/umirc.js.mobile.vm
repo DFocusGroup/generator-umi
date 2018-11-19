@@ -22,7 +22,10 @@ export default {
           webpackChunkName: true,
           level: 2
         },
-        hardSource: true,
+        title: {
+          defaultTitle: '<%= answers.name %>'
+        },
+        hardSource: false,
         pwa: false,
         hd: false,
         fastClick: true

@@ -6,13 +6,12 @@ const DEPENDENCIES = [
   'axios',
   'classnames',
   'dva@2',
-  'dva-model-extend',
   'express',
   'js-cookie',
   'lodash',
   'moment',
   'path-to-regexp',
-  'react-helmet',
+  'react',
   'replace-in-file'
 ]
 
@@ -20,14 +19,13 @@ const DEPENDENCIES_MOBILE = [
   'axios',
   'classnames',
   'dva@2',
-  'dva-model-extend',
   'express',
   'js-cookie',
   'lodash',
   'moment',
   'path-to-regexp',
   'rc-form',
-  'react-helmet',
+  'react',
   'replace-in-file'
 ]
 
@@ -48,8 +46,8 @@ const DEV_DEPENDENCIES = [
   'typescript@2',
   'redbox-react@1',
   'prettier',
-  'umi@2',
-  'umi-plugin-react@1',
+  'umi',
+  'umi-plugin-react',
   'lint-staged',
   'husky'
 ]
@@ -153,11 +151,6 @@ module.exports = class extends Generator {
 
     if (answers.mobileOnly) {
       this.fs.copyTpl(
-        this.templatePath('src/assets/favicon.png'),
-        this.destinationPath('src/assets/favicon.png'),
-        this.answer
-      )
-      this.fs.copyTpl(
         this.templatePath('src/assets/logo.svg'),
         this.destinationPath('src/assets/logo.svg'),
         this.answer
@@ -196,11 +189,12 @@ module.exports = class extends Generator {
       )
       this.fs.copyTpl(this.templatePath('src/pages/index.js'), this.destinationPath('src/pages/index.js'), this.answer)
       this.fs.copyTpl(this.templatePath('src/themes'), this.destinationPath('src/themes'), this.answer)
-      this.fs.copyTpl(this.templatePath('src/dva.js'), this.destinationPath('src/dva.js'), this.answer)
+      this.fs.copyTpl(this.templatePath('src/app.js'), this.destinationPath('src/app.js'), this.answer)
     } else {
       this.fs.copyTpl(this.templatePath('src'), this.destinationPath('src'), this.answer)
     }
 
+    this.fs.copyTpl(this.templatePath('public'), this.destinationPath('public'), this.answer)
     this.fs.copyTpl(this.templatePath('server'), this.destinationPath('server'), this.answer)
     this.fs.copyTpl(this.templatePath('mock'), this.destinationPath('mock'), this.answer)
   }
