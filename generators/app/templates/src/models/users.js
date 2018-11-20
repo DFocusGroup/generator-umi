@@ -2,6 +2,7 @@ import { message } from 'antd'
 import { formatMessage } from 'umi/locale'
 
 import { withMixin } from '../helpers/dva'
+import { redirectTo } from '../helpers/view'
 import { getCurrentUser } from '../services/user'
 import { clearAll, getToken } from '../helpers/storage'
 
@@ -24,12 +25,7 @@ export default withMixin({
             currentUser: new Error()
           }
         })
-        return yield put({
-          type: 'redirectTo',
-          payload: {
-            to: '/login'
-          }
-        })
+        return redirectTo('/login')
       }
       const { currentUser } = yield select(_ => _.users)
       if (currentUser) {
@@ -48,12 +44,7 @@ export default withMixin({
           })
         )
         clearAll()
-        return yield put({
-          type: 'app/redirectTo',
-          payload: {
-            to: '/login'
-          }
-        })
+        return redirectTo('/login')
       }
       yield put({
         type: 'updateState',

@@ -1,3 +1,5 @@
+import router from 'umi/router'
+
 export function inViewPort(elem) {
   if (!elem || !elem.getBoundingClientRect) {
     return false
@@ -24,4 +26,20 @@ export function destoryGlobalSpinner() {
   if (spinner) {
     spinner.parentNode.removeChild(spinner)
   }
+}
+
+export function redirectTo(to, from) {
+  if (!from) {
+    return router.push(to)
+  }
+  return router.push({
+    pathname: to,
+    query: {
+      from
+    }
+  })
+}
+
+export function goBack() {
+  return router.goBack()
 }

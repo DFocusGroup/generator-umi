@@ -8,6 +8,7 @@ import { Form, Row, Button, Col, Input, Checkbox, Icon } from 'antd'
 import { formatMessage, FormattedMessage, getLocale } from 'umi/locale'
 
 import { getToken, setDoNotRememberme, getDoNotRememberme, removeDoNotRememberme } from '../../helpers/storage'
+import { redirectTo } from '../../helpers/view'
 
 import styles from './index.less'
 
@@ -34,15 +35,9 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props
     // redirect to default page if token was received
     if (getToken()) {
-      dispatch({
-        type: 'app/redirectTo',
-        payload: {
-          to: '/'
-        }
-      })
+      return redirectTo('/')
     }
   }
 

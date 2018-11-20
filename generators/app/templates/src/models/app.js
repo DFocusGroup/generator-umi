@@ -27,6 +27,7 @@ export default withMixin({
 import throttle from 'lodash/throttle'
 
 import { withMixin } from '../helpers/dva'
+import { redirectTo } from '../helpers/view'
 import { clearAll } from '../helpers/storage'
 
 export default withMixin({
@@ -81,13 +82,7 @@ export default withMixin({
         }
       })
 
-      yield put({
-        type: 'redirectTo',
-        payload: {
-          to: '/login',
-          from: locationPathname
-        }
-      })
+      redirectTo('/login', locationPathname)
     }
   },
   reducers: {}
