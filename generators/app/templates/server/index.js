@@ -22,6 +22,9 @@ const index = readFile(resolveFromRoot('dist', 'index.html'), { encoding: 'utf8'
 
 const PORT = 3000
 
+app.get('/', indexHandler)
+app.get('/index.html', indexHandler)
+
 app.use('/', serve('dist'))
 
 app.get('*', indexHandler)
