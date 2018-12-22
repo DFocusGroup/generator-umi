@@ -1,9 +1,9 @@
 /* eslint-disable */
 <% if (answers.mobileOnly) { %>
 export default {
-  ERROR_LOAD_ERROR_LOAD_ERROR: 'Loading error',
-  ERROR_LOAD_ERROR_PAGE_NOT_FOUND_ERROR: 'The page you are openning is not exist, please verify URL',
-  ERROR_LOAD_ERROR_BACK_TO_HOME: 'Back to home',
+  ERROR_LOAD_ERROR: 'Loading error',
+  ERROR_PAGE_NOT_FOUND_ERROR: 'The page you are openning is not exist, please verify URL',
+  ERROR_BACK_TO_HOME: 'Back to home',
   OVERVIEW_WELCOME: 'Welcome',
   OVERVIEW_CARD_TITLE: 'Card',
   OVERVIEW_CARD_CONTENT: 'Put content here',
@@ -15,9 +15,9 @@ export default {
   APP_LOG_OUT: 'Sign out',
   APP_OVERVIEW: 'Overview',
   APP_TOKEN_EXPIRED: 'Your authorization is incorrect or expired, please sign in again',
-  ERROR_LOAD_ERROR_PAGE_NOT_FOUND_ERROR: 'The page you are openning is not exist, please verify URL',
-  ERROR_LOAD_ERROR_LOAD_ERROR: 'Loading error...',
-  ERROR_LOAD_ERROR_BACK_TO_HOME: 'Back home',
+  ERROR_PAGE_NOT_FOUND_ERROR: 'The page you are openning is not exist, please verify URL',
+  ERROR_LOAD_ERROR: 'Loading error...',
+  ERROR_BACK_TO_HOME: 'Back home',
   COPYRIGHTS_TEXT: 'Copyright © 2015-2018 xxx ® All Rights Reserved. ICP No. xxx  Email: support@xxx.com',
   OVERVIEW_NO: 'ID',
   OVERVIEW_TASK: 'Task',
