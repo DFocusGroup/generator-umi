@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
-import { withRouter } from 'dva/router'
+import withRouter from 'umi/withRouter'
 import { Layout, BackTop } from 'antd'
 
 import GlobalHeader from '../../components/GlobalHeader'
@@ -31,11 +31,6 @@ class AuthRequiredLayout extends Component {
 
     if (!currentUser) {
       return null
-    }
-
-    // 可能面临重定向回/login
-    if (currentUser instanceof Error) {
-      return children
     }
 
     destoryGlobalSpinner()

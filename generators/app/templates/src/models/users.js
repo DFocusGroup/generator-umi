@@ -19,12 +19,6 @@ export default withMixin({
             id: 'APP_TOKEN_EXPIRED'
           })
         )
-        yield put({
-          type: 'updateState',
-          payload: {
-            currentUser: new Error()
-          }
-        })
         return redirectTo('/login')
       }
       const { currentUser } = yield select(_ => _.users)

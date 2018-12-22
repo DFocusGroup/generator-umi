@@ -1,4 +1,4 @@
-import { routerRedux } from 'dva/router'
+import router from 'umi/router'
 import { message } from 'antd'
 import { formatMessage } from 'umi/locale'
 
@@ -26,9 +26,9 @@ export default withMixin({
         })
         setToken(data.token)
         if (!from || from === '/') {
-          return yield put(routerRedux.push('/'))
+          return router.push('/')
         } else if (from.startsWith('/')) {
-          return yield put(routerRedux.push(from))
+          return router.push(from)
         }
         return (window.location.href = from)
       }

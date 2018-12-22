@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'dva'
 import { FormattedMessage } from 'umi/locale'
-import { Link } from 'dva/router'
+import Link from 'umi/link'
 import PropTypes from 'prop-types'
 
 import styles from './404.less'

@@ -1,3 +1,3 @@
-import { Redirect } from 'dva/router'
+import Redirect from 'umi/redirect'
 
 export default () => <Redirect to="/overview" />
