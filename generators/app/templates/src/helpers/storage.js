@@ -1,5 +1,5 @@
 <% if (answers.mobileOnly) { %>import cookies from 'js-cookie'
-import { STORAGE_DOMAIN, STORAGE_EXPIRE_DAYS, STORAGE_LANGUAGE_KEY } from '../config'
+import { STORAGE_DOMAIN, STORAGE_EXPIRE_DAYS, STORAGE_TOKEN_KEY } from '../config'
 
 const DEFAULT_COOKIE_OPTS = {
   expires: STORAGE_EXPIRE_DAYS, // 49 days
@@ -18,18 +18,12 @@ export function clearAll() {
   }
 }
 
-function set(key, value) {
-  if (localStorage) {
-    return localStorage.setItem(key, value)
-  }
-  cookies.set(key, value, DEFAULT_COOKIE_OPTS)
+export function setToken(value) {
+  return cookies.set(STORAGE_TOKEN_KEY, value, DEFAULT_COOKIE_OPTS)
 }
 
-function get(key, defaultValue) {
-  if (localStorage) {
-    return localStorage.getItem(key) || defaultValue
-  }
-  return cookies.get(key) || defaultValue
+export function getToken() {
+  return cookies.get(STORAGE_TOKEN_KEY)
 }
 <% } else { %>import cookies from 'js-cookie'
 import { STORAGE_TOKEN_KEY, STORAGE_DOMAIN, STORAGE_EXPIRE_DAYS } from '../config'

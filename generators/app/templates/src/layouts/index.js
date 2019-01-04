@@ -11,7 +11,7 @@ import { isOpenPages } from '../helpers/env'
   return (
     <Redirect
       to={{
-        pathname: '/404',
+        pathname: '/o/404',
         search: `?from=${encodeURIComponent(location.pathname)}`
       }}
     />
@@ -24,7 +24,7 @@ import { isOpenPages } from '../helpers/env'
   return (
     <Redirect
       to={{
-        pathname: '/404',
+        pathname: '/o/404',
         search: `?from=${encodeURIComponent(location.pathname)}`
       }}
     />

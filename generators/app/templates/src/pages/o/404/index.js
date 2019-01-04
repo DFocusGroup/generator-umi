@@ -1,10 +1,10 @@
 import { Component } from 'react'
 import { connect } from 'dva'
-import { FormattedMessage } from 'umi/locale'
+import { FormattedMessage } from 'umi-plugin-react/locale'
 import Link from 'umi/link'
 import PropTypes from 'prop-types'
 
-import styles from './404.less'
+import styles from './index.less'
 
 class NotFoundPage extends Component {
   static propTypes = {

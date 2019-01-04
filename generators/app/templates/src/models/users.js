@@ -1,5 +1,5 @@
 import { message } from 'antd'
-import { formatMessage } from 'umi/locale'
+import { formatMessage } from 'umi-plugin-react/locale'
 
 import { withMixin } from '../helpers/dva'
 import { redirectTo } from '../helpers/view'
@@ -19,7 +19,7 @@ export default withMixin({
             id: 'APP_TOKEN_EXPIRED'
           })
         )
-        return redirectTo('/login')
+        return redirectTo('/o/login')
       }
       const { currentUser } = yield select(_ => _.users)
       if (currentUser) {
@@ -38,7 +38,7 @@ export default withMixin({
           })
         )
         clearAll()
-        return redirectTo('/login')
+        return redirectTo('/o/login')
       }
       yield put({
         type: 'updateState',

@@ -1,11 +1,11 @@
 import router from 'umi/router'
 import { message } from 'antd'
-import { formatMessage } from 'umi/locale'
+import { formatMessage } from 'umi-plugin-react/locale'
 
-import { withMixin } from '../../helpers/dva'
+import { withMixin } from '../../../helpers/dva'
 import * as loginService from './service'
 
-import { setToken } from '../../helpers/storage'
+import { setToken } from '../../../helpers/storage'
 
 export default withMixin({
   namespace: 'login',

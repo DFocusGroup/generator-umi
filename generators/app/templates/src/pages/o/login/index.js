@@ -5,15 +5,15 @@ import { Component } from 'react'
 import { connect } from 'dva'
 import PropTypes from 'prop-types'
 import { Form, Row, Button, Col, Input, Checkbox, Icon } from 'antd'
-import { formatMessage, FormattedMessage, getLocale } from 'umi/locale'
+import { formatMessage, FormattedMessage, getLocale } from 'umi-plugin-react/locale'
 
-import { getToken, setDoNotRememberme, getDoNotRememberme, removeDoNotRememberme } from '../../helpers/storage'
-import { redirectTo } from '../../helpers/view'
+import { getToken, setDoNotRememberme, getDoNotRememberme, removeDoNotRememberme } from '../../../helpers/storage'
+import { redirectTo } from '../../../helpers/view'
 
 import styles from './index.less'
 
-import LanguageSwitch from '../../components/LanguageSwitch'
-import GlobalFooter from '../../components/GlobalFooter'
+import LanguageSwitch from '../../../components/LanguageSwitch'
+import GlobalFooter from '../../../components/GlobalFooter'
 
 class Login extends Component {
   static propTypes = {

@@ -82,7 +82,7 @@ export default withMixin({
         }
       })
 
-      redirectTo('/login', locationPathname)
+      redirectTo('/o/login', locationPathname)
     }
   },
   reducers: {}

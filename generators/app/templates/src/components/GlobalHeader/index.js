@@ -2,7 +2,7 @@ import { connect } from 'dva'
 import { Link } from 'react-router-dom'
 import { Layout, Menu, Avatar } from 'antd'
 import PropTypes from 'prop-types'
-import { getLocale, FormattedMessage } from 'umi/locale'
+import { getLocale, FormattedMessage } from 'umi-plugin-react/locale'
 
 import LanguageSwitch from '../LanguageSwitch'
 import styles from './index.less'

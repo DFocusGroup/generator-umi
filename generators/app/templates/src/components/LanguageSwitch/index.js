@@ -1,4 +1,4 @@
-<% if (answers.mobileOnly) { %>import { setLocale, getLocale } from 'umi/locale'
+<% if (answers.mobileOnly) { %>import { setLocale, getLocale } from 'umi-plugin-react/locale'
 import classnames from 'classnames'
 
 import styles from './index.less'
@@ -28,7 +28,7 @@ function LanguageSwitch() {
 export default LanguageSwitch
 <% } else { %>import { Select } from 'antd'
 import { connect } from 'dva'
-import { setLocale, getLocale } from 'umi/locale'
+import { setLocale, getLocale } from 'umi-plugin-react/locale'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 

@@ -5,7 +5,7 @@
 import PropTypes from 'prop-types'
 import { WhiteSpace, WingBlank, Flex, Card } from 'antd-mobile'
 import { connect } from 'dva'
-import { formatMessage, FormattedMessage } from 'umi/locale'
+import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale'
 
 import LanguageSwitch from '../../components/LanguageSwitch'
 
@@ -60,7 +60,7 @@ export default connect(({ app, loading }) => {
 import PropTypes from 'prop-types'
 import { Table } from 'antd'
 import { connect } from 'dva'
-import { formatMessage, FormattedMessage } from 'umi/locale'
+import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale'
 
 import styles from './index.less'
 

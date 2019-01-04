@@ -1,5 +1,5 @@
 import { Row } from 'antd'
-import { FormattedMessage } from 'umi/locale'
+import { FormattedMessage } from 'umi-plugin-react/locale'
 
 import styles from './index.less'
 

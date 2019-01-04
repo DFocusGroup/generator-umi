@@ -180,8 +180,8 @@ module.exports = class extends Generator {
         this.destinationPath('src/pages/overview/index.js'),
         this.answer
       )
-      this.fs.copyTpl(this.templatePath('src/pages/404.js'), this.destinationPath('src/pages/404.js'), this.answer)
-      this.fs.copyTpl(this.templatePath('src/pages/404.less'), this.destinationPath('src/pages/404.less'), this.answer)
+      this.fs.copyTpl(this.templatePath('src/pages/o/404/'), this.destinationPath('src/pages/o/404/'), this.answer)
+
       this.fs.copyTpl(
         this.templatePath('src/pages/document.ejs'),
         this.destinationPath('src/pages/document.ejs'),
