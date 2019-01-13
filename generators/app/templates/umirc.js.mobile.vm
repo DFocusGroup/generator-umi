@@ -1,6 +1,7 @@
 export default {
   hash: true,
   theme: './src/themes/index.js',
+  treeShaking: true,
   plugins: [
     [
       'umi-plugin-react',
