@@ -35,7 +35,7 @@ const DEV_DEPENDENCIES = [
   'babel-eslint@9',
   'babel-plugin-import',
   'eslint-config-prettier',
-  'eslint-plugin-prettier@2',
+  'eslint-plugin-prettier',
   'eslint@5',
   'eslint-config-umi',
   'eslint-plugin-flowtype@2',
@@ -130,8 +130,13 @@ module.exports = class extends Generator {
     if (answers.docker) {
       this.fs.copy(this.templatePath('dockerignore'), this.destinationPath('.dockerignore'))
       this.fs.copyTpl(this.templatePath('Dockerfile.vm'), this.destinationPath('Dockerfile'), this.answer)
-      this.fs.copyTpl(this.templatePath('shells'), this.destinationPath('shells'), this.answer)
+      this.fs.copyTpl(
+        this.templatePath('shells/build4docker.sh'),
+        this.destinationPath('shells/build4docker.sh'),
+        this.answer
+      )
     }
+    this.fs.copyTpl(this.templatePath('shells/stop.sh'), this.destinationPath('shells/stop.sh'), this.answer)
     if (answers.vscode) {
       this.fs.copy(this.templatePath('vscode'), this.destinationPath('.vscode'))
     }

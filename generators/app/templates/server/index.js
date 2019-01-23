@@ -20,10 +20,9 @@ const readFile = util.promisify(fs.readFile)
 
 const index = readFile(resolveFromRoot('dist', 'index.html'), { encoding: 'utf8' })
 
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 app.get('/', indexHandler)
-app.get('/index.html', indexHandler)
 
 app.use('/', serve('dist'))
 

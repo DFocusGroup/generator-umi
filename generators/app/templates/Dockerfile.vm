@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY . /usr/src/app/
 
-RUN sh ./shells/delunuseddeps.sh
+RUN sh ./shells/build4docker.sh
 
 EXPOSE 3000
 
