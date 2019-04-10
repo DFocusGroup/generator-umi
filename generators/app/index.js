@@ -138,6 +138,7 @@ module.exports = class extends Generator {
       )
     }
     this.fs.copyTpl(this.templatePath('shells/stop.sh'), this.destinationPath('shells/stop.sh'), this.answer)
+    this.fs.copyTpl(this.templatePath('shells/git.sh'), this.destinationPath('shells/git.sh'), this.answer)
     if (answers.vscode) {
       this.fs.copy(this.templatePath('vscode'), this.destinationPath('.vscode'))
     }
