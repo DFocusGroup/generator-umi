@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\033[32mThis is a tool improving the efficiency of your git operations\033[0m" 
+echo -e "\033[33mThis is a tool improving the efficiency of your git operations\033[0m" 
 
 echo 
 
@@ -61,23 +61,25 @@ git config --local alias.pr "pull --rebase"
 git config --local alias.pl pull
 git config --local alias.ps push
 
+echo 
+
 echo -e "\033[36mgit config --local user.name $username\033[0m"
 echo -e "\033[36mgit config --local user.email $email\033[0m"
 echo -e "\033[36mgit config --local core.excludesfile \$HOME/.gitignore\033[0m"
-echo -e "\033[36mgit config --local core.autocrlf input[0m"
-echo -e "\033[36mgit config --local core.ignorecase false[0m"
-echo -e "\033[36mgit config --local color.ui true[0m"
-echo -e "\033[36mgit config --local gui.encoding utf-8[0m"
-echo -e "\033[36mgit config --local push.default simple[0m"
-echo -e "\033[36mgit config --local branch.autosetupmerge always[0m"
-echo -e "\033[36mgit config --local branch.autosetuprebase always[0m"
-echo -e "\033[36mgit config --local alias.co checkout[0m"
-echo -e "\033[36mgit config --local alias.st status[0m"
-echo -e "\033[36mgit config --local alias.br branch[0m"
-echo -e "\033[36mgit config --local alias.ci commit[0m"
-echo -e "\033[36mgit config --local alias.cp cherry-pick[0m"
-echo -e "\033[36mgit config --local alias.df diff[0m"
-echo -e "\033[36mgit config --local alias.lo \"log --oneline\"[0m"
+echo -e "\033[36mgit config --local core.autocrlf input\033[0m"
+echo -e "\033[36mgit config --local core.ignorecase false\033[0m"
+echo -e "\033[36mgit config --local color.ui true\033[0m"
+echo -e "\033[36mgit config --local gui.encoding utf-8\033[0m"
+echo -e "\033[36mgit config --local push.default simple\033[0m"
+echo -e "\033[36mgit config --local branch.autosetupmerge always\033[0m"
+echo -e "\033[36mgit config --local branch.autosetuprebase always\033[0m"
+echo -e "\033[36mgit config --local alias.co checkout\033[0m"
+echo -e "\033[36mgit config --local alias.st status\033[0m"
+echo -e "\033[36mgit config --local alias.br branch\033[0m"
+echo -e "\033[36mgit config --local alias.ci commit\033[0m"
+echo -e "\033[36mgit config --local alias.cp cherry-pick\033[0m"
+echo -e "\033[36mgit config --local alias.df diff\033[0m"
+echo -e "\033[36mgit config --local alias.lo \"log --oneline\"\033[0m"
 echo -e "\033[36mgit config --local alias.pr \"pull --rebase\"[0m"
-echo -e "\033[36mgit config --local alias.pl pull[0m"
-echo -e "\033[36mgit config --local alias.ps push[0m"
+echo -e "\033[36mgit config --local alias.pl pull\033[0m"
+echo -e "\033[36mgit config --local alias.ps push\033[0m"
