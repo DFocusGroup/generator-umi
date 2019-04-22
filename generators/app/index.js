@@ -108,6 +108,12 @@ module.exports = class extends Generator {
       },
       {
         type: 'list',
+        name: 'npmOrYarn',
+        message: 'Which tool would you use for dependencies?',
+        choices: ['npm', 'yarn']
+      },
+      {
+        type: 'list',
         name: 'registry',
         message: 'Which registry would you use?',
         choices: ['https://registry.npm.taobao.org', 'https://registry.npmjs.org']
@@ -209,11 +215,13 @@ module.exports = class extends Generator {
   install() {
     const { answers } = this.answer
 
-    this.npmInstall(answers.mobileOnly ? DEPENDENCIES_MOBILE : DEPENDENCIES, {
+    const depTool = answers.npmOrYarn === 'npm' ? 'npmInstall' : 'yarnInstall'
+
+    this[depTool](answers.mobileOnly ? DEPENDENCIES_MOBILE : DEPENDENCIES, {
       registry: answers.registry,
       save: true
     })
-    this.npmInstall(DEV_DEPENDENCIES, {
+    this[depTool](DEV_DEPENDENCIES, {
       registry: answers.registry,
       'save-dev': true
     })

@@ -5,6 +5,7 @@ node_modules
 .umi
 .umi-production
 dist
+*zip-dist*
 
 #misc
 .DS_Store
