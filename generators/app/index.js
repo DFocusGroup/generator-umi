@@ -3,7 +3,7 @@ const fs = require('fs')
 const Generator = require('yeoman-generator')
 
 const DEPENDENCIES = [
-  '@ant-design/icons@1.1.0',
+  '@ant-design/icons',
   'axios',
   'classnames',
   'dva@2',
