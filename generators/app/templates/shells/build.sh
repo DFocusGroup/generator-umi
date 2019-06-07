@@ -8,7 +8,7 @@ cd $DIR
 echo "Injected UMI_ENV is: " ${UMI_ENV}
 
 if  [ ! -n "$UMI_ENV" ] ;then
-    output="<%= answers.name %>"
+    output="<%= answers.name %>-zip-dist"
 else
     output="${UMI_ENV}-<%= answers.name %>-zip-dist"
 fi
