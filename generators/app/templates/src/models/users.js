@@ -7,6 +7,7 @@ import { getCurrentUser } from '../services/user'
 import { clearAll, getToken } from '../helpers/storage'
 
 export default withMixin({
+  namespace: 'users',
   state: {
     currentUser: null
   },

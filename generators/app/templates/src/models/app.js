@@ -3,6 +3,7 @@
 import { withMixin } from '../helpers/dva'
 
 export default withMixin({
+  namespace: 'app',
   state: {
     locationPathname: '',
     locationQuery: {}
@@ -30,6 +31,7 @@ import { redirectTo } from '../helpers/view'
 import { clearAll } from '../helpers/storage'
 
 export default withMixin({
+  namespace: 'app',
   state: {
     locationPathname: '',
     locationQuery: {},
