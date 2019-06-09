@@ -1,6 +1,7 @@
 import router from 'umi/router'
+import { isString } from './object'
 
-export function inViewPort(elem) {
+export function inViewport(elem) {
   if (!elem || !elem.getBoundingClientRect) {
     return false
   }
@@ -29,15 +30,19 @@ export function destoryGlobalSpinner() {
 }
 
 export function redirectTo(to, from) {
-  if (!from) {
-    return router.push(to)
-  }
-  return router.push({
-    pathname: to,
-    query: {
-      from
+  if (isString(to) || isString(from)) {
+    if (!from) {
+      return router.push(to)
     }
-  })
+    return router.push({
+      pathname: to,
+      query: {
+        from
+      }
+    })
+  }
+  // to为完整的RouteData
+  return router.push(to)
 }
 
 export function goBack() {

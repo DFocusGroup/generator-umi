@@ -151,6 +151,7 @@ module.exports = class extends Generator {
     }
 
     this.fs.copy(this.templatePath('eslintrc'), this.destinationPath('.eslintrc'))
+    this.fs.copy(this.templatePath('jsconfig.json.vm'), this.destinationPath('jsconfig.json'))
     this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'))
     this.fs.copy(this.templatePath('prettierrc'), this.destinationPath('.prettierrc'))
 

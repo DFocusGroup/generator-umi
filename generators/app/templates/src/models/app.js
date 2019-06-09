@@ -5,8 +5,7 @@ import { withMixin } from '../helpers/dva'
 export default withMixin({
   state: {
     locationPathname: '',
-    locationQuery: {},
-    pageTitle: ''
+    locationQuery: {}
   },
   subscriptions: {
     setHistory({ dispatch, history }) {
@@ -34,7 +33,6 @@ export default withMixin({
   state: {
     locationPathname: '',
     locationQuery: {},
-    pageTitle: '',
     screenWidth: window.innerWidth,
     screenHeight: window.innerHeight,
   },

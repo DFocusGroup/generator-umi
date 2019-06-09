@@ -4,7 +4,8 @@ import pathToRegexp from 'path-to-regexp'
 import OpenPageLayout from './OpenPageLayout'
 <% if (!answers.mobileOnly) { %>import AuthRequiredLayout from './AuthRequiredLayout'
 import { isOpenPages } from '../helpers/env'
-<% } %>export default function Layout({ location, route, children }) {
+<% } %>
+export default function Layout({ location, route, children }) {
   <% if (answers.mobileOnly) { %>if (checkIfPageExist(route, location)) {
     return <OpenPageLayout>{children}</OpenPageLayout>
   }
