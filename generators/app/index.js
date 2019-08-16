@@ -6,20 +6,23 @@ const DEPENDENCIES = [
   '@ant-design/icons',
   'axios',
   'classnames',
-  'dva@2',
+  'dva@^2',
+  'dva-core@^1',
   'express',
   'js-cookie',
   'lodash',
   'moment',
   'path-to-regexp',
   'react',
+  'react-redux',
   'replace-in-file'
 ]
 
 const DEPENDENCIES_MOBILE = [
   'axios',
   'classnames',
-  'dva@2',
+  'dva@^2',
+  'dva-core@^1',
   'express',
   'js-cookie',
   'lodash',
@@ -27,24 +30,27 @@ const DEPENDENCIES_MOBILE = [
   'path-to-regexp',
   'rc-form',
   'react',
+  'react-redux',
   'replace-in-file'
 ]
 
 const DEV_DEPENDENCIES = [
   '@commitlint/cli',
   '@commitlint/config-angular',
-  'babel-eslint@9',
+  'babel-eslint',
   'babel-plugin-import',
   'eslint-config-prettier',
   'eslint-plugin-prettier',
-  'eslint@5',
+  'eslint@^5',
   'eslint-config-umi',
-  'eslint-plugin-flowtype@2',
-  'eslint-plugin-import@2',
-  'eslint-plugin-jsx-a11y@6',
-  'eslint-plugin-react@7',
+  'eslint-plugin-flowtype@^2',
+  'eslint-plugin-import@^2',
+  'eslint-plugin-jsx-a11y@^6',
+  'eslint-plugin-react@^7',
+  'eslint-plugin-react-hooks@1.5.0',
+  '@typescript-eslint/parser@^1',
   'less-vars-to-js',
-  'redbox-react@1',
+  'redbox-react@^1',
   'prettier',
   'umi',
   'umi-plugin-react',
@@ -217,6 +223,7 @@ module.exports = class extends Generator {
     const { answers } = this.answer
 
     const depTool = answers.npmOrYarn === 'npm' ? 'npmInstall' : 'yarnInstall'
+    const depDevKey = answers.npmOrYarn === 'npm' ? 'save-dev' : 'dev'
 
     this[depTool](answers.mobileOnly ? DEPENDENCIES_MOBILE : DEPENDENCIES, {
       registry: answers.registry,
@@ -224,7 +231,7 @@ module.exports = class extends Generator {
     })
     this[depTool](DEV_DEPENDENCIES, {
       registry: answers.registry,
-      'save-dev': true
+      [depDevKey]: true
     })
   }
 
