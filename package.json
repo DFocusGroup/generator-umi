@@ -13,12 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DFocusFE/generator-umi.git"
+    "url": "git+https://github.com/DFocusGroup/generator-umi.git"
   },
   "author": "Howard.Zuo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DFocusFE/generator-umi/issues"
+    "url": "https://github.com/DFocusGroup/generator-umi/issues"
   },
-  "homepage": "https://github.com/DFocusFE/generator-umi#readme"
+  "homepage": "https://github.com/DFocusGroup/generator-umi#readme"
 }
