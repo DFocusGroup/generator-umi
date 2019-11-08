@@ -5,7 +5,6 @@ export default {
     if (account !== 'admin@gmail.com' || password !== '123456') {
       return res.json({
         errorCode: 501,
-        success: false,
         data: null,
         message: '用户名或密码错误'
       })
@@ -13,7 +12,6 @@ export default {
 
     res.json({
       errorCode: 200,
-      success: true,
       data: {
         id: 1,
         name: 'admin',

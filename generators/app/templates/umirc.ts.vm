@@ -1,3 +1,5 @@
+import { IConfig } from 'umi-types'
+
 export default {
   hash: true,
   theme: './src/themes/index.js',
@@ -6,12 +8,10 @@ export default {
     [
       'umi-plugin-react',
       {
-        dva: {
-          immer: false
-        },
+        dva: false,
         antd: true,
         routes: {
-          exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//, /helpers\//]
+          exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /hooks\//, /components\//, /services\//, /helpers\//]
         },
         locale: {
           default: 'zh-CN',
@@ -24,13 +24,12 @@ export default {
           level: 2
         },
         title: {
-          defaultTitle: '<%= answers.name %>'
+          defaultTitle: 'test-umi'
         },
-        hardSource: false,
         pwa: false,
         hd: false,
-        fastClick: true
+        fastClick: false
       }
     ]
   ]
-}
+} as IConfig

@@ -1,23 +1,23 @@
-import { connect } from 'dva'
 import { Link } from 'react-router-dom'
 import { Layout, Menu, Avatar } from 'antd'
-import PropTypes from 'prop-types'
 import { getLocale, FormattedMessage } from 'umi-plugin-react/locale'
 
-import LanguageSwitch from '../LanguageSwitch'
+import LanguageSwitch from '@/components/LanguageSwitch'
+
+import useAuthModel from '@/hooks/useAuthModel'
+import useRouter from '@/hooks/useRouter'
+
+import logoURL from '@/assets/logo.svg'
+
 import styles from './index.less'
-import logoURL from '../../assets/logo.svg'
 
 const KEYS_MAP = {
-  '/overview': 'OVERVIEW'
+  '/': 'OVERVIEW'
 }
 
 function GlobalHeader(props) {
-  const { dispatch, locationPathname, currentUser } = props
-
-  function signout() {
-    dispatch({ type: 'app/signout' })
-  }
+  const { currentUser, signout } = useAuthModel()
+  const { pathname } = useRouter()
 
   return (
     <Layout.Header className={styles.layoutHeader}>
@@ -26,9 +26,9 @@ function GlobalHeader(props) {
       </div>
 
       <div className={styles.navigation}>
-        <Menu mode="horizontal" selectedKeys={[KEYS_MAP[locationPathname]]} style={{ width: '100%' }}>
+        <Menu mode="horizontal" selectedKeys={[KEYS_MAP[pathname]]} style={{ width: '100%' }}>
           <Menu.Item key="OVERVIEW">
-            <Link to="/overview">
+            <Link to="/">
               <FormattedMessage id="APP_OVERVIEW" />
             </Link>
           </Menu.Item>
@@ -61,17 +61,6 @@ function GlobalHeader(props) {
   )
 }
 
-GlobalHeader.propTypes = {
-  locationPathname: PropTypes.string,
-  currentUser: PropTypes.shape({
-    name: PropTypes.string
-  }),
-  dispatch: PropTypes.func
-}
+GlobalHeader.propTypes = {}
 
-export default connect(({ app, users }) => {
-  return {
-    locationPathname: app.locationPathname,
-    currentUser: users.currentUser
-  }
-})(GlobalHeader)
+export default GlobalHeader

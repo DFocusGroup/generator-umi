@@ -1,53 +1,21 @@
-<% if (answers.mobileOnly) { %>import { setLocale, getLocale } from 'umi-plugin-react/locale'
-import classnames from 'classnames'
-
-import styles from './index.less'
-
-const currentLang = getLocale()
-
-function LanguageSwitch() {
-  return (
-    <div>
-      <span
-        className={classnames(styles.switch, { [styles.active]: currentLang === 'zh-CN' })}
-        onClick={() => setLocale('zh-CN')}
-      >
-        中
-      </span>{' '}
-      |{' '}
-      <span
-        className={classnames(styles.switch, { [styles.active]: currentLang === 'en-US' })}
-        onClick={() => setLocale('en-US')}
-      >
-        En
-      </span>
-    </div>
-  )
-}
-
-export default LanguageSwitch
-<% } else { %>import { Select } from 'antd'
-import { connect } from 'dva'
+import { Select } from 'antd'
 import { setLocale, getLocale } from 'umi-plugin-react/locale'
 import PropTypes from 'prop-types'
+import { useSize } from '@umijs/hooks'
 import classnames from 'classnames'
 
 import styles from './index.less'
 
 const currentLang = getLocale()
 
-const ConnectedDropdownSwitch = connect(({ app }) => {
-  return {
-    screenWidth: app.screenWidth
-  }
-})(DropdownSwitch)
-
 function LanguageSwitch(props) {
+  const [state] = useSize(document.body)
+
   if (!props.useDropdown) {
     return PlainSwitch(props)
   }
 
-  return <ConnectedDropdownSwitch {...props} />
+  return <DropdownSwitch {...props} screenWidth={state.width} />
 }
 
 LanguageSwitch.propTypes = {
@@ -85,7 +53,7 @@ function DropdownSwitch(props) {
     )
   }
   return (
-    <Select defaultValue={currentLang} style={{ width: 50 }} className={styles.select} onChange={setLocale}>
+    <Select defaultValue={currentLang} style={{ width: 60 }} className={styles.select} onChange={setLocale}>
       <Select.Option value="zh-CN">中</Select.Option>
       <Select.Option value="en-US">En</Select.Option>
     </Select>
@@ -97,4 +65,3 @@ DropdownSwitch.propTypes = {
 }
 
 export default LanguageSwitch
-<% } %>

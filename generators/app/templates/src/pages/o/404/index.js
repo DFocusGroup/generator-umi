@@ -1,5 +1,4 @@
 import { Component } from 'react'
-import { connect } from 'dva'
 import { FormattedMessage } from 'umi-plugin-react/locale'
 import Link from 'umi/link'
 import PropTypes from 'prop-types'
@@ -39,8 +38,4 @@ class NotFoundPage extends Component {
   }
 }
 
-export default connect(({ loading, app }) => {
-  return {
-    locationQuery: app.locationQuery
-  }
-})(NotFoundPage)
+export default NotFoundPage

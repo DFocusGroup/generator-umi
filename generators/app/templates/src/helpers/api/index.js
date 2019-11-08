@@ -1,22 +1,23 @@
-import axios from 'axios'
+import { extend } from 'umi-request'
 
-import { API_HOST } from '../../config'
-import { getToken } from '../../helpers/storage'
+import { API_HOST } from '@/config'
+import { getToken } from '@/helpers/storage'
 
-const API = axios.create({
-  baseURL: API_HOST
+const API = extend({
+  prefix: API_HOST
 })
 
-API.interceptors.request.use(config => {
-  config.headers.Authorization = getToken()
-  return config
-})
-
-API.interceptors.response.use(
-  response => response.data,
-  error => {
-    return Promise.reject(error)
+API.interceptors.request.use((url, options) => {
+  return {
+    url,
+    options: {
+      ...options,
+      headers: {
+        ...(options.headers || {}),
+        Authorization: getToken()
+      }
+    }
   }
-)
+})
 
 export default API
