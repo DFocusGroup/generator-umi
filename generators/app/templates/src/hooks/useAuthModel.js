@@ -1,7 +1,9 @@
+import { message } from 'antd'
 import { createModel } from 'hox'
-import API from '@/helpers/api'
 import { useState, useEffect } from 'react'
+import { formatMessage } from 'umi-plugin-react/locale'
 
+import API from '@/helpers/api'
 import { getToken, setToken, clearAll } from '@/helpers/storage'
 import { redirectTo } from '@/helpers/view'
 
@@ -35,6 +37,8 @@ function useAuthModel() {
         setToken(data.data.token)
         setTokenState(data.data.token)
         redirectTo('/')
+      } else {
+        message.warning(formatMessage({ id: 'LOGIN_ACCOUNT_PASSWORD_ERROR' }))
       }
       return data
     })

@@ -1,13 +1,12 @@
 /**
- * title: Login
+ * title: LOGIN_TITLE
  */
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Form, Row, Button, Col, Input, Checkbox, Icon } from 'antd'
 import { formatMessage, FormattedMessage, getLocale } from 'umi-plugin-react/locale'
 
-import { getToken, setDoNotRememberme, getDoNotRememberme, removeDoNotRememberme } from '@/helpers/storage'
-import { redirectTo } from '@/helpers/view'
+import { setDoNotRememberme, getDoNotRememberme, removeDoNotRememberme } from '@/helpers/storage'
 
 import LanguageSwitch from '@/components/LanguageSwitch'
 import GlobalFooter from '@/components/GlobalFooter'

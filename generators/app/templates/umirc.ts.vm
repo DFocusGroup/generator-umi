@@ -24,7 +24,8 @@ export default {
           level: 2
         },
         title: {
-          defaultTitle: 'test-umi'
+          defaultTitle: 'test-umi',
+          useLocale: true
         },
         pwa: false,
         hd: false,
