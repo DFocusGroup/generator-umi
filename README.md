@@ -35,15 +35,13 @@ yo umi
 npm start
 ```
 
-## Release with docker image
+## Release with builtin node server
 
 ```bash
-# create Docker Image
-docker build --no-cache -t <imagename>:<version> .
-
-# run docker image
-docker run -p <exposed port>:3000 -e "STORAGE_DOMAIN=.yourdomain.com" -e "API_HOST=http://backend-address" -d <imagename>:<version>
+bash shells/build.sh
 ```
+
+> `.zip` generated at root folder
 
 ## LICENSE
 
