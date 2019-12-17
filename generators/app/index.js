@@ -45,6 +45,12 @@ module.exports = class extends Generator {
         default: true
       },
       {
+        type: 'confirm',
+        name: 'docker',
+        message: 'Create Dockerfile?',
+        default: false
+      },
+      {
         type: 'list',
         name: 'npmOrYarn',
         message: 'Which tool would you use for dependencies?',
@@ -76,6 +82,11 @@ module.exports = class extends Generator {
       this.fs.copy(this.templatePath('vscode'), this.destinationPath('.vscode'))
     }
 
+    if (answers.docker) {
+      this.fs.copy(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'))
+      this.fs.copy(this.templatePath('dockerignore'), this.destinationPath('.dockerignore'))
+    }
+
     this.fs.copy(this.templatePath('eslintrc'), this.destinationPath('.eslintrc'))
     this.fs.copy(this.templatePath('jsconfig.json.vm'), this.destinationPath('jsconfig.json'))
     this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'))
@@ -98,9 +109,13 @@ module.exports = class extends Generator {
     const { answers } = this.answer
 
     if (answers.npmOrYarn === 'npm') {
-      this.npmInstall()
+      this.npmInstall(undefined, {
+        registry: answers.registry
+      })
     } else {
-      this.yarnInstall()
+      this.yarnInstall(undefined, {
+        registry: answers.registry
+      })
     }
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "generator-umi",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "umi project generator",
   "files": [
     "generators"

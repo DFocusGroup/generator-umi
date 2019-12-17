@@ -37,11 +37,21 @@ npm start
 
 ## Release with builtin node server
 
+### .zip pattern
+
 ```bash
 bash shells/build.sh
 ```
 
 > `.zip` generated at root folder
+
+### docker pattern
+
+```bash
+bash shells/build.sh && docker build --no-cache -t <app-name>:<tag>
+```
+
+> find generated image via `docker image ls`
 
 ## LICENSE
 
