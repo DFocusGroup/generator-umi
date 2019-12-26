@@ -14,8 +14,14 @@ yarn
 yarn start
 ```
 
-## Packaging
+## Packaging in .zip
 
 ```bash
 bash shells/build.sh
+```
+
+## Packaging in docker image
+
+```bash
+docker build --no-cache -t <app-name>:<tag> .
 ```

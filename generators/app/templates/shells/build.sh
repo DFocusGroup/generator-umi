@@ -22,7 +22,7 @@ mkdir ./${output}/bin
 
 rm -rf package-lock.json
 
-yarn
+yarn --registry <%= answers.registry %>
 
 if [ $? -ne 0 ]; then
   echo "Failed to install first depenedencies"
@@ -68,7 +68,7 @@ fi
 cd ./${output}
 
 # 安装运行时依赖
-npm i express replace-in-file --registry=https://registry.npm.taobao.org
+npm i express replace-in-file --registry=<%= answers.registry %>
 
 if [ $? -ne 0 ]; then
     echo "Install runtime dependencies failed, check network first!"

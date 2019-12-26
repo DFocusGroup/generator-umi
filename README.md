@@ -48,7 +48,7 @@ bash shells/build.sh
 ### docker pattern
 
 ```bash
-bash shells/build.sh && docker build --no-cache -t <app-name>:<tag>
+docker build --no-cache -t <app-name>:<tag> .
 ```
 
 > find generated image via `docker image ls`
