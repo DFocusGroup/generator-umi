@@ -1,6 +1,6 @@
 import { message } from 'antd'
 import { createModel } from 'hox'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { formatMessage } from 'umi-plugin-react/locale'
 
 import API from '@/helpers/api'
@@ -20,13 +20,14 @@ function useAuthModel() {
     }
   }, [tokenState])
 
+  // redirect to login page whenver tokenState changed && is empty
   useEffect(() => {
     if (!tokenState) {
       redirectTo('/o/login')
     }
   }, [tokenState])
 
-  function sign(account, password) {
+  const sign = useCallback((account, password) => {
     return API.post('/login', {
       data: {
         account,
@@ -42,13 +43,13 @@ function useAuthModel() {
       }
       return data
     })
-  }
+  }, [])
 
-  function signout(account, password) {
+  const signout = useCallback((account, password) => {
     clearAll()
     setCurrentUser(null)
     setTokenState(null)
-  }
+  }, [])
 
   return {
     currentUser,

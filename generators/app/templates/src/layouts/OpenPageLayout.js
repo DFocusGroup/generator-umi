@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { destoryGlobalSpinner } from '@/helpers/view'
@@ -6,7 +6,9 @@ import { destoryGlobalSpinner } from '@/helpers/view'
 function OpenPageLayout(props) {
   const { children } = props
 
-  destoryGlobalSpinner()
+  useEffect(() => {
+    destoryGlobalSpinner()
+  }, [])
 
   return <React.Fragment>{children}</React.Fragment>
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import withRouter from 'umi/withRouter'
 import { Layout, BackTop } from 'antd'
@@ -12,11 +12,16 @@ import styles from './index.less'
 function AuthRequiredLayout({ children }) {
   const { currentUser } = useAuthModel()
 
+  // remove spinner while signin
+  useEffect(() => {
+    if (currentUser) {
+      destoryGlobalSpinner()
+    }
+  }, [currentUser])
+
   if (!currentUser) {
     return null
   }
-
-  destoryGlobalSpinner()
 
   return (
     <React.Fragment>
