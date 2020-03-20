@@ -87,22 +87,20 @@ module.exports = class extends Generator {
       this.fs.copy(this.templatePath('dockerignore'), this.destinationPath('.dockerignore'))
     }
 
-    this.fs.copy(this.templatePath('eslintrc'), this.destinationPath('.eslintrc'))
-    this.fs.copy(this.templatePath('jsconfig.json.vm'), this.destinationPath('jsconfig.json'))
+    this.fs.copy(this.templatePath('eslintrc.js'), this.destinationPath('.eslintrc.js'))
     this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'))
-    this.fs.copy(this.templatePath('prettierrc'), this.destinationPath('.prettierrc'))
-
-    this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.answer)
-    this.fs.copyTpl(this.templatePath('umirc.ts.vm'), this.destinationPath('.umirc.ts'), this.answer)
-
     this.fs.copyTpl(this.templatePath('package.json.vm'), this.destinationPath('package.json'), this.answer)
+    this.fs.copy(this.templatePath('prettierrc.js'), this.destinationPath('.prettierrc.js'))
+    this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.answer)
+    this.fs.copy(this.templatePath('tsconfig.json.vm'), this.destinationPath('tsconfig.json'))
+    this.fs.copy(this.templatePath('typings.d.ts'), this.destinationPath('typings.d.ts'))
 
+    this.fs.copyTpl(this.templatePath('config'), this.destinationPath('config'), this.answer)
     this.fs.copyTpl(this.templatePath('mock'), this.destinationPath('mock'), this.answer)
+    this.fs.copyTpl(this.templatePath('public'), this.destinationPath('public'), this.answer)
     this.fs.copyTpl(this.templatePath('server'), this.destinationPath('server'), this.answer)
     this.fs.copyTpl(this.templatePath('shells'), this.destinationPath('shells'), this.answer)
     this.fs.copyTpl(this.templatePath('src'), this.destinationPath('src'), this.answer)
-
-    this.fs.copyTpl(this.templatePath('public'), this.destinationPath('public'), this.answer)
   }
 
   install() {

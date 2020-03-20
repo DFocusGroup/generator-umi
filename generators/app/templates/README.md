@@ -1,26 +1,26 @@
 # <%= answers.name %>
 
-Scaffold for umi based project
+一个致力于打造灵活中台系统的 `umi@3` 脚手架
 
-## Install Dependencies
+## 安装依赖
 
 ```
 yarn
 ```
 
-## Local develop
+## 本地调试
 
 ```bash
 yarn start
 ```
 
-## Packaging in .zip
+## 打包到 `.zip`
 
 ```bash
 bash shells/build.sh
 ```
 
-## Packaging in docker image
+## 打包到 `docker`
 
 ```bash
 docker build --no-cache -t <app-name>:<tag> .

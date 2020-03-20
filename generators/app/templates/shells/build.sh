@@ -43,7 +43,7 @@ mv ./dist ./${output}
 cp -r ./server ./${output}
 
 # 拷贝package.json到打包目录
-cp ./package.json ./${output}
+cp ./src/serve.package.json ./${output}/package.json
 
 if test -n "$UMI_ENV"; then
   if [ "$(uname)" == "Darwin" ];then
@@ -68,7 +68,7 @@ fi
 cd ./${output}
 
 # 安装运行时依赖
-npm i express replace-in-file --registry=<%= answers.registry %>
+yarn --registry <%= answers.registry %>
 
 if [ $? -ne 0 ]; then
     echo "Install runtime dependencies failed, check network first!"

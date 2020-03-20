@@ -1,0 +1,12 @@
+{
+  "name": "test-umi",
+  "version": "1.0.0",
+  "description": "Serve used",
+  "scripts": {
+    "serve": "node server --title=test-umi"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "replace-in-file": "^5.0.2"
+  }
+}

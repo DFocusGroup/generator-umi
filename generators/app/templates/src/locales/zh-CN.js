@@ -1,25 +1,21 @@
 /* eslint-disable */
 export default {
-  APP_LOG_OUT: '注销',
-  APP_OVERVIEW: '总览',
-
-  ERROR_PAGE_NOT_FOUND_ERROR: '您正在找的页面不存在，请确认链接是否正确',
-  ERROR_LOAD_ERROR: '加载错误...',
-  ERROR_BACK_TO_HOME: '回到首页',
-  COPYRIGHTS_TEXT: 'Copyright © 2015-2018 xxx 版权所有. 沪ICP备xxx号 邮件支持support@xxx.com',
-
-  HOME_TITLE: '首页',
-
+  APP_TITLE: 'umi 小中台',
+  LOGOUT_BTN: '注销',
+  BACK_TO_HOME: '回到首页',
+  // login
   LOGIN_TITLE: '登录',
-  LOGIN_WELCOME_TITLE: '欢迎登录',
-  LOGIN_REMEMBER_ME_TXT: '记住我',
-  LOGIN_SIGNIN_BTN_TXT: '立即登录',
-  LOGIN_ACCOUNT_EMPTY_ERROR: '邮箱账号不能为空',
-  LOGIN_ACCOUNT_FORMAT_ERROR: '邮箱账号不能为空',
-  LOGIN_ACCOUNT_LENGTH_ERROR: '邮箱账号不能超过50个字符',
-  LOGIN_ACCOUNT_PLACEHOLDER: '请输入邮箱账号',
-  LOGIN_PASSWORD_PLACEHOLDER: '请输入密码',
-  LOGIN_PASSWORD_EMPTY_ERROR: '密码不能为空',
-  LOGIN_PASSWORD_FORMAT_ERROR: '请输入不包含空格的6-16字符',
-  LOGIN_ACCOUNT_PASSWORD_ERROR: '用户名或密码错误'
+  LOGIN_TAB_ACCOUNT: '账号密码登录',
+  LOGIN_ACCOUNT_REQUIRED_MSG: '请填写账号!',
+  LOGIN_ACCOUNT_PLACEHOLDER: '账号：admin',
+  LOGIN_PASSWORD_REQUIRED_MSG: '请填写密码!',
+  LOGIN_PASSWORD_PLACEHOLDER: '密码：123456',
+  LOGIN_REMEMBER: '记住我',
+  LOGIN_FORGET_PASSWORD: '忘记密码',
+  LOGIN_SIGNIN_BTN: '登录',
+  LOGIN_FORGET_PASSWORD_TIP: '功能未实现',
+
+  //analysis
+  ANALYSIS_TITLE: '分析',
+  MONITOR_TITLE: '监控'
 }
