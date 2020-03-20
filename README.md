@@ -9,7 +9,7 @@ Yeoman generator for umi project
 
 > Read documentation here: [https://leftstick.gitbook.io/generator-umi](https://leftstick.gitbook.io/generator-umi)
 
-![](./docs/generator.gif)
+![](./docs/.vuepress/public/generator.gif)
 
 # Installation
 

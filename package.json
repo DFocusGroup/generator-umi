@@ -2,6 +2,10 @@
   "name": "generator-umi",
   "version": "4.0.0",
   "description": "umi project generator",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:deploy": "vuepress build docs && gh-pages -d docs/.vuepress/dist"
+  },
   "files": [
     "generators"
   ],
@@ -20,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/DFocusGroup/generator-umi/issues"
   },
-  "homepage": "https://github.com/DFocusGroup/generator-umi#readme"
+  "homepage": "https://github.com/DFocusGroup/generator-umi#readme",
+  "devDependencies": {
+    "@vuepress/plugin-pwa": "^1.4.0",
+    "gh-pages": "^2.2.0",
+    "vuepress": "^1.4.0"
+  }
 }
