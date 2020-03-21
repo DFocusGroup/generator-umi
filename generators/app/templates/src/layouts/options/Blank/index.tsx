@@ -6,15 +6,9 @@ import { isEmpty, pick } from '@/helpers/object'
 import Exception403 from '@/components/exception/403'
 import Exception404 from '@/components/exception/404'
 
-import { IERoute } from '@/types'
+import { ILayoutProps } from '@/types'
 
-interface IBlankLayoutProps {
-  children: JSX.Element
-  route: IERoute
-  canAccess: boolean
-}
-
-export default function Blank({ children, route, canAccess }: IBlankLayoutProps) {
+export default function Blank({ children, route, canAccess }: ILayoutProps) {
   const { width, height } = useModel('useAppModel', m => pick(m, 'width', 'height'))
 
   if (isEmpty(route)) {

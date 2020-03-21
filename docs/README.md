@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: umi 中台宝宝
+heroText: umi 中台下总成
 tagline: 快速构建一个中台系统所需的基础元素
 actionText: 新手上路 →
 actionLink: /guide/
@@ -13,6 +13,8 @@ features:
     details: 便捷的多语言切换功能
   - title: 数据管理
     details: 不同于 redux 的数据管理体验，让 hooks 带你high个够
+  - title: 打包
+    details: 内置 `.zip`、`docker` 镜像两种打包风格，让你的业务推动更顺滑
 footer: MIT Licensed | Copyright © 2020-present Howard.Zuo
 ---
 
@@ -42,6 +44,12 @@ footer: MIT Licensed | Copyright © 2020-present Howard.Zuo
 `generator-umi` 让中台业务开发更顺滑，更简单，并且保留扩展(变更)的能力。
 
 ## 快速开始
+
+安装 umi 下总成
+
+```bash
+yarn global add yo generator-umi
+```
 
 首先，利用生成器，创建一个 code base
 

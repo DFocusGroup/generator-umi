@@ -10,7 +10,7 @@ export default function Exception404({ style }: IExceptionView) {
     <Base
       img="/errors/404.png"
       title={404}
-      description="Sorry, the page you visited does not exist."
+      description={formatMessage({ id: 'ERROR_404' })}
       style={style}
       action={
         <Button

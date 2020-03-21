@@ -15,7 +15,7 @@ module.exports = {
     }
   },
   base: '/generator-umi/',
-  title: 'umi 中台应用脚手架',
+  title: 'umi 中台下总成',
   themeConfig: {
     repo: 'DFocusGroup/generator-umi',
     lastUpdated: '上次更新',
@@ -25,7 +25,7 @@ module.exports = {
         {
           title: 'Guide',
           collapsable: false,
-          children: ['', 'route', 'layout', 'locale', 'data']
+          children: ['', 'route', 'layout', 'locale', 'data', 'packaging']
         }
       ]
     }

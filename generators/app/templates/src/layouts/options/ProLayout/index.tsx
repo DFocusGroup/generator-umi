@@ -6,24 +6,17 @@ import { Layout } from 'antd'
 import Exception403 from '@/components/exception/403'
 import Exception404 from '@/components/exception/404'
 
+import NavigationBar from './NavigationBar'
 import SideBarTitle from './SideBarTitle'
 import SideBarMenu from './SideBarMenu'
 
 import { isEmpty, pick } from '@/helpers/object'
 
-import { IERoute } from '@/types'
+import { ILayoutProps } from '@/types'
 
 import styles from './index.less'
-import NavigationBar from './NavigationBar'
 
-interface IProLayoutProps {
-  children: JSX.Element
-  route: IERoute
-  routes: IERoute[]
-  canAccess: boolean
-}
-
-export default function ProLayout({ children, route, routes, canAccess }: IProLayoutProps) {
+export default function ProLayout({ children, route, routes, canAccess }: ILayoutProps) {
   const { height } = useModel('useAppModel', m => pick(m, 'height'))
 
   const { sidebarCollapsed, toggleSidebar } = useModel('useProLayoutModel', m =>
@@ -57,7 +50,7 @@ export default function ProLayout({ children, route, routes, canAccess }: IProLa
     <Layout>
       <Layout.Sider theme="dark" width={260} trigger={null} collapsible collapsed={sidebarCollapsed}>
         <SideBarTitle collapsed={sidebarCollapsed} />
-        <SideBarMenu routes={routes} />
+        <SideBarMenu routes={routes!} />
       </Layout.Sider>
       <Layout>
         <Layout.Header className={styles.navigationBar}>

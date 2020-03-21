@@ -2,14 +2,15 @@ import React from 'react'
 
 import Blank from './Blank'
 import ProLayout from './ProLayout'
-import { IERoute, ILayoutResolver, IResolverOptions } from '@/types'
 import { isEmpty, isNotEmpty } from '@/helpers/object'
+
+import { IERoute, ILayoutResolver, ILayoutProps } from '@/types'
 
 const BlankResolver: ILayoutResolver = {
   is(route?: IERoute): boolean {
     return isEmpty(route) || route!.layout === 'BLANK' || route?.path === '/'
   },
-  get({ routes, children, route, canAccess }: IResolverOptions) {
+  get({ routes, children, route, canAccess }: ILayoutProps) {
     return (
       <Blank route={route} canAccess={canAccess}>
         {children}
@@ -22,9 +23,9 @@ const ProLayoutResolver: ILayoutResolver = {
   is(route?: IERoute): boolean {
     return isEmpty(route) || route!.layout === 'PRO_LAYOUT'
   },
-  get({ routes, children, route, canAccess }: IResolverOptions) {
+  get({ routes, children, route, canAccess }: ILayoutProps) {
     return (
-      <ProLayout routes={routes} route={route} canAccess={canAccess}>
+      <ProLayout routes={routes!} route={route} canAccess={canAccess}>
         {children}
       </ProLayout>
     )
@@ -34,18 +35,18 @@ const ProLayoutResolver: ILayoutResolver = {
 export const OPEN_LAYOUTS = [BlankResolver]
 export const AUTH_REQUIRED_LAYOUTS = [ProLayoutResolver, BlankResolver]
 
-export function resolveOpenPage({ routes, children, route, canAccess }: IResolverOptions) {
+export function resolveOpenPage({ routes, children, route, canAccess }: ILayoutProps) {
   const layout = OPEN_LAYOUTS.find(r => r.is(route))
   if (isNotEmpty<ILayoutResolver>(layout)) {
-    return layout.get({ routes, children, route, canAccess })
+    return layout.get({ routes: routes!, children, route, canAccess })
   }
   throw new Error(`no proper layout found for ${route!.path}, please check your code`)
 }
 
-export function resolveAuthRequiredPage({ routes, children, route, canAccess }: IResolverOptions) {
+export function resolveAuthRequiredPage({ routes, children, route, canAccess }: ILayoutProps) {
   const layout = AUTH_REQUIRED_LAYOUTS.find(r => r.is(route))
   if (isNotEmpty<ILayoutResolver>(layout)) {
-    return layout.get({ routes, children, route, canAccess })
+    return layout.get({ routes: routes!, children, route, canAccess })
   }
   throw new Error(`no proper layout found for ${route!.path}, please check your code`)
 }

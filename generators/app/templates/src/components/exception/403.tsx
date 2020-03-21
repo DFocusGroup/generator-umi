@@ -10,7 +10,7 @@ export default function Exception403({ style }: IExceptionView) {
     <Base
       img="/errors/403.png"
       title={403}
-      description="Sorry, you don't have access to this page."
+      description={formatMessage({ id: 'ERROR_403' })}
       style={style}
       action={
         <Button

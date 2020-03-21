@@ -10,7 +10,7 @@ export default function Exception500({ style }: IExceptionView) {
     <Base
       img="/errors/500.png"
       title={500}
-      description="Sorry, the server is reporting an error."
+      description={formatMessage({ id: 'ERROR_500' })}
       style={style}
       action={
         <Button

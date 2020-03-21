@@ -3,6 +3,9 @@ export default {
   APP_TITLE: 'Umi App',
   LOGOUT_BTN: 'Logout',
   BACK_TO_HOME: 'Back to home',
+  ERROR_403: "Sorry, you don't have access to this page",
+  ERROR_404: 'Sorry, the page you visited does not exist.',
+  ERROR_500: 'Sorry, the server is reporting an error.',
   // login
   LOGIN_TITLE: 'Sign in',
   LOGIN_TAB_ACCOUNT: 'Signin with Account',

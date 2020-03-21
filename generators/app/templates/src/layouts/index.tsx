@@ -2,13 +2,20 @@ import React, { useCallback, useEffect } from 'react'
 import { useAccess, Redirect, useModel } from 'umi'
 
 import { destoryGlobalSpinner } from '@/helpers/view'
-import { isNotEmpty, isString, pick } from '@/helpers/object'
-import { IERoute, IAccessState, ILayoutProps } from '@/types'
+import { isEmpty, isNotEmpty, isString, pick } from '@/helpers/object'
+import { IERoute, IAccessState, ILocation } from '@/types'
 
 import { resolveOpenPage, resolveAuthRequiredPage } from './options'
 import { clearAll } from '@/helpers/storage'
 
-export default function Layout({ children, location, route }: ILayoutProps) {
+interface IEntryLayoutProps {
+  children: JSX.Element
+  route: IERoute
+  location: ILocation
+  history: History
+}
+
+export default function Layout({ children, location, route }: IEntryLayoutProps) {
   const accessState = useAccess()
   const { findMatchedRoute, isOpenPage } = useModel('useAppModel', m => pick(m, 'findMatchedRoute', 'isOpenPage'))
 
@@ -23,7 +30,7 @@ export default function Layout({ children, location, route }: ILayoutProps) {
 
   const canAccess = useCallback(
     (route: IERoute) => {
-      return isString(route.access) && (accessState as IAccessState)[route.access]
+      return isEmpty(route.access) || (accessState as IAccessState)[route.access!]
     },
     [accessState]
   )
@@ -36,7 +43,7 @@ export default function Layout({ children, location, route }: ILayoutProps) {
 
   if (isOpenPage(location.pathname)) {
     return resolveOpenPage({
-      routes: route.routes!,
+      routes: route.routes,
       children: children,
       route: matchedRoute!,
       canAccess: true

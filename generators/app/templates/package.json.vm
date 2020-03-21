@@ -4,8 +4,7 @@
   "description": "Scaffold for umi based project",
   "scripts": {
     "start": "umi dev",
-    "build": "umi build",
-    "serve": "node server --title=<%= answers.name %>"
+    "build": "umi build"
   },
   "license": "MIT",
   "husky": {
