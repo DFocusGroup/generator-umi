@@ -51,7 +51,7 @@ footer: MIT Licensed | Copyright © 2020-present Howard.Zuo
 yarn global add yo generator-umi
 ```
 
-首先，利用生成器，创建一个 code base
+然后，利用下总成，创建一个 code base
 
 <img :src="$withBase('/generator.gif')" alt="gen">
 
