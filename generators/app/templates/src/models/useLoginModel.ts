@@ -8,7 +8,7 @@ export default function useLoginModel() {
   const [currentToken, setCurrentToken] = useState(getToken())
   const [isRememberme, setCurrentRememberme] = useState(!!getRememberme())
 
-  const initBackgroud = useCallback(() => {
+  const initBackground = useCallback(() => {
     loadScript('/bg/particles.js', 'particlesJS').then(particlesJS => {
       particlesJS.load('bg-animate', '/bg/particlesjs-config.json')
     })
@@ -47,7 +47,7 @@ export default function useLoginModel() {
   )
 
   return {
-    initBackgroud,
+    initBackground,
     currentToken,
     isRememberme,
     toggleRememberme,

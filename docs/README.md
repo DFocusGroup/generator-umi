@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: umi 中台下总成
+heroText: umi 中台助手
 tagline: 快速构建一个中台系统所需的基础元素
 actionText: 新手上路 →
 actionLink: /guide/
@@ -45,7 +45,7 @@ footer: MIT Licensed | Copyright © 2020-present Howard.Zuo
 
 ## 快速开始
 
-安装 umi 下总成
+安装 umi 中台助手
 
 ```bash
 yarn global add yo generator-umi

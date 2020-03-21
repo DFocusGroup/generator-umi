@@ -10,21 +10,13 @@ export interface IERoute extends IRoute {
 export interface ILayoutProps {
   children: JSX.Element
   route: IERoute
-  location: ILocation
-  match: any
-  history: History
-}
-
-export interface IResolverOptions {
-  routes: IERoute[]
-  children: JSX.Element
-  route: IERoute
+  routes?: IERoute[]
   canAccess: boolean
 }
 
 export interface ILayoutResolver {
   is(route?: IERoute): boolean
-  get(options: IResolverOptions): JSX.Element
+  get(options: ILayoutProps): JSX.Element
 }
 
 export interface ILocation extends Location {

@@ -13,12 +13,12 @@ import styles from './index.less'
 
 function Login() {
   const { initialState } = useModel('@@initialState')
-  const { initBackgroud } = useModel('useLoginModel', m => pick(m, 'initBackgroud'))
+  const { initBackground } = useModel('useLoginModel', m => pick(m, 'initBackground'))
   const { formatMessage } = useIntl()
 
   useEffect(() => {
-    initBackgroud()
-  }, [initBackgroud])
+    initBackground()
+  }, [initBackground])
 
   if (isNotEmpty(initialState) && !isString(initialState)) {
     return <Redirect to="/" />

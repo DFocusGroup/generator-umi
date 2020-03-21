@@ -6,17 +6,17 @@ import { Layout } from 'antd'
 import Exception403 from '@/components/exception/403'
 import Exception404 from '@/components/exception/404'
 
-import NavigationBar from './NavigationBar'
 import SideBarTitle from './SideBarTitle'
 import SideBarMenu from './SideBarMenu'
 
 import { isEmpty, pick } from '@/helpers/object'
 
-import { ILayoutProps } from '@/types'
+import { ILayoutProps, ILayoutResolver, IERoute } from '@/types'
 
 import styles from './index.less'
+import NavigationBar from './NavigationBar'
 
-export default function ProLayout({ children, route, routes, canAccess }: ILayoutProps) {
+function ProLayout({ children, route, routes, canAccess }: ILayoutProps) {
   const { height } = useModel('useAppModel', m => pick(m, 'height'))
 
   const { sidebarCollapsed, toggleSidebar } = useModel('useProLayoutModel', m =>
@@ -75,3 +75,18 @@ export default function ProLayout({ children, route, routes, canAccess }: ILayou
     </Layout>
   )
 }
+
+const ProLayoutResolver: ILayoutResolver = {
+  is(route?: IERoute): boolean {
+    return isEmpty(route) || route!.layout === 'PRO_LAYOUT'
+  },
+  get({ routes, children, route, canAccess }: ILayoutProps) {
+    return (
+      <ProLayout routes={routes!} route={route} canAccess={canAccess}>
+        {children}
+      </ProLayout>
+    )
+  }
+}
+
+export default ProLayoutResolver
