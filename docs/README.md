@@ -6,7 +6,7 @@ actionText: 新手上路 →
 actionLink: /guide/
 features:
   - title: 布局管理
-    details: 内置布局 BLANK, PRO_LAYOU 两款布局，以及布局管理模块，按标准实现的新布局可以无缝接入系统
+    details: 内置 BLANK, PRO_LAYOU 两款布局，以及布局管理模块，按标准实现的新布局可以无缝接入系统
   - title: 权限路由
     details: 内置和用户数据打通的权限系统可以针对路由做控制，并且内置无权限展示组件
   - title: 国际化
