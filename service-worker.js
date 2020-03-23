@@ -38,16 +38,16 @@ self.__precacheManifest = [
     "revision": "83621669651b9a3d4bf64d1a670ad856"
   },
   {
-    "url": "assets/js/10.faa58d57.js",
-    "revision": "37a05b4681fe05a89dae966c2c2e2a42"
+    "url": "assets/js/10.d6580f5c.js",
+    "revision": "b423e087c23519eb614dcff47c946bc7"
   },
   {
-    "url": "assets/js/11.0c714282.js",
-    "revision": "4fc490f792c2e896a2d69cc53cacb6d7"
+    "url": "assets/js/11.d59f24b3.js",
+    "revision": "639358eb678380269cb3ff10227913cb"
   },
   {
-    "url": "assets/js/12.7c8668b8.js",
-    "revision": "f4c893c189090ae05adbc8d7ad46ea5b"
+    "url": "assets/js/12.fef66935.js",
+    "revision": "c76ae67b8e688307361e3d182d0b8e58"
   },
   {
     "url": "assets/js/13.525189da.js",
@@ -74,24 +74,24 @@ self.__precacheManifest = [
     "revision": "e94a799955f15e829e2922b47ba5d69c"
   },
   {
-    "url": "assets/js/6.a9986b2e.js",
-    "revision": "579680bf266d37d95195952942077952"
+    "url": "assets/js/6.4df05946.js",
+    "revision": "ee47aa6db9906ce471b73d4907a1a3b3"
   },
   {
-    "url": "assets/js/7.2f7a785b.js",
-    "revision": "8bb2ad99194d8119b18378986cae4143"
+    "url": "assets/js/7.3eaf00c5.js",
+    "revision": "1fa7325c455a5ec7dc458eedc571fc80"
   },
   {
-    "url": "assets/js/8.210d0e5f.js",
-    "revision": "e41842e04a1533593bbfcde821d90ffb"
+    "url": "assets/js/8.f0056364.js",
+    "revision": "6224361f18092c01852f815202e4f007"
   },
   {
-    "url": "assets/js/9.05a403dc.js",
-    "revision": "2e568afec55d231a77dee5e52fb70307"
+    "url": "assets/js/9.bd67052a.js",
+    "revision": "18fe17c6e812545bdd490962935f29db"
   },
   {
-    "url": "assets/js/app.ea1f078b.js",
-    "revision": "570036b0e2ebc5b4eba075822247a808"
+    "url": "assets/js/app.bfcd8fee.js",
+    "revision": "2aa0d6c7884d68d50140f55598af387d"
   },
   {
     "url": "demo.gif",
@@ -103,35 +103,51 @@ self.__precacheManifest = [
   },
   {
     "url": "guide/data.html",
-    "revision": "156ca1f525587136a87a864fc2fe1c8d"
+    "revision": "c0d48baed7aaeff034a5993c28a93fc2"
   },
   {
     "url": "guide/index.html",
-    "revision": "48c198bfcaa4c43cd9172991336a121f"
+    "revision": "3725d6404b0a8fd53405bdd22eda1797"
   },
   {
     "url": "guide/layout.html",
-    "revision": "34432f71aae0aa0418720a5b1cec79ed"
+    "revision": "a94f7a815775d2251389362e0dbebe4e"
   },
   {
     "url": "guide/locale.html",
-    "revision": "a627e078ee13c20da49cf87d443102f2"
+    "revision": "0a4b316dbe4b3b6c271cff0aa1e0b0c8"
   },
   {
     "url": "guide/packaging.html",
-    "revision": "f88e4cec29eedd12573cb8584cf64376"
+    "revision": "f625b3db4032171bd2cbe2265f1a5fd2"
   },
   {
     "url": "guide/route.html",
-    "revision": "122d9194558d4a995b9042ebe268f9a8"
+    "revision": "456cef479fed73eef13525cb7d52c691"
   },
   {
     "url": "index.html",
-    "revision": "a5a8525d90355575dbe1302f92b5803f"
+    "revision": "43aff39df5c0c0f44f4128ac4ae3aec3"
   },
   {
     "url": "locale.gif",
     "revision": "deec66be83f7b76e8cd7ac5365c1cd2c"
+  },
+  {
+    "url": "open_404.png",
+    "revision": "ae9fe4328db77a2df6a978089f40e4b6"
+  },
+  {
+    "url": "p1_ pikachu.jpeg",
+    "revision": "c21533be4ee1be655aef465c3351fbbe"
+  },
+  {
+    "url": "p1.jpg",
+    "revision": "4e36bb09899013c98a0e0e220f84d45b"
+  },
+  {
+    "url": "pro_404.png",
+    "revision": "3ba336f5445b2eba19b177b37786c870"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
