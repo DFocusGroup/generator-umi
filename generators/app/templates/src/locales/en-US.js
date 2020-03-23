@@ -20,5 +20,8 @@ export default {
 
   //analysis
   ANALYSIS_TITLE: 'Analysis',
-  MONITOR_TITLE: 'Monitor'
+  MONITOR_TITLE: 'Monitor',
+  DASHBOARD_MENU: 'Dashboard',
+  ANAKYSIS_MENU: 'Analysis',
+  MONITOR_MENU: 'Monitor'
 }

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { useModel, history, useLocation, useAccess } from 'umi'
+import { useModel, history, useLocation, useAccess, useIntl } from 'umi'
 import { Menu } from 'antd'
 
 import { isEmptyArray, isNotEmptyArray, pick, flattenTree } from '@/helpers/object'
@@ -13,6 +13,7 @@ interface ISideBarMenuProps {
 
 export default function SideBarMenu({ routes }: ISideBarMenuProps) {
   const location = useLocation()
+  const { formatMessage } = useIntl()
   const { getAuthedMenus, getMatchedMenu } = useModel('useProLayoutModel', m =>
     pick(m, 'getAuthedMenus', 'getMatchedMenu')
   )
@@ -50,7 +51,7 @@ export default function SideBarMenu({ routes }: ISideBarMenuProps) {
           return (
             <Menu.Item key={menu.path}>
               {<menu.icon />}
-              <span>{menu.title}</span>
+              <span>{formatMessage({ id: menu.title })}</span>
             </Menu.Item>
           )
         }
@@ -60,7 +61,7 @@ export default function SideBarMenu({ routes }: ISideBarMenuProps) {
             title={
               <span>
                 <menu.icon />
-                <span>{menu.title}</span>
+                <span>{formatMessage({ id: menu.title })}</span>
               </span>
             }
           >
@@ -69,7 +70,7 @@ export default function SideBarMenu({ routes }: ISideBarMenuProps) {
                 return (
                   <Menu.Item key={subMenu.path}>
                     {<subMenu.icon />}
-                    <span>{subMenu.title}</span>
+                    <span>{formatMessage({ id: subMenu.title })}</span>
                   </Menu.Item>
                 )
               })}

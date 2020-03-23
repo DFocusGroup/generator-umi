@@ -6,16 +6,16 @@ export default [
   {
     key: 'dashboard',
     icon: DashboardOutlined,
-    title: 'Dashboard',
+    title: 'DASHBOARD_MENU',
     children: [
       {
         icon: RadarChartOutlined,
-        title: 'Analysis',
+        title: 'ANAKYSIS_MENU',
         path: '/dashboard/analysis'
       },
       {
         icon: MonitorOutlined,
-        title: 'Monitor',
+        title: 'MONITOR_MENU',
         path: '/dashboard/monitor'
       }
     ]

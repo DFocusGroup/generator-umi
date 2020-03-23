@@ -20,5 +20,8 @@ export default {
 
   //analysis
   ANALYSIS_TITLE: '分析',
-  MONITOR_TITLE: '监控'
+  MONITOR_TITLE: '监控',
+  DASHBOARD_MENU: '仪表盘',
+  ANAKYSIS_MENU: '分析',
+  MONITOR_MENU: '监控'
 }
