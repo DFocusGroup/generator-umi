@@ -3,8 +3,8 @@ import ProLayoutResolver from './ProLayout'
 import { ILayoutProps, ILayoutResolver } from '@/types'
 import { isNotEmpty } from '@/helpers/object'
 
-const OPEN_LAYOUTS = [BlankResolver]
-const AUTH_REQUIRED_LAYOUTS = [ProLayoutResolver, BlankResolver]
+const OPEN_LAYOUTS: ILayoutResolver[] = [BlankResolver]
+const AUTH_REQUIRED_LAYOUTS: ILayoutResolver[] = [ProLayoutResolver, BlankResolver]
 
 export function resolveOpenPage({ routes, children, route, canAccess }: ILayoutProps) {
   const resolver = OPEN_LAYOUTS.find(r => r.is(route))

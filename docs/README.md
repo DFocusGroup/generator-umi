@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: umi 中台助手
+heroText: umi 中台 助手
 tagline: 快速构建一个中台系统所需的基础元素
 actionText: 新手上路 →
 actionLink: /guide/
@@ -45,13 +45,13 @@ footer: MIT Licensed | Copyright © 2020-present Howard.Zuo
 
 ## 快速开始
 
-安装 umi 中台助手
+安装 umi 中台 助手
 
 ```bash
 yarn global add yo generator-umi
 ```
 
-然后，利用下总成，创建一个 code base
+然后，利用助手，创建一个 code base
 
 <img :src="$withBase('/generator.gif')" alt="gen">
 

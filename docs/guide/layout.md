@@ -31,9 +31,9 @@ Monitor.layout = 'PRO_LAYOUT'
 
 ```typescript
 // 路由形态为 OpenPage 时的布局处理器列表
-const OPEN_LAYOUTS = [BlankResolver]
+const OPEN_LAYOUTS: ILayoutResolver[] = [BlankResolver]
 // 路由形态为 AuthRequiredPage 时的布局处理器列表
-const AUTH_REQUIRED_LAYOUTS = [ProLayoutResolver, BlankResolver]
+const AUTH_REQUIRED_LAYOUTS: ILayoutResolver[] = [ProLayoutResolver, BlankResolver]
 ```
 
 路由处理器执行逻辑为，先在布局入口 `src/layouts/index.tsx` 进行路由形态判定，然后根据形态在对应的布局处理器列表进行依次判定（从左至右），第一个匹配到的布局处理器，会被拿来对路由进行最终渲染。
@@ -101,6 +101,10 @@ function Blank({ children, route, canAccess }: ILayoutProps) {
 const BlankResolver: ILayoutResolver = {
   // 判定传入路由是否可以被当前布局渲染
   is(route?: IERoute): boolean {
+    // 空布局这里略微复杂，有三条匹配条件，任意一条符合就会被判定成功
+    // 1. 路由不存在，即：需要显示 404 页面时
+    // 2. 路由里指定了 layout = 'BLANK'
+    // 3. 路由路径为 / 时
     return isEmpty(route) || route!.layout === 'BLANK' || route!.path === '/'
   },
   // 使用布局入口传入 props 渲染本布局

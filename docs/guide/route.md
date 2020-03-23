@@ -20,10 +20,11 @@ function Analysis() {
   return <div>analysis</div>
 }
 
-// 不赘述，在 国际化 章节里看吧
+// 指定本页面 title 使用 locales/ 下对应语言的替换
+// 详情在 国际化 章节里看吧
 Analysis.title = 'ANALYSIS_TITLE'
 
-// 不赘述，在 布局 章节里看吧
+// 指定使用 PRO_LAYOUT 布局，详情在 布局 章节里看吧
 Analysis.layout = 'PRO_LAYOUT'
 
 // 这里为access指定了需要的权限为 ：canReadDashboardAnalysis
@@ -43,3 +44,17 @@ export default Analysis
 > 判定是否具有页面访问权限的操作之所以单独放在 `src/access.ts` 里，就是考虑到后端的 api 不一定和脚手架相同而需要变更，所以在 `src/access.ts` 里统一处理。
 
 那么，如果页面没有额外的权限要求，仅登录后就能访问，例如：个人信息页。该如何处理？简单，只要删除 页面里的 `页面组件.access = '指定权限'` 这句话就行了。
+
+## 不存在路由
+
+如果访问的页面不存在，脚手架自带了 404 组件，如下：
+
+在 OpenPage 形态下，显示：
+
+<img :src="$withBase('/open_404.png')" alt="open 404">
+
+在 AuthRequiredPage 形态下，显示：
+
+<img :src="$withBase('/pro_404.png')" alt="pro 404">
+
+有朋友可能会问，都是不存在的路由，脚手架里是如何判定应该使用哪个布局的？ 那就得熟悉下一章节，[布局-布局处理器列表](/guide/layout.md#布局处理器列表)

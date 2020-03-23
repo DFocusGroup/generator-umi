@@ -7,7 +7,7 @@
 
 Yeoman generator for umi project
 
-> Read documentation here: [https://leftstick.gitbook.io/generator-umi](https://leftstick.gitbook.io/generator-umi)
+> Read documentation here: [https://dfocusgroup.github.io/generator-umi/](https://dfocusgroup.github.io/generator-umi/)
 
 ![](./docs/.vuepress/public/generator.gif)
 

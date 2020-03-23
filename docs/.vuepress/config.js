@@ -15,7 +15,7 @@ module.exports = {
     }
   },
   base: '/generator-umi/',
-  title: 'umi 中台下总成',
+  title: 'umi 中台助手',
   themeConfig: {
     repo: 'DFocusGroup/generator-umi',
     lastUpdated: '上次更新',

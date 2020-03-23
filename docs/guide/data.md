@@ -4,6 +4,8 @@
 
 核心思路就是利用 `hooks` 来做 model，是有别于 `redux` 的另一种数据管理手段。
 
+所有的 model 都会放在 `src/models/` 下面。
+
 我们依旧以登录页面为例讲解。
 
 `src/pages/o/login/index.tsx`：
