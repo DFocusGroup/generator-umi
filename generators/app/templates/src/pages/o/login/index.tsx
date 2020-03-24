@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { Tabs } from 'antd'
+import qs from 'qs'
 
-import { useModel, Redirect, useIntl } from 'umi'
+import { useModel, Redirect, useIntl, useLocation } from 'umi'
 
 import LangSwitch from '@/components/buttons/LangSwitch'
 import Title from './components/Title'
@@ -15,12 +16,17 @@ function Login() {
   const { initialState } = useModel('@@initialState')
   const { initBackground } = useModel('useLoginModel', m => pick(m, 'initBackground'))
   const { formatMessage } = useIntl()
+  const { search } = useLocation()
 
   useEffect(() => {
     initBackground()
   }, [initBackground])
 
   if (isNotEmpty(initialState) && !isString(initialState)) {
+    const query = qs.parse(search ? search.slice(1) : '')
+    if (query.redirectTo) {
+      return <Redirect to={{ pathname: query.redirectTo }} />
+    }
     return <Redirect to="/" />
   }
 

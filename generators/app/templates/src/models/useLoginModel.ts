@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react'
-import { request } from 'umi'
-import qs from 'qs'
+import { request, useModel } from 'umi'
 import { loadScript } from '@/helpers/loader'
 import { getToken, setToken, getRememberme, setRememberme } from '@/helpers/storage'
 
 export default function useLoginModel() {
+  const { refresh }: { refresh: Function } = useModel('@@initialState')
   const [currentToken, setCurrentToken] = useState(getToken())
   const [isRememberme, setCurrentRememberme] = useState(!!getRememberme())
 
@@ -33,17 +33,12 @@ export default function useLoginModel() {
 
         setCurrentToken(res.data.token)
         setToken(res.data.token, isRememberme)
-        const query = qs.parse(window.location.search ? window.location.search.slice(1) : '')
-        if (query.redirectTo) {
-          window.location.href = query.redirectTo
-          return
-        }
-        window.location.href = '/'
+        refresh()
       } catch (error) {
         // ignore
       }
     },
-    [setCurrentToken, isRememberme]
+    [setCurrentToken, isRememberme, refresh]
   )
 
   return {
