@@ -17,7 +17,7 @@
     ├── Dockerfile
     ├── package.json
     ├── tsconfig.json
-    └──  typings.d.ts
+    └── typings.d.ts
 
 ## 项目结构介绍
 

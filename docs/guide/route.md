@@ -7,11 +7,13 @@
 脚手架中，路由分两种形态：
 
 - OpenPage：无需登录就能访问的开放页面。判定标准，以 `/o/` 开始的路由会被判定为 OpenPage。例如：登录页面(`/o/login`)
-- AuthRequiredPage：必须登录后才能访问的页面。判定标准，以 非 `/o/` 开始的路由会被判定为 AuthRequiredPage，例如：分析页面(`/dashboard/analysis`)
+- AuthRequiredPage：必须登录后才能访问的页面。判定标准，以 非 `/o/` 开始的路由会被判定为 AuthRequiredPage。未登录时访问此类路由，会跳转到登录页。例如：分析页面(`/dashboard/analysis`)
 
 ## 路由权限
 
-打开 `src/pages/dashboard/analysis/index.tsx`, 按照 `umi` 约定式路由的规则我们知道，这个页面对应的路由是 `/dashboard/analysis`，它以 非 `/o/` 开始，所以是 AuthRequiredPage，即必须登录后才能访问的页面。我们就以它为例解释权限控制：
+权限路由指 AuthRequiredPage 形态下的权限控制细节。例如：页面 A 只要求登录就能访问；页面 B 即使登录后，还要求用户具备相应权限才能访问，否则提示 `403` 。
+
+下面，打开 `src/pages/dashboard/analysis/index.tsx`, 按照 `umi` 约定式路由的规则我们知道，这个页面对应的路由是 `/dashboard/analysis`，它以 非 `/o/` 开始，所以是 AuthRequiredPage，即必须登录后才能访问的页面。那 **权限** 具体在哪里控制，请继续往下看，我们就以分析页面为例解释权限控制：
 
 ```typescript
 import React from 'react'
