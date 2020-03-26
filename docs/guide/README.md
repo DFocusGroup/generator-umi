@@ -75,9 +75,7 @@
 
 程序代码执行路径大致如下：
 
-1. `app.ts`：应用数据初始化。脚手架里是根据 `cookie` 里是否存有合法 `token` 去后端拿用户信息。
-2. `access.ts`：权限状态映射，输入是上一步里 `getInitialState` 的返回值，根据其内容组装应用需要的权限状态，这个我们会在 [权限路由](/guide/route.html) 里详细讲解。
-3. `layouts/index.ts`，布局入口根据路由地址判断路由形态（OpenPage 还是 AuthRequiredPage），然后交由对应的布局选择器进行页面布局 -> 渲染，这个我们会在 [布局管理](/guide/layout.html) 里详细讲解。
+<img :src="$withBase('/data-flow.png')" alt="DataFlow">
 
 ## 特性列表
 
