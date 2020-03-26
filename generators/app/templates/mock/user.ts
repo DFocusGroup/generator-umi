@@ -1,7 +1,8 @@
+import { Request, Response } from 'umi'
 import { success, failure, FAKE_TOKEN, SHOW_TYPE } from './_helper'
 
 export default {
-  'get /user': function(req, res) {
+  'get /user': function(req: Request, res: Response) {
     const token = req.get('Authorization')
     if (!token) {
       return res.json(
@@ -31,7 +32,7 @@ export default {
         email: 'admin@gmail.com',
         group: 'ADMIN',
         signature: '沙滩一卧两年半，今日浪打我翻身',
-        avatar: '/avatar.jpg',
+        avatar: '/avatar.png',
         permissions: ['VIEW_DASHBOARD_ANALYSIS', 'VIEW_DASHBOARD_MONITOR']
       })
     )

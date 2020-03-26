@@ -1,7 +1,8 @@
+import { Request, Response } from 'umi'
 import { success, failure, FAKE_TOKEN, SHOW_TYPE } from './_helper'
 
 export default {
-  'post /login': function(req, res, next) {
+  'post /login': function(req: Request, res: Response) {
     const { account, password } = req.body
 
     if (account !== 'admin' || password !== '123456') {
