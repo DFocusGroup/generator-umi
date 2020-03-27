@@ -8,7 +8,7 @@
     <meta name="generator" content="VuePress 1.4.0">
     
     
-    <link rel="preload" href="/generator-umi/assets/css/0.styles.157a6c56.css" as="style"><link rel="preload" href="/generator-umi/assets/js/app.7ee914e6.js" as="script"><link rel="preload" href="/generator-umi/assets/js/2.b3e0ca11.js" as="script"><link rel="preload" href="/generator-umi/assets/js/9.693e8b34.js" as="script"><link rel="preload" href="/generator-umi/assets/js/3.e34fe760.js" as="script"><link rel="prefetch" href="/generator-umi/assets/js/10.7b85cb3d.js"><link rel="prefetch" href="/generator-umi/assets/js/11.f318ca9d.js"><link rel="prefetch" href="/generator-umi/assets/js/12.7ddc6c21.js"><link rel="prefetch" href="/generator-umi/assets/js/13.525189da.js"><link rel="prefetch" href="/generator-umi/assets/js/14.57159853.js"><link rel="prefetch" href="/generator-umi/assets/js/4.46b2373c.js"><link rel="prefetch" href="/generator-umi/assets/js/5.fe4a2776.js"><link rel="prefetch" href="/generator-umi/assets/js/6.4df05946.js"><link rel="prefetch" href="/generator-umi/assets/js/7.e33501c8.js"><link rel="prefetch" href="/generator-umi/assets/js/8.44637656.js">
+    <link rel="preload" href="/generator-umi/assets/css/0.styles.157a6c56.css" as="style"><link rel="preload" href="/generator-umi/assets/js/app.b0495e08.js" as="script"><link rel="preload" href="/generator-umi/assets/js/2.b3e0ca11.js" as="script"><link rel="preload" href="/generator-umi/assets/js/9.577b9a61.js" as="script"><link rel="preload" href="/generator-umi/assets/js/3.e34fe760.js" as="script"><link rel="prefetch" href="/generator-umi/assets/js/10.af3dbc96.js"><link rel="prefetch" href="/generator-umi/assets/js/11.3f553245.js"><link rel="prefetch" href="/generator-umi/assets/js/12.7ddc6c21.js"><link rel="prefetch" href="/generator-umi/assets/js/13.525189da.js"><link rel="prefetch" href="/generator-umi/assets/js/14.57159853.js"><link rel="prefetch" href="/generator-umi/assets/js/4.46b2373c.js"><link rel="prefetch" href="/generator-umi/assets/js/5.fe4a2776.js"><link rel="prefetch" href="/generator-umi/assets/js/6.4df05946.js"><link rel="prefetch" href="/generator-umi/assets/js/7.e33501c8.js"><link rel="prefetch" href="/generator-umi/assets/js/8.44637656.js">
     <link rel="stylesheet" href="/generator-umi/assets/css/0.styles.157a6c56.css">
   </head>
   <body>
@@ -45,7 +45,7 @@ Analysis<span class="token punctuation">.</span>access <span class="token operat
 </code></pre></div><h2 id="自定义布局处理器"><a href="#自定义布局处理器" class="header-anchor">#</a> 自定义布局处理器</h2> <p>我们以 <code>BLANK</code> 布局为例，打开 <code>src/layouts/options/Blank/index.tsx</code>：</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> useModel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'umi'</span>
 
-<span class="token keyword">import</span> <span class="token punctuation">{</span> isEmpty<span class="token punctuation">,</span> pick <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/helpers/object'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> isEmpty<span class="token punctuation">,</span> pick <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/helpers'</span>
 
 <span class="token keyword">import</span> Exception403 <span class="token keyword">from</span> <span class="token string">'@/components/exception/403'</span>
 <span class="token keyword">import</span> Exception404 <span class="token keyword">from</span> <span class="token string">'@/components/exception/404'</span>
@@ -91,7 +91,7 @@ Analysis<span class="token punctuation">.</span>access <span class="token operat
 <span class="token punctuation">}</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> BlankResolver
-</code></pre></div><p>之后，只要把写好的布局处理器注册到 <a href="/generator-umi/guide/layout.html#布局处理器列表">布局处理器列表</a> 里就可以使用了。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">3/23/2020, 1:15:45 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div><p>之后，只要把写好的布局处理器注册到 <a href="/generator-umi/guide/layout.html#布局处理器列表">布局处理器列表</a> 里就可以使用了。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">3/27/2020, 1:49:56 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/generator-umi/guide/route.html" class="prev">
         路由
@@ -100,6 +100,6 @@ Analysis<span class="token punctuation">.</span>access <span class="token operat
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"><!----></div></div>
-    <script src="/generator-umi/assets/js/app.7ee914e6.js" defer></script><script src="/generator-umi/assets/js/2.b3e0ca11.js" defer></script><script src="/generator-umi/assets/js/9.693e8b34.js" defer></script><script src="/generator-umi/assets/js/3.e34fe760.js" defer></script>
+    <script src="/generator-umi/assets/js/app.b0495e08.js" defer></script><script src="/generator-umi/assets/js/2.b3e0ca11.js" defer></script><script src="/generator-umi/assets/js/9.577b9a61.js" defer></script><script src="/generator-umi/assets/js/3.e34fe760.js" defer></script>
   </body>
 </html>
