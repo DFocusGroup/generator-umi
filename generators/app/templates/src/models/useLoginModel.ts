@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react'
 import { request, useModel } from 'umi'
-import { loadScript } from '@/helpers/loader'
-import { getToken, setToken, getRememberme, setRememberme } from '@/helpers/storage'
+import { loadScript, getToken, setToken, getRememberme, setRememberme } from '@/helpers'
 
 export default function useLoginModel() {
   const { refresh }: { refresh: Function } = useModel('@@initialState')

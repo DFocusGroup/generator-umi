@@ -1,7 +1,7 @@
 import BlankResolver from './Blank'
 import ProLayoutResolver from './ProLayout'
 import { ILayoutProps, ILayoutResolver } from '@/types'
-import { isNotEmpty } from '@/helpers/object'
+import { isNotEmpty } from '@/helpers'
 
 const OPEN_LAYOUTS: ILayoutResolver[] = [BlankResolver]
 const AUTH_REQUIRED_LAYOUTS: ILayoutResolver[] = [ProLayoutResolver, BlankResolver]

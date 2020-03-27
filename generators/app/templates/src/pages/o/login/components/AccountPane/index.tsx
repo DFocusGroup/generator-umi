@@ -3,7 +3,7 @@ import { Form, Button, Input, Checkbox, Tooltip } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
 import { useModel, useIntl } from 'umi'
-import { pick } from '@/helpers/object'
+import { pick } from '@/helpers'
 
 import styles from './index.less'
 

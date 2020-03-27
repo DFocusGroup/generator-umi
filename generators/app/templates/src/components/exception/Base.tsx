@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { Typography } from 'antd'
 
-import { isString } from '@/helpers/object'
+import { isString } from '@/helpers'
 
 import styles from './Base.less'
 

@@ -9,7 +9,7 @@ import Exception404 from '@/components/exception/404'
 import SideBarTitle from './SideBarTitle'
 import SideBarMenu from './SideBarMenu'
 
-import { isEmpty, pick } from '@/helpers/object'
+import { isEmpty, pick } from '@/helpers'
 
 import { ILayoutProps, ILayoutResolver, IERoute } from '@/types'
 

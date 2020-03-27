@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useAccess, Redirect, useModel } from 'umi'
 
-import { destoryGlobalSpinner } from '@/helpers/view'
-import { isEmpty, isNotEmpty, isString, pick } from '@/helpers/object'
-import { IERoute, IAccessState, ILocation } from '@/types'
+import { destoryGlobalSpinner, isNotEmpty, pick } from '@/helpers'
+import { IERoute, ILocation } from '@/types'
 
 import { resolveOpenPage, resolveAuthRequiredPage } from './options'
-import { clearAll } from '@/helpers/storage'
 
 interface IEntryLayoutProps {
   children: JSX.Element
@@ -17,22 +15,8 @@ interface IEntryLayoutProps {
 
 export default function Layout({ children, location, route }: IEntryLayoutProps) {
   const accessState = useAccess()
-  const { findMatchedRoute, isOpenPage } = useModel('useAppModel', m => pick(m, 'findMatchedRoute', 'isOpenPage'))
-
-  const signRequired = useCallback(() => {
-    // means not signin
-    if (isString(accessState)) {
-      clearAll()
-      return true
-    }
-    return false
-  }, [accessState])
-
-  const canAccess = useCallback(
-    (route: IERoute) => {
-      return isEmpty(route.access) || (accessState as IAccessState)[route.access!]
-    },
-    [accessState]
+  const { findMatchedRoute, isOpenPage, signRequired, canAccess } = useModel('useAppModel', m =>
+    pick(m, 'findMatchedRoute', 'isOpenPage', 'signRequired', 'canAccess')
   )
 
   const matchedRoute = findMatchedRoute(location.pathname, route.routes!)
@@ -50,7 +34,7 @@ export default function Layout({ children, location, route }: IEntryLayoutProps)
     })
   }
 
-  if (signRequired()) {
+  if (signRequired(accessState)) {
     return <Redirect to={{ pathname: '/o/login', search: `?redirectTo=${location.pathname}` }} />
   }
 
@@ -58,6 +42,6 @@ export default function Layout({ children, location, route }: IEntryLayoutProps)
     routes: route.routes!,
     children: children,
     route: matchedRoute!,
-    canAccess: isNotEmpty<IERoute>(matchedRoute) ? canAccess(matchedRoute) : true
+    canAccess: isNotEmpty<IERoute>(matchedRoute) ? canAccess(matchedRoute, accessState) : true
   })
 }

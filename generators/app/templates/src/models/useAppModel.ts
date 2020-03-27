@@ -1,44 +1,40 @@
 import { useCallback } from 'react'
 import { useSize } from '@umijs/hooks'
-import pathToRegexp from 'path-to-regexp'
+import { matchPath } from 'umi'
 
-import { isEmptyArray, flattenTree } from '@/helpers/object'
-import { IERoute } from '@/types'
-
-interface IERouteMatcher {
-  route: IERoute
-  matcher: pathToRegexp.PathRegExp
-}
-
-const cachedRouteMathers: IERouteMatcher[] = []
+import { flattenTree, isEmpty, isInvalidInitState, clearAll } from '@/helpers'
+import { IERoute, IAccessState, IInvalidInitState } from '@/types'
 
 export default function useAppModel() {
   const [{ width, height }] = useSize(document.body)
 
   const findMatchedRoute = useCallback((pathname: string, routes: IERoute[]) => {
-    if (isEmptyArray(cachedRouteMathers)) {
-      cachedRouteMathers.push(
-        ...flattenTree(routes, r => r.routes)
-          .filter(route => !!route.path)
-          .map(route => {
-            return {
-              route,
-              matcher: pathToRegexp(route.path!)
-            }
-          })
-      )
-    }
-    const routeMatcher = cachedRouteMathers.find(m => m.matcher.exec(pathname))
-
-    return routeMatcher ? routeMatcher.route : undefined
+    return flattenTree(routes, r => r.routes)
+      .filter(route => !!route.path)
+      .find(m => matchPath(pathname, m as any))
   }, [])
 
   const isOpenPage = useCallback((pathname: string) => pathname.startsWith('/o/') || pathname === '/', [])
+
+  const signRequired = useCallback((accessState): accessState is IInvalidInitState => {
+    // means not signin
+    if (isInvalidInitState(accessState)) {
+      clearAll()
+      return true
+    }
+    return false
+  }, [])
+
+  const canAccess = useCallback((route: IERoute, accessState?: IAccessState) => {
+    return isEmpty(route.access) || (accessState as IAccessState)[route.access!]
+  }, [])
 
   return {
     width,
     height,
     findMatchedRoute,
-    isOpenPage
+    isOpenPage,
+    signRequired,
+    canAccess
   }
 }

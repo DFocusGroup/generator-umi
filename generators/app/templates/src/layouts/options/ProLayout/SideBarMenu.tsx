@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import { useModel, history, useLocation, useAccess, useIntl } from 'umi'
 import { Menu } from 'antd'
 
-import { isEmptyArray, isNotEmptyArray, pick, flattenTree } from '@/helpers/object'
+import { isEmptyArray, isNotEmptyArray, pick, flattenTree } from '@/helpers'
 
 import { IMenu, IERoute, IAccessState } from '@/types'
 

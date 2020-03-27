@@ -8,7 +8,7 @@ import LangSwitch from '@/components/buttons/LangSwitch'
 import Title from './components/Title'
 import AccountPane from './components/AccountPane'
 
-import { isString, isNotEmpty, pick } from '@/helpers/object'
+import { isInvalidInitState, isNotEmpty, pick } from '@/helpers'
 
 import styles from './index.less'
 
@@ -22,7 +22,7 @@ function Login() {
     initBackground()
   }, [initBackground])
 
-  if (isNotEmpty(initialState) && !isString(initialState)) {
+  if (isNotEmpty<string>(initialState) && !isInvalidInitState(initialState)) {
     const query = qs.parse(search ? search.slice(1) : '')
     if (query.redirectTo) {
       return <Redirect to={{ pathname: query.redirectTo }} />

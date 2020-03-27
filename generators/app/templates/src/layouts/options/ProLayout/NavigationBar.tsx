@@ -5,7 +5,7 @@ import { useModel, useIntl } from 'umi'
 
 import MenuFoldButton from '@/components/buttons/MenuFoldButton'
 import LangSwitch from '@/components/buttons/LangSwitch'
-import { redirectToLogin } from '@/helpers/view'
+import { redirectToLogin } from '@/helpers'
 import { IUser } from '@/types'
 
 import styles from './index.less'

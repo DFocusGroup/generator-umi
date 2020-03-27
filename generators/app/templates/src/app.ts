@@ -1,7 +1,7 @@
 import { RequestConfig, request as API } from 'umi'
 
 import { API_HOST } from '@/config'
-import { getToken } from '@/helpers/storage'
+import { getToken } from '@/helpers'
 import { IInvalidInitState, IUser } from '@/types'
 
 // powered by https://umijs.org/plugins/plugin-initial-state

@@ -2,8 +2,7 @@ import { useCallback } from 'react'
 import { useLocalStorageState } from '@umijs/hooks'
 import pathToRegexp from 'path-to-regexp'
 
-import { isEmptyArray, isEmpty, isNotEmpty } from '@/helpers/object'
-import { flattenTree } from '@/helpers/object'
+import { flattenTree, isEmptyArray, isEmpty, isNotEmpty } from '@/helpers'
 
 import { IMenu, IERoute, IAccessState } from '@/types'
 

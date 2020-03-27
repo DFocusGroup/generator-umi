@@ -1,7 +1,7 @@
 import React from 'react'
 import { useModel } from 'umi'
 
-import { isEmpty, pick } from '@/helpers/object'
+import { isEmpty, pick } from '@/helpers'
 
 import Exception403 from '@/components/exception/403'
 import Exception404 from '@/components/exception/404'

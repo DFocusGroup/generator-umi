@@ -1,4 +1,4 @@
-import { clearAll } from '@/helpers/storage'
+import { clearAll } from '@/helpers'
 
 export function destoryGlobalSpinner() {
   const splash = document.querySelector('#splash-spinner')
