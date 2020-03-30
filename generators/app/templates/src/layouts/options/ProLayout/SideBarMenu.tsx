@@ -27,7 +27,7 @@ export default function SideBarMenu({ routes }: ISideBarMenuProps) {
 
   const flattenFinalMenus = useMemo(() => flattenTree(finalMenus, m => m.children), [finalMenus])
 
-  const matchedMenu = getMatchedMenu(location.pathname)
+  const matchedMenu = getMatchedMenu(flattenFinalMenus, location.pathname)
   const openKeys = useMemo(() => {
     return matchedMenu
       ? flattenFinalMenus

@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { useSize } from '@umijs/hooks'
 import { matchPath } from 'umi'
 
-import { flattenTree, isEmpty, isInvalidInitState, clearAll } from '@/helpers'
+import { flattenTree, isEmpty, isNotEmpty, isBoolean, isInvalidInitState, isString } from '@/helpers'
 import { IERoute, IAccessState, IInvalidInitState } from '@/types'
 
 export default function useAppModel() {
@@ -14,15 +14,24 @@ export default function useAppModel() {
       .find(m => matchPath(pathname, m as any))
   }, [])
 
-  const isOpenPage = useCallback((pathname: string) => pathname.startsWith('/o/') || pathname === '/', [])
-
-  const signRequired = useCallback((accessState): accessState is IInvalidInitState => {
-    // means not signin
-    if (isInvalidInitState(accessState)) {
-      clearAll()
-      return true
+  const routeCheck = useCallback((route: IERoute) => {
+    if (!isBoolean(route.requireSignin)) {
+      throw new Error(`Route: ${route.path}, [requireSignin] must be boolean`)
     }
-    return false
+    if (!isString(route.layout)) {
+      throw new Error(`Route: ${route.path}, [layout] must be string`)
+    }
+    if (!route.requireSignin && isNotEmpty(route.access)) {
+      throw new Error(`Route: ${route.path}, [access] should be removed if requireSignin === false`)
+    }
+    if (route.requireSignin && isNotEmpty(route.access) && !isString(route.access)) {
+      throw new Error(`Route: ${route.path}, [access] must be string`)
+    }
+  }, [])
+
+  const signRequired = useCallback((route: IERoute, accessState): accessState is IInvalidInitState => {
+    // means not signin
+    return !!(route.requireSignin && isInvalidInitState(accessState))
   }, [])
 
   const canAccess = useCallback((route: IERoute, accessState?: IAccessState) => {
@@ -32,8 +41,8 @@ export default function useAppModel() {
   return {
     width,
     height,
+    routeCheck,
     findMatchedRoute,
-    isOpenPage,
     signRequired,
     canAccess
   }

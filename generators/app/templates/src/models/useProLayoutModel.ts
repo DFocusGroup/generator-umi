@@ -44,13 +44,6 @@ function toFinalMenus(menus: IMenu[], routes: IERoute[], accessState: IAccessSta
   return targets
 }
 
-interface IMenuMatcher {
-  menu: IMenu
-  matcher: pathToRegexp.PathRegExp
-}
-
-let cachedMenuMathers: IMenuMatcher[]
-
 export default function useProLayoutModel() {
   const [sidebarCollapsed, setSidebarCollapsed] = useLocalStorageState('SIDE_BAR_COLLAPSED', false)
 
@@ -65,23 +58,11 @@ export default function useProLayoutModel() {
       accessState as IAccessState
     )
 
-    // init  cachedMenuMathers
-    cachedMenuMathers = flattenTree(menus, m => m.children)
-      .filter(menu => isNotEmpty(menu.path))
-      .map(menu => ({
-        menu,
-        matcher: pathToRegexp(menu.path!)
-      }))
-
     return finalMenus
   }, [])
 
-  const getMatchedMenu = useCallback((pathname: string) => {
-    const matchedMatcher = cachedMenuMathers.find(matcher => matcher.matcher.exec(pathname))
-    if (isNotEmpty<IMenuMatcher>(matchedMatcher)) {
-      return matchedMatcher.menu
-    }
-    return undefined
+  const getMatchedMenu = useCallback((flattenMenus: IMenu[], pathname: string) => {
+    return flattenMenus.find(menu => isNotEmpty<string>(menu.path) && pathToRegexp(menu.path).exec(pathname))
   }, [])
 
   return {

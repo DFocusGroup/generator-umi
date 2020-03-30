@@ -26,7 +26,6 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@types/classnames": "^2.2.10",
     "@types/js-cookie": "^2.2.5",
-    "@types/qs": "^6.9.1",
     "@umijs/plugin-access": "^2.3.0",
     "@umijs/plugin-antd": "^0.4.0",
     "@umijs/plugin-initial-state": "^2.2.0",
@@ -34,14 +33,13 @@
     "@umijs/plugin-model": "^2.2.0",
     "@umijs/plugin-request": "^2.3.2",
     "husky": "^4.2.3",
-    "lint-staged": "^10.0.9",
+    "lint-staged": "^10.0.10",
     "react-coding-style": "^1.0.0",
     "umi": "^3.0.14"
   },
   "dependencies": {
     "@umijs/hooks": "^1.8.0",
     "classnames": "^2.2.6",
-    "js-cookie": "^2.2.1",
-    "qs": "^6.9.3"
+    "js-cookie": "^2.2.1"
   }
 }

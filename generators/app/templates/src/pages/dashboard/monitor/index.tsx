@@ -6,6 +6,7 @@ function Monitor() {
 
 Monitor.title = 'MONITOR_TITLE'
 Monitor.layout = 'PRO_LAYOUT'
+Monitor.requireSignin = true
 Monitor.access = 'canReadDashboardMonitor'
 
 export default Monitor

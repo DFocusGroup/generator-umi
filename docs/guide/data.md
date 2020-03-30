@@ -8,7 +8,7 @@
 
 我们依旧以登录页面为例讲解。
 
-`src/pages/o/login/index.tsx`：
+`src/pages/login/index.tsx`：
 
 ```typescript
 // 业务逻辑被提取到了 src/models/useLoginModel.ts 中

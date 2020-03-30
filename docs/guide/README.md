@@ -2,6 +2,10 @@
 
 本脚手架使用了 [umi@3](https://umijs.org) + [typescript](http://www.typescriptlang.org)， 以及 [antd@4](https://ant.design)。对这三样完全不熟悉的朋友，强烈建议先做了解之后再来。（再见）
 
+其次，本脚手架没有使用 [preset-react](https://umijs.org/plugins/preset-react)，而是单独使用了 [plugin-access](https://umijs.org/plugins/plugin-access)、[plugin-antd](https://umijs.org/plugins/plugin-antd)、[plugin-initial-state](https://umijs.org/plugins/plugin-initial-state)、[plugin-locale](https://umijs.org/plugins/plugin-locale)、[plugin-model](https://umijs.org/plugins/plugin-model)、[plugin-request](https://umijs.org/plugins/plugin-request)。并通过内置的 [路由系统](/guide/route.md) 和 [布局系统](/guide/layout.md) 来完成权限路由和布局选择的功能。目的是为开发者提供一个扩展性更强的 code base。
+
+所以对上述使用到的插件不熟悉的朋友，也需要先了解之后再往下看，再见。
+
 接下来，就是介绍脚手架的部分了。首先介绍下项目结构：
 
     .

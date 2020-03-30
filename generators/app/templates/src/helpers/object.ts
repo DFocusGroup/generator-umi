@@ -6,6 +6,10 @@ export function isNumber(obj: any): obj is number {
   return Object.prototype.toString.call(obj) === '[object Number]' && !isNaN(obj)
 }
 
+export function isBoolean(obj: any): obj is boolean {
+  return Object.prototype.toString.call(obj) === '[object Boolean]'
+}
+
 export function isEmpty(obj: any) {
   return obj === null || obj === undefined
 }

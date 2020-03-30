@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useAccess, Redirect, useModel } from 'umi'
 
-import { destoryGlobalSpinner, isNotEmpty, pick } from '@/helpers'
+import { Exception404 } from '@/components'
+import { destoryGlobalSpinner, pick, isEmpty, clearAll } from '@/helpers'
 import { IERoute, ILocation } from '@/types'
 
-import { resolveOpenPage, resolveAuthRequiredPage } from './options'
+import LayoutSelector from './options/LayoutSelector'
 
 interface IEntryLayoutProps {
   children: JSX.Element
@@ -14,9 +15,10 @@ interface IEntryLayoutProps {
 }
 
 export default function Layout({ children, location, route }: IEntryLayoutProps) {
+  console.count('Layout')
   const accessState = useAccess()
-  const { findMatchedRoute, isOpenPage, signRequired, canAccess } = useModel('useAppModel', m =>
-    pick(m, 'findMatchedRoute', 'isOpenPage', 'signRequired', 'canAccess')
+  const { findMatchedRoute, signRequired, canAccess, width, height, routeCheck } = useModel('useAppModel', m =>
+    pick(m, 'findMatchedRoute', 'signRequired', 'canAccess', 'width', 'height', 'routeCheck')
   )
 
   const matchedRoute = findMatchedRoute(location.pathname, route.routes!)
@@ -25,23 +27,22 @@ export default function Layout({ children, location, route }: IEntryLayoutProps)
     destoryGlobalSpinner()
   }, [])
 
-  if (isOpenPage(location.pathname)) {
-    return resolveOpenPage({
-      routes: route.routes,
-      children: children,
-      route: matchedRoute!,
-      canAccess: true
-    })
+  // 404
+  if (isEmpty(matchedRoute)) {
+    return <Exception404 style={{ width, height }} />
   }
 
-  if (signRequired(accessState)) {
-    return <Redirect to={{ pathname: '/o/login', search: `?redirectTo=${location.pathname}` }} />
+  // validate attributes specified at route
+  routeCheck(matchedRoute!)
+
+  if (signRequired(matchedRoute!, accessState)) {
+    clearAll()
+    return <Redirect to={{ pathname: '/login', search: `?redirectTo=${location.pathname}` }} />
   }
 
-  return resolveAuthRequiredPage({
-    routes: route.routes!,
-    children: children,
-    route: matchedRoute!,
-    canAccess: isNotEmpty<IERoute>(matchedRoute) ? canAccess(matchedRoute, accessState) : true
-  })
+  return (
+    <LayoutSelector route={matchedRoute!} routes={route.routes!} canAccess={canAccess(matchedRoute!, accessState)}>
+      {children}
+    </LayoutSelector>
+  )
 }

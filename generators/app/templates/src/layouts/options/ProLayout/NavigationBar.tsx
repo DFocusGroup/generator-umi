@@ -1,10 +1,9 @@
 import React, { useMemo } from 'react'
 import { Avatar, Dropdown, Menu } from 'antd'
-import { LogoutOutlined } from '@ant-design/icons'
-import { useModel, useIntl } from 'umi'
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
+import { useModel, useIntl, history } from 'umi'
 
-import MenuFoldButton from '@/components/buttons/MenuFoldButton'
-import LangSwitch from '@/components/buttons/LangSwitch'
+import { MenuFoldButton, LangSwitch } from '@/components'
 import { redirectToLogin } from '@/helpers'
 import { IUser } from '@/types'
 
@@ -22,6 +21,16 @@ export default function NavigationBar({ sidebarCollapsed, onToggleSidebar }: INa
   const menu = useMemo(
     () => (
       <Menu className={styles.profileMenu}>
+        <Menu.Item
+          key="profile"
+          onClick={() => {
+            history.push('/profile')
+          }}
+        >
+          <UserOutlined />
+          {formatMessage({ id: 'PROFILE_BTN' })}
+        </Menu.Item>
+        <Menu.Divider />
         <Menu.Item
           key="logout"
           onClick={() => {

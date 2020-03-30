@@ -3,20 +3,18 @@ import { useModel } from 'umi'
 
 import { Layout } from 'antd'
 
-import Exception403 from '@/components/exception/403'
-import Exception404 from '@/components/exception/404'
-
-import SideBarTitle from './SideBarTitle'
-import SideBarMenu from './SideBarMenu'
-
-import { isEmpty, pick } from '@/helpers'
-
+import { Exception403 } from '@/components'
+import { pick } from '@/helpers'
 import { ILayoutProps, ILayoutResolver, IERoute } from '@/types'
 
-import styles from './index.less'
+import SideBarTitle from './SideBarTitle'
 import NavigationBar from './NavigationBar'
+import SideBarMenu from './SideBarMenu'
+
+import styles from './index.less'
 
 function ProLayout({ children, route, routes, canAccess }: ILayoutProps) {
+  console.count('Layout: PRO_LAYOUT')
   const { height } = useModel('useAppModel', m => pick(m, 'height'))
 
   const { sidebarCollapsed, toggleSidebar } = useModel('useProLayoutModel', m =>
@@ -24,17 +22,6 @@ function ProLayout({ children, route, routes, canAccess }: ILayoutProps) {
   )
 
   let content = children
-
-  // no route is matched, to 404
-  if (isEmpty(route)) {
-    content = (
-      <Exception404
-        style={{
-          height: height! - 64 - 48
-        }}
-      />
-    )
-  }
 
   if (!canAccess) {
     content = (
@@ -77,10 +64,13 @@ function ProLayout({ children, route, routes, canAccess }: ILayoutProps) {
 }
 
 const ProLayoutResolver: ILayoutResolver = {
-  is(route?: IERoute): boolean {
-    return isEmpty(route) || route!.layout === 'PRO_LAYOUT'
+  is(route: IERoute): boolean {
+    return route.layout === 'PRO_LAYOUT'
   },
   get({ routes, children, route, canAccess }: ILayoutProps) {
+    if (!route.requireSignin) {
+      throw new Error(`Route: ${route.path}, [requireSignin] must be true while layout === PRO_LAYOUT`)
+    }
     return (
       <ProLayout routes={routes!} route={route} canAccess={canAccess}>
         {children}

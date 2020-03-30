@@ -2,6 +2,7 @@
 export default {
   APP_TITLE: 'Umi App',
   LOGOUT_BTN: 'Logout',
+  PROFILE_BTN: 'Profile',
   BACK_TO_HOME: 'Back to home',
   ERROR_403: "Sorry, you don't have access to this page",
   ERROR_404: 'Sorry, the page you visited does not exist.',
@@ -18,10 +19,13 @@ export default {
   LOGIN_SIGNIN_BTN: 'Sign in',
   LOGIN_FORGET_PASSWORD_TIP: 'Not implemented yet',
 
-  //analysis
+  // dashboard
   ANALYSIS_TITLE: 'Analysis',
   MONITOR_TITLE: 'Monitor',
   DASHBOARD_MENU: 'Dashboard',
   ANAKYSIS_MENU: 'Analysis',
-  MONITOR_MENU: 'Monitor'
+  MONITOR_MENU: 'Monitor',
+
+  // profile
+  PROFILE_TITLE: 'User Profile'
 }
