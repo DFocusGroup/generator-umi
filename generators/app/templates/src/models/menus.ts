@@ -1,4 +1,10 @@
-import { DashboardOutlined, RadarChartOutlined, MonitorOutlined } from '@ant-design/icons'
+import {
+  DashboardOutlined,
+  RadarChartOutlined,
+  MonitorOutlined,
+  SolutionOutlined,
+  UserOutlined
+} from '@ant-design/icons'
 
 import { IMenu } from '@/types'
 
@@ -17,6 +23,18 @@ export default [
         icon: MonitorOutlined,
         title: 'MONITOR_MENU',
         path: '/dashboard/monitor'
+      }
+    ]
+  },
+  {
+    key: 'admin',
+    icon: SolutionOutlined,
+    title: 'ADMIN_MENU',
+    children: [
+      {
+        icon: UserOutlined,
+        title: 'USER_MANAGEMENT_MENU',
+        path: '/admin/users'
       }
     ]
   }

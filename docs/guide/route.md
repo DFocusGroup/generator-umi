@@ -76,3 +76,7 @@ export default Analysis
 如果访问的页面不存在，脚手架自带了 404 组件，如下：
 
 <img :src="$withBase('/open_404.png')" alt="open 404">
+
+## 权限路由的应用
+
+分别使用 `admin/123456` 和 `meimei.han/123456` 两个账号登录系统，会看到不同的菜单。

@@ -11,7 +11,7 @@ export default {
   LOGIN_TITLE: '登录',
   LOGIN_TAB_ACCOUNT: '账号密码登录',
   LOGIN_ACCOUNT_REQUIRED_MSG: '请填写账号!',
-  LOGIN_ACCOUNT_PLACEHOLDER: '账号：admin',
+  LOGIN_ACCOUNT_PLACEHOLDER: '账号：admin 或者 meimei.han',
   LOGIN_PASSWORD_REQUIRED_MSG: '请填写密码!',
   LOGIN_PASSWORD_PLACEHOLDER: '密码：123456',
   LOGIN_REMEMBER: '记住我',
@@ -25,6 +25,11 @@ export default {
   DASHBOARD_MENU: '仪表盘',
   ANAKYSIS_MENU: '分析',
   MONITOR_MENU: '监控',
+
+  // admin
+  ADMIN_MENU: '系统管理',
+  USERS_TITLE: '用户管理',
+  USER_MANAGEMENT_MENU: '用户管理',
 
   // profile
   PROFILE_TITLE: '个人信息'

@@ -1,4 +1,5 @@
-export const FAKE_TOKEN = 'oijhdvkdsiiopwejr3209jds'
+export const FAKE_ADMIN_TOKEN = 'oijhdvkdsiiopwejr3209jds'
+export const FAKE_HANMEIMEI_TOKEN = 'knfhsdop09923jds;kmnsdf'
 
 export enum SHOW_TYPE {
   SILENT = 0, // don't notify user

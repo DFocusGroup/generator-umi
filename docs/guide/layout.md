@@ -27,6 +27,10 @@ Login.layout = 'BLANK'
 Monitor.layout = 'PRO_LAYOUT'
 ```
 
+#### 菜单
+
+左侧菜单选项，通过修改 `src/models/menus.ts` 来达成。
+
 效果如下：
 
 <img :src="$withBase('/pro_layout.png')" alt="pro">
