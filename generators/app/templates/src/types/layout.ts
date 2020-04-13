@@ -1,16 +1,21 @@
-import { IRoute } from 'umi'
-import { Location } from 'history'
+import { IRouteProps, IRouteComponentProps } from 'umi'
 
-export interface IERoute extends IRoute {
+export interface IERoute extends IRouteProps {
+  title?: string
   layout?: string
   access?: string
+  requireSignin?: boolean
   routes?: IERoute[]
 }
 
-export interface ILayoutProps {
-  children: JSX.Element
+export interface IEntryLayoutProps extends IRouteComponentProps {
   route: IERoute
-  routes?: IERoute[]
+}
+
+export interface ILayoutProps {
+  route: IERoute
+  routes: IERoute[]
+  children: JSX.Element
   canAccess: boolean
 }
 

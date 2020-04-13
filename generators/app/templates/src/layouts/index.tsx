@@ -3,16 +3,9 @@ import { useAccess, Redirect, useModel } from 'umi'
 
 import { Exception404 } from '@/components'
 import { destoryGlobalSpinner, pick, isEmpty, clearAll } from '@/helpers'
-import { IERoute, ILocation } from '@/types'
+import { IEntryLayoutProps } from '@/types'
 
 import LayoutSelector from './options/LayoutSelector'
-
-interface IEntryLayoutProps {
-  children: JSX.Element
-  route: IERoute
-  location: ILocation
-  history: History
-}
 
 export default function Layout({ children, location, route }: IEntryLayoutProps) {
   console.count('Layout')

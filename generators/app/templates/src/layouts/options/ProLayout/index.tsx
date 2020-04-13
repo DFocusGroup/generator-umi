@@ -13,7 +13,13 @@ import SideBarMenu from './SideBarMenu'
 
 import styles from './index.less'
 
-function ProLayout({ children, route, routes, canAccess }: ILayoutProps) {
+interface IProlayoutProps {
+  children: JSX.Element
+  routes: IERoute[]
+  canAccess: boolean
+}
+
+const ProLayout = React.memo(function({ children, routes, canAccess }: IProlayoutProps) {
   console.count('Layout: PRO_LAYOUT')
   const { height } = useModel('useAppModel', m => pick(m, 'height'))
 
@@ -61,7 +67,7 @@ function ProLayout({ children, route, routes, canAccess }: ILayoutProps) {
       </Layout>
     </Layout>
   )
-}
+})
 
 const ProLayoutResolver: ILayoutResolver = {
   is(route: IERoute): boolean {
@@ -72,7 +78,7 @@ const ProLayoutResolver: ILayoutResolver = {
       throw new Error(`Route: ${route.path}, [requireSignin] must be true while layout === PRO_LAYOUT`)
     }
     return (
-      <ProLayout routes={routes!} route={route} canAccess={canAccess}>
+      <ProLayout routes={routes!} canAccess={canAccess}>
         {children}
       </ProLayout>
     )
