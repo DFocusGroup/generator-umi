@@ -2,9 +2,11 @@
 
 数据管理使用详情，参考[plugin-model](https://umijs.org/zh-CN/plugins/plugin-model)。
 
-核心思路就是利用 `hooks` 来做 model，是有别于 `redux` 的另一种数据管理手段。
+核心思路就是利用 `hooks` 优秀的表达能力和简洁性来做 model，是有别于 `redux` 的另一种数据管理手段。唯一需要处理的就是 `hooks` 只能复用逻辑，不能复用状态的问题。还好这个已经在 `plugin-model` 里解决了。
 
-所有的 model 都会放在 `src/models/` 下面。
+> 有兴趣了解 `plugin-model` 如何解决状态复用问题的，可以参考[从 custom Hooks 到 shared Hooks ：hox 原理分析](https://zhuanlan.zhihu.com/p/89518937)
+
+基于 `plugin-model`，所有的 model 都会放在 `src/models/` 下面。
 
 我们依旧以登录页面为例讲解。
 

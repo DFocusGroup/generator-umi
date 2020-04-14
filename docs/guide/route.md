@@ -21,7 +21,7 @@ Analysis.access = 'canReadDashboardAnalysis'
 export default Analysis
 ```
 
-> 静态属性：指 直接赋值的 属性，例如：`Login.title = 'LOGIN_TITLE'`。~~变量中转则不支持，如：`Login.title = titleName`~~
+> 静态属性：指 直接赋值的 属性，例如：`Login.title = 'LOGIN_TITLE'`。~~变量赋值则不支持，如：`Login.title = titleName`~~
 
 ### title
 
@@ -61,11 +61,13 @@ export default Analysis
 
 当路由的 `requireSignin = true` 时，可以设置 `access` 来描述该路由的详细权限诉求。
 
-例如分析页面 `src/pages/dashboard/analysis/index.tsx`，该路由指定了 `Analysis.access = 'canReadDashboardAnalysis'`。
+例如分析页面 `src/pages/admin/users/index.tsx`，该路由指定了 `Analysis.access = 'canReadAdminUserManagement'`。
 
-这时候，如果我们把 `mock/user.js` 中的 `VIEW_DASHBOARD_ANALYSIS` 改成其他任意字符，刷新页面，尝试访问 `/dashboard/analysis`，你会看到如下界面：
+如果你使用管理员账号（`admin/123456`），就能正常访问该页面（`/admin/users`）。
 
-<img :src="$withBase('/403.png')" alt="403">
+如果使用普通用户账号（`meimei.han/123456`），访问该页面（`/admin/users`）会看到如下界面：
+
+<img :src="$withBase('/pro_403.png')" alt="403">
 
 > 判定是否具有页面访问权限的操作之所以单独放在 `src/access.ts` 里，就是考虑到后端的 api 不一定和脚手架相同而需要变更，所以在 `src/access.ts` 里统一处理。
 

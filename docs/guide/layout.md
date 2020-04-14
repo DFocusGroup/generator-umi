@@ -40,9 +40,10 @@ Monitor.layout = 'PRO_LAYOUT'
 请看 `src/layouts/options/LayoutSelector.tsx`，找到如下代码：
 
 ```typescript
-import { useMemo } from 'react'
 import { isNotEmpty } from '@/helpers'
+
 import { ILayoutResolver, IERoute } from '@/types'
+
 import { LAYOUT_RESOLVERS } from './layoutResolvers'
 
 interface ILayoutSelectorProps {
@@ -56,21 +57,12 @@ export default function LayoutSelector({ route, routes, children, canAccess }: I
   console.count('LayoutSelector')
 
   // 在布局处理器列表里查找合适的布局处理器
-  const resolver = useMemo(() => LAYOUT_RESOLVERS.find(r => r.is(route)), [route])
-
-  // 使用布局处理器获取最终布局
-  const layout = useMemo(() => {
-    if (isNotEmpty<ILayoutResolver>(resolver)) {
-      return resolver.get({ routes: routes!, children, route, canAccess })
-    }
-    return null
-  }, [route, routes, children, canAccess, resolver])
+  const resolver = LAYOUT_RESOLVERS.find(r => r.is(route))
 
   // 使用布局渲染路由
-  if (isNotEmpty<JSX.Element>(layout)) {
-    return layout
+  if (isNotEmpty<ILayoutResolver>(resolver)) {
+    return resolver.get({ routes, children, route, canAccess })
   }
-
   // 如果路由里指定的布局不存在，报错
   throw new Error(`no proper layout found for ${route.path}, please check your code`)
 }
@@ -108,17 +100,17 @@ import { Exception403 } from '@/components'
 import { ILayoutProps, ILayoutResolver, IERoute } from '@/types'
 
 // 空布局实现
-function Blank({ children, canAccess }: ILayoutProps) {
+const Blank = React.memo(function({ children, canAccess }: IBlankProps) {
   console.count('Layout: BLANK')
   const { width, height } = useModel('useAppModel', m => pick(m, 'width', 'height'))
 
-  // 没有该页面权限时，显示 403 页面
+  // 没有该页面权限时，显示403
   if (!canAccess) {
     return <Exception403 style={{ width, height }} />
   }
 
   return children
-}
+})
 
 const BlankResolver: ILayoutResolver = {
   // 路由是否可以使用当前布局的判定
@@ -127,11 +119,7 @@ const BlankResolver: ILayoutResolver = {
   },
   // 把必要的 props 传给布局
   get({ routes, children, route, canAccess }: ILayoutProps) {
-    return (
-      <Blank route={route} canAccess={canAccess}>
-        {children}
-      </Blank>
-    )
+    return <Blank canAccess={canAccess}>{children}</Blank>
   }
 }
 
