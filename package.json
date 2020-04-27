@@ -1,6 +1,6 @@
 {
   "name": "generator-umi",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "umi project generator",
   "scripts": {
     "docs:dev": "vuepress dev docs",
@@ -13,7 +13,7 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "yeoman-generator": "^4.7.2"
+    "yeoman-generator": "^4.9.0"
   },
   "repository": {
     "type": "git",
@@ -26,8 +26,8 @@
   },
   "homepage": "https://github.com/DFocusGroup/generator-umi#readme",
   "devDependencies": {
-    "@vuepress/plugin-pwa": "^1.4.0",
+    "@vuepress/plugin-pwa": "^1.4.1",
     "gh-pages": "^2.2.0",
-    "vuepress": "^1.4.0"
+    "vuepress": "^1.4.1"
   }
 }
