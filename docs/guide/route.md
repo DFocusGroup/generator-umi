@@ -23,6 +23,79 @@ export default Analysis
 
 > 静态属性：指 直接赋值的 属性，例如：`Login.title = 'LOGIN_TITLE'`。~~变量赋值则不支持，如：`Login.title = titleName`~~
 
+如需使用配置式路由，可以参考如下配置：
+
+```typescript
+import { defineConfig } from 'umi'
+
+import theme from './theme'
+
+export default defineConfig({
+  hash: true,
+  mock: {
+    exclude: ['mock/**/_*.[jt]s']
+  },
+  antd: {},
+  theme,
+  locale: {
+    antd: true,
+    title: true
+  },
+  routes: [
+    {
+      path: '/',
+      component: '@/layouts/index',
+      routes: [
+        {
+          path: '/',
+          component: '@/pages/index',
+          requireSignin: false,
+          layout: 'BLANK'
+        },
+        {
+          component: '@/pages/admin/users/index',
+          path: '/admin/users',
+          title: 'USERS_TITLE',
+          layout: 'PRO_LAYOUT',
+          requireSignin: true,
+          access: 'canReadAdminUserManagement'
+        },
+        {
+          component: '@/pages/dashboard/analysis/index',
+          path: '/dashboard/analysis',
+          title: 'ANALYSIS_TITLE',
+          layout: 'PRO_LAYOUT',
+          requireSignin: true,
+          access: 'canReadDashboardAnalysis'
+        },
+        {
+          component: '@/pages/dashboard/monitor/index',
+          path: '/dashboard/monitor',
+          title: 'MONITOR_TITLE',
+          layout: 'PRO_LAYOUT',
+          requireSignin: true,
+          access: 'canReadDashboardMonitor'
+        },
+        {
+          component: '@/pages/login/index',
+          path: '/login',
+          title: 'LOGIN_TITLE',
+          layout: 'BLANK',
+          requireSignin: false
+        },
+        {
+          component: '@/pages/Profile/index',
+          path: '/profile',
+          title: 'PROFILE_TITLE',
+          layout: 'PRO_LAYOUT',
+          requireSignin: true
+        }
+      ]
+    }
+  ]
+})
+```
+
 ### title
 
 - Type: `string`
@@ -82,3 +155,7 @@ export default Analysis
 ## 权限路由的应用
 
 分别使用 `admin/123456` 和 `meimei.han/123456` 两个账号登录系统，会看到不同的菜单。
+
+```
+
+```
