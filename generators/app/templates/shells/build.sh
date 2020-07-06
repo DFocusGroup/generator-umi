@@ -41,6 +41,7 @@ mv ./dist ./${output}
 
 # 拷贝server目录到打包目录
 cp -r ./server ./${output}
+cp -r ./src/config ./${output}
 
 # 拷贝package.json到打包目录
 cp ./src/serve.package.json ./${output}/package.json
