@@ -27,7 +27,7 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "1be19bfdf59c106de824c0c25700b08b"
+    "revision": "50ebe069f05ae45016ee6c2355bffe4c"
   },
   {
     "url": "assets/css/0.styles.93ecdb6e.css",
@@ -38,16 +38,16 @@ self.__precacheManifest = [
     "revision": "83621669651b9a3d4bf64d1a670ad856"
   },
   {
-    "url": "assets/js/10.89bebf75.js",
-    "revision": "e01f8ee675fba9d644a166825dd2203e"
+    "url": "assets/js/10.4624a5c0.js",
+    "revision": "11371a2c57b1546dc720bfc3f4c17afa"
   },
   {
-    "url": "assets/js/11.7ded6320.js",
-    "revision": "80fc21cccec519ad09d1f5fe515b7b70"
+    "url": "assets/js/11.4639572a.js",
+    "revision": "1337488856d27dd1ad13be446ba81c42"
   },
   {
-    "url": "assets/js/12.639e443c.js",
-    "revision": "1fa3986b09aaa813229b2b62092be7cd"
+    "url": "assets/js/12.6b6b449e.js",
+    "revision": "fef63ce5afa616e3fc3ae6794f47fb65"
   },
   {
     "url": "assets/js/13.2e0f6968.js",
@@ -86,8 +86,8 @@ self.__precacheManifest = [
     "revision": "e3e1fed36e175110b5eaa731df21306f"
   },
   {
-    "url": "assets/js/app.f65992f0.js",
-    "revision": "764103b3772f8a9f11b730ed65775456"
+    "url": "assets/js/app.aaaf2026.js",
+    "revision": "d1c0bff7e6738296557429b927490bd6"
   },
   {
     "url": "blank_layout.png",
@@ -107,31 +107,31 @@ self.__precacheManifest = [
   },
   {
     "url": "guide/data.html",
-    "revision": "90ba22f9aff721a3b6ff9bffeebc6929"
+    "revision": "38ce861c52010b8d673785be2a7beec4"
   },
   {
     "url": "guide/index.html",
-    "revision": "ee29bac879cf0fc8e3276a8697761ecc"
+    "revision": "66fe46548ae126259b16cc6c3e20ae44"
   },
   {
     "url": "guide/layout.html",
-    "revision": "5b1a71987898bdf2fe4466f8892fe5b2"
+    "revision": "53ca4a86ca3e2828f3aa481222964f21"
   },
   {
     "url": "guide/locale.html",
-    "revision": "46ff96115cb0ca16467ff221fb47b9da"
+    "revision": "90f44fc977f71d12f13d916d4d9c2d0e"
   },
   {
     "url": "guide/packaging.html",
-    "revision": "5f48cd908c14484c3b637f4d19cc8155"
+    "revision": "e497d4fefd086b065c68df4276366188"
   },
   {
     "url": "guide/route.html",
-    "revision": "f933171a1bf1e44a2bdd55b9c9a16f3d"
+    "revision": "57b84f7ad815c0e8d269b8d4c03dddd8"
   },
   {
     "url": "index.html",
-    "revision": "49b33a56b91cf50b03b8efe0afe3f9fe"
+    "revision": "0db22623848d0bb71529f60af76e7fc2"
   },
   {
     "url": "locale.gif",
