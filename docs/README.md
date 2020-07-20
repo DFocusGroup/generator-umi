@@ -13,6 +13,8 @@ features:
     details: 便捷的多语言切换功能
   - title: 数据管理
     details: 不同于 redux 的数据管理体验，让 hooks 带你high个够
+  - title: 主题切换
+    details: 便捷的动态主题切换功能，让你的应用从此绚丽多彩
   - title: 打包
     details: 内置 `.zip`、`docker` 镜像两种打包风格，让你的业务推动更顺滑
 footer: MIT Licensed | Copyright © 2020-present Howard.Zuo

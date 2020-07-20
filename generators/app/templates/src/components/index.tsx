@@ -1,4 +1,5 @@
 export { default as LangSwitch } from './buttons/LangSwitch'
+export { default as ThemeSwitch } from './buttons/ThemeSwitch'
 export { default as MenuFoldButton } from './buttons/MenuFoldButton'
 export { default as Exception403 } from './exception/403'
 export { default as Exception404 } from './exception/404'

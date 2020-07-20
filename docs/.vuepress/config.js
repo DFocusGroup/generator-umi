@@ -25,7 +25,7 @@ module.exports = {
         {
           title: 'Guide',
           collapsable: false,
-          children: ['', 'route', 'layout', 'locale', 'data', 'packaging']
+          children: ['', 'route', 'layout', 'locale', 'data', 'theme', 'packaging']
         }
       ]
     }

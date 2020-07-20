@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useLocalStorageState } from '@umijs/hooks'
+import { useLocalStorageState } from 'ahooks'
 import pathToRegexp from 'path-to-regexp'
 
 import { flattenTree, isEmptyArray, isEmpty, isNotEmpty } from '@/helpers'

@@ -3,7 +3,7 @@ import { Avatar, Dropdown, Menu } from 'antd'
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
 import { useModel, useIntl, history } from 'umi'
 
-import { MenuFoldButton, LangSwitch } from '@/components'
+import { MenuFoldButton, LangSwitch, ThemeSwitch } from '@/components'
 import { redirectToLogin } from '@/helpers'
 import { IUser } from '@/types'
 
@@ -55,7 +55,8 @@ export default function NavigationBar({ sidebarCollapsed, onToggleSidebar }: INa
           </div>
         </Dropdown>
 
-        <LangSwitch className={styles.lang} />
+        <LangSwitch className={styles.navItem} />
+        <ThemeSwitch className={styles.navItem} />
       </div>
     </>
   )

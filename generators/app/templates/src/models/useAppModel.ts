@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
-import { useSize } from '@umijs/hooks'
+import { useSize } from 'ahooks'
 import { matchPath } from 'umi'
 
 import { flattenTree, isEmpty, isNotEmpty, isBoolean, isInvalidInitState, isString } from '@/helpers'
 import { IERoute, IAccessState, IInvalidInitState } from '@/types'
 
 export default function useAppModel() {
-  const [{ width, height }] = useSize(document.body)
+  const { width, height } = useSize(document.body)
 
   const findMatchedRoute = useCallback((pathname: string, routes: IERoute[]) => {
     return flattenTree(routes, r => r.routes)

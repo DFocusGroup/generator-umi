@@ -3,7 +3,7 @@ import { Tabs } from 'antd'
 
 import { useModel, Redirect, useIntl, useLocation } from 'umi'
 
-import { LangSwitch } from '@/components'
+import { LangSwitch, ThemeSwitch } from '@/components'
 import { isInvalidInitState, isNotEmpty, pick } from '@/helpers'
 
 import Title from './components/Title'
@@ -45,6 +45,7 @@ function Login() {
           </Tabs.TabPane>
         </Tabs>
       </div>
+      <ThemeSwitch className={styles.theme} />
       <LangSwitch className={styles.lang} />
     </>
   )
