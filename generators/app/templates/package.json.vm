@@ -22,26 +22,26 @@
     "*.{j,t}sx?": "eslint --max-warnings=0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^9.1.1",
-    "@commitlint/config-conventional": "^9.1.1",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
     "@types/classnames": "^2.2.10",
-    "@types/jest": "^26.0.5",
+    "@types/jest": "^26.0.10",
     "@types/js-cookie": "^2.2.6",
     "@umijs/plugin-access": "^2.3.1",
-    "@umijs/plugin-antd": "^0.7.0",
+    "@umijs/plugin-antd": "^0.8.0",
     "@umijs/plugin-initial-state": "^2.2.1",
-    "@umijs/plugin-locale": "^0.9.0",
-    "@umijs/plugin-model": "^2.5.1",
-    "@umijs/plugin-request": "^2.4.1",
-    "@umijs/test": "^3.2.10",
+    "@umijs/plugin-locale": "^0.10.1",
+    "@umijs/plugin-model": "^2.5.3",
+    "@umijs/plugin-request": "^2.5.0",
+    "@umijs/test": "^3.2.17",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
-    "react-coding-style": "^1.1.0",
-    "umi": "^3.2.10",
+    "lint-staged": "^10.2.13",
+    "react-coding-style": "^1.1.1",
+    "umi": "^3.2.17",
     "umi-plugin-antd-theme": "^2.1.2"
   },
   "dependencies": {
-    "ahooks": "^2.2.0",
+    "ahooks": "^2.5.0",
     "classnames": "^2.2.6",
     "js-cookie": "^2.2.1"
   }
