@@ -1,3 +1,3 @@
-module.exports = {
-  ...require('react-coding-style/src/prettier')
-}
+const style = require('react-coding-style')
+
+module.exports = style.prettier

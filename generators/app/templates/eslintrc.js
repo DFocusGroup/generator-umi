@@ -1,3 +1,3 @@
-module.exports = {
-  extends: [require.resolve('react-coding-style/src/eslint')]
-}
+const style = require('react-coding-style')
+
+module.exports = style.tslint

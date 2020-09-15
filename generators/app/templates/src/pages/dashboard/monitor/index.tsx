@@ -1,6 +1,7 @@
 import React from 'react'
+import { IPageComponent, IPageComponentProps } from '@/types'
 
-function Monitor() {
+const Monitor: IPageComponent = (props: IPageComponentProps) => {
   return <div>monitor</div>
 }
 

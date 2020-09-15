@@ -5,13 +5,14 @@ import { useModel, Redirect, useIntl, useLocation } from 'umi'
 
 import { LangSwitch, ThemeSwitch } from '@/components'
 import { isInvalidInitState, isNotEmpty, pick } from '@/helpers'
+import { IPageComponent, IPageComponentProps } from '@/types'
 
 import Title from './components/Title'
 import AccountPane from './components/AccountPane'
 
 import styles from './index.less'
 
-function Login() {
+const Login: IPageComponent = (props: IPageComponentProps) => {
   const { initialState } = useModel('@@initialState')
   const { initBackground } = useModel('useLoginModel', m => pick(m, 'initBackground'))
   const { formatMessage } = useIntl()

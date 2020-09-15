@@ -1,3 +1,4 @@
+import React from 'react'
 import { IRouteProps, IRouteComponentProps } from 'umi'
 
 export interface IERoute extends IRouteProps {
@@ -26,4 +27,14 @@ export interface ILayoutResolver {
 
 export interface ILocation extends Location {
   query: { [key: string]: string }
+}
+
+export type IPageComponentProps = ILayoutProps
+
+export interface IPageComponent {
+  (props: IPageComponentProps, context?: any): React.ReactElement<any, any> | null
+  title?: string
+  layout?: string
+  access?: string
+  requireSignin?: boolean
 }

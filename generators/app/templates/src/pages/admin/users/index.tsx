@@ -1,6 +1,8 @@
 import React from 'react'
 
-function Users() {
+import { IPageComponent, IPageComponentProps } from '@/types'
+
+const Users: IPageComponent = (props: IPageComponentProps) => {
   return <div>User management</div>
 }
 

@@ -1,15 +1,14 @@
+import * as H from 'history'
 import { useCallback } from 'react'
 import { useLocalStorageState } from 'ahooks'
 import pathToRegexp from 'path-to-regexp'
 
-import { flattenTree, isEmptyArray, isEmpty, isNotEmpty } from '@/helpers'
+import { flattenTree, isEmptyArray, isEmpty, isNotEmpty, isNotEmptyArray } from '@/helpers'
 
-import { IMenu, IERoute, IAccessState } from '@/types'
+import { IBaseMenu, IERoute, IAccessState } from '@/types'
 
-import menus from './menus'
-
-function toFinalMenus(menus: IMenu[], routes: IERoute[], accessState: IAccessState) {
-  const targets: IMenu[] = []
+function toFinalMenus(menus: IBaseMenu<any>[], routes: IERoute[], accessState: IAccessState) {
+  const targets: IBaseMenu<any>[] = []
 
   menus.forEach(menu => {
     if (isEmpty(menu.path)) {
@@ -22,7 +21,7 @@ function toFinalMenus(menus: IMenu[], routes: IERoute[], accessState: IAccessSta
         return
       }
 
-      const targetMenu: IMenu = { ...menu, children: undefined }
+      const targetMenu: IBaseMenu<any> = { ...menu, children: undefined }
       targetMenu.children = toFinalMenus(menu.children!, routes, accessState)
       if (isEmptyArray(targetMenu.children)) {
         return
@@ -51,24 +50,39 @@ export default function useProLayoutModel() {
     setSidebarCollapsed(bool => !bool)
   }, [setSidebarCollapsed])
 
-  const getAuthedMenus = useCallback((routes: IERoute[], accessState: IAccessState) => {
-    const finalMenus = toFinalMenus(
-      menus,
-      flattenTree(routes, r => r.routes),
-      accessState as IAccessState
-    )
-
-    return finalMenus
-  }, [])
-
-  const getMatchedMenu = useCallback((flattenMenus: IMenu[], pathname: string) => {
+  const getMatchedMenu = useCallback((flattenMenus: IBaseMenu<any>[], pathname: string) => {
     return flattenMenus.find(menu => isNotEmpty<string>(menu.path) && pathToRegexp(menu.path).exec(pathname))
   }, [])
+
+  const getMenuInfo = useCallback(
+    (routes: IERoute[], sideMenus: IBaseMenu<any>[], accessState: IAccessState, location: H.Location) => {
+      const finalMenus = toFinalMenus(
+        sideMenus,
+        flattenTree(routes, r => r.routes),
+        accessState as IAccessState
+      )
+      const flattenFinalMenus = flattenTree(finalMenus, m => m.children)
+      const matchedMenu = getMatchedMenu(flattenFinalMenus, location.pathname)
+      const openKeys = matchedMenu
+        ? flattenFinalMenus
+            .filter(
+              m => isNotEmptyArray<IBaseMenu<any>[]>(m.children) && m.children.some(m1 => m1.path === matchedMenu.path)
+            )
+            .map<string>(m => m.key || m.path!)
+        : []
+
+      return {
+        menus: finalMenus,
+        matchedRoutePaths: matchedMenu ? [matchedMenu.path!] : [],
+        matchedFolders: openKeys
+      }
+    },
+    [getMatchedMenu]
+  )
 
   return {
     sidebarCollapsed,
     toggleSidebar,
-    getAuthedMenus,
-    getMatchedMenu
+    getMenuInfo
   }
 }

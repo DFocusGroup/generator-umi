@@ -19,7 +19,7 @@ export default function LangSwitch({ className }: ILangSwitchProps) {
         style={{ width: 150 }}
         selectedKeys={[locale]}
         onClick={e => {
-          setLocale(e.key)
+          setLocale(e.key as string)
         }}
       >
         <Menu.Item key="zh-CN">
@@ -27,7 +27,7 @@ export default function LangSwitch({ className }: ILangSwitchProps) {
             <span role="img" aria-label="简体中文">
               🇨🇳
             </span>
-            简体中文
+            &nbsp;简体中文
           </div>
         </Menu.Item>
         <Menu.Item key="en-US">
@@ -35,8 +35,8 @@ export default function LangSwitch({ className }: ILangSwitchProps) {
             <span role="img" aria-label="English">
               🇺🇸
             </span>
-            English
-          </div>{' '}
+            &nbsp;English
+          </div>
         </Menu.Item>
       </Menu>
     ),

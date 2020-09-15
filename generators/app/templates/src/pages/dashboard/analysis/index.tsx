@@ -1,6 +1,7 @@
 import React from 'react'
+import { IPageComponent, IPageComponentProps } from '@/types'
 
-function Analysis() {
+const Analysis: IPageComponent = (props: IPageComponentProps) => {
   return <div>analysis</div>
 }
 

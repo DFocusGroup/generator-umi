@@ -4,12 +4,13 @@ import { useModel } from 'umi'
 import { Layout } from 'antd'
 
 import { Exception403 } from '@/components'
+import Sidebar from './Sidebar'
+import Navbar from './Navbar'
+
 import { pick } from '@/helpers'
 import { ILayoutProps, ILayoutResolver, IERoute } from '@/types'
 
-import SideBarTitle from './SideBarTitle'
-import NavigationBar from './NavigationBar'
-import SideBarMenu from './SideBarMenu'
+import proLayoutConfig from './proLayoutConfig'
 
 import styles from './index.less'
 
@@ -38,17 +39,26 @@ const ProLayout = React.memo(function({ children, routes, canAccess }: IProlayou
       />
     )
   }
-
   return (
     <Layout>
-      <Layout.Sider theme="dark" width={260} trigger={null} collapsible collapsed={sidebarCollapsed}>
-        <SideBarTitle collapsed={sidebarCollapsed} />
-        <SideBarMenu routes={routes!} />
-      </Layout.Sider>
+      {proLayoutConfig.sideMenus && (
+        <Sidebar
+          routes={routes}
+          sideMenus={proLayoutConfig.sideMenus}
+          sidebarCollapsed={sidebarCollapsed}
+          appLogo={proLayoutConfig.appLogo}
+          appTitle={proLayoutConfig.appTitle}
+        />
+      )}
+
       <Layout>
-        <Layout.Header className={styles.navigationBar}>
-          <NavigationBar sidebarCollapsed={sidebarCollapsed} onToggleSidebar={toggleSidebar} />
-        </Layout.Header>
+        <Navbar
+          routes={routes}
+          sidebarCollapsed={sidebarCollapsed}
+          onToggleSidebar={toggleSidebar}
+          appLogo={proLayoutConfig.appLogo}
+          appTitle={proLayoutConfig.appTitle}
+        />
         <Layout.Content
           className={styles.content}
           style={{

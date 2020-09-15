@@ -1,12 +1,5 @@
-import { IInvalidInitState, IUser } from '@/types'
+import { IInvalidInitState, IUser, IAccessState } from '@/types'
 import { isString, isNotEmpty } from './helpers/object'
-
-export interface IAccessState {
-  canReadDashboardAnalysis: boolean
-  canReadDashboardMonitor: boolean
-  canReadAdminUserManagement: boolean
-  [index: string]: boolean
-}
 
 function turnFieldOn(initState: IAccessState, field: string) {
   if (isNotEmpty(initState[field])) {

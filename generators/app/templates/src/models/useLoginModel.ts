@@ -3,9 +3,11 @@ import { request, useModel } from 'umi'
 import { loadScript, getToken, setToken, getRememberme, setRememberme } from '@/helpers'
 
 export default function useLoginModel() {
-  const { refresh }: { refresh: Function } = useModel('@@initialState')
+  const initState = useModel('@@initialState')
   const [currentToken, setCurrentToken] = useState(getToken())
   const [isRememberme, setCurrentRememberme] = useState(!!getRememberme())
+
+  const { refresh } = initState
 
   const initBackground = useCallback(() => {
     loadScript('/bg/particles.js', 'particlesJS').then(particlesJS => {

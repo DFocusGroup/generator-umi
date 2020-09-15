@@ -1,11 +1,11 @@
 import React from 'react'
 import { useModel } from 'umi'
 import { Card } from 'antd'
-import { IUser } from '@/types'
+import { IUser, IPageComponent, IPageComponentProps } from '@/types'
 
 import styles from './index.less'
 
-function Profile() {
+const Profile: IPageComponent = (props: IPageComponentProps) => {
   // @ts-ignore
   const { initialState }: { initialState: IUser } = useModel('@@initialState')
 
