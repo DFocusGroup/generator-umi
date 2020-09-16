@@ -36,7 +36,7 @@
 
 ## application-level 定制
 
-你也可以通过在 `src/global.less` 中定义应用级别的 less 变量，如下：
+你也可以通过在 `src/global.less` 中定义应用级别的 主题 变量，如下：
 
 ```less
 // 默认主题
@@ -55,7 +55,7 @@ body.body-wrap-cyan {
 }
 ```
 
-然后，通过如下方式，在你的组件中，引用定义在 `src/global.less` 中变量就可以了:
+然后，通过如下方式(`var(定义好的变量)`)，在你的组件中，引用定义在 `src/global.less` 中变量就可以了:
 
 ```less
 .desc {

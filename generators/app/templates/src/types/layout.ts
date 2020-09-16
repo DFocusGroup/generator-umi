@@ -1,9 +1,11 @@
 import React from 'react'
 import { IRouteProps, IRouteComponentProps } from 'umi'
 
+const type LAYOUTS = 'BLANK' | 'PRO_LAYOUT'
+
 export interface IERoute extends IRouteProps {
   title?: string
-  layout?: string
+  layout?: LAYOUTS
   access?: string
   requireSignin?: boolean
   routes?: IERoute[]
@@ -34,7 +36,7 @@ export type IPageComponentProps = ILayoutProps
 export interface IPageComponent {
   (props: IPageComponentProps, context?: any): React.ReactElement<any, any> | null
   title?: string
-  layout?: string
+  layout?: LAYOUTS
   access?: string
   requireSignin?: boolean
 }
