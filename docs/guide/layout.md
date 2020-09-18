@@ -51,19 +51,39 @@ Monitor.layout = 'PRO_LAYOUT'
 
 <img :src="$withBase('/pro_layout.png')" alt="pro">
 
+`proLayoutConfig.ts` 默认值如下：
+
+```typescript
+
+export default defineProLayoutConfig({
+  // 左上角应用名称
+  appTitle: string,
+  // 左上角应用图标
+  appLogo: string,
+  // 左侧菜单栏配置，false 为关闭菜单栏
+  sideMenus: false | ISideMenu[],
+  // 上方导航栏配置，false 为关闭导航菜单
+  navMenus: false | INavMenu[]
+})
+```
+
 ## 路由指定布局
 
 上面讲了布局处理器，那么我们开发一个页面，是如何指定这个页面使用哪个布局的呢？ 有朋友应该已经注意到 上面提到的 `layout` 属性。没错，让我们再次打开一个页面组件，譬如： `src/pages/dashboard/analysis/index.tsx`：
 
 ```typescript
 import React from 'react'
+import { IPageComponent, IPageComponentProps } from '@/types'
 
-function Analysis() {
+const Analysis: IPageComponent = (props: IPageComponentProps) => {
   return <div>analysis</div>
 }
 
+Analysis.title = 'ANALYSIS_TITLE'
 // 页面使用布局，本页面使用内置的PRO_LAYOUT
 Analysis.layout = 'PRO_LAYOUT'
+Analysis.requireSignin = true
+Analysis.access = 'canReadDashboardAnalysis'
 
 export default Analysis
 ```
