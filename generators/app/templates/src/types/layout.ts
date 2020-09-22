@@ -1,7 +1,7 @@
 import React from 'react'
 import { IRouteProps, IRouteComponentProps } from 'umi'
 
-const type LAYOUTS = 'BLANK' | 'PRO_LAYOUT'
+type LAYOUTS = 'BLANK' | 'PRO_LAYOUT'
 
 export interface IERoute extends IRouteProps {
   title?: string

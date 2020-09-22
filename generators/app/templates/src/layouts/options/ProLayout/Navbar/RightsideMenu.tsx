@@ -4,15 +4,15 @@ import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
 import { useIntl, history, useModel } from 'umi'
 
 import { LangSwitch, ThemeSwitch } from '@/components'
+import { pick } from '@/helpers'
 
 import { IUser } from '@/types'
 
 import styles from './navbar.less'
 
-const BACKOFFICE_LOGOUT_URL = 'https://auth.coupangdev.com/logout?returnUrl='
-
 export default function RightsideMenu() {
   const { initialState } = useModel('@@initialState')
+  const { logout } = useModel('useLoginModel', model => pick(model, 'logout'))
   const { formatMessage } = useIntl()
 
   const menu = useMemo(
@@ -31,7 +31,7 @@ export default function RightsideMenu() {
         <Menu.Item
           key="logout"
           onClick={() => {
-            window.location.href = BACKOFFICE_LOGOUT_URL + encodeURIComponent(window.location.href)
+            logout()
           }}
         >
           <LogoutOutlined />
@@ -39,7 +39,7 @@ export default function RightsideMenu() {
         </Menu.Item>
       </Menu>
     ),
-    [formatMessage]
+    [formatMessage, logout]
   )
 
   return (

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import { request, useModel } from 'umi'
-import { loadScript, getToken, setToken, getRememberme, setRememberme } from '@/helpers'
+import { loadScript, getToken, setToken, getRememberme, setRememberme, clearAll } from '@/helpers'
 
 export default function useLoginModel() {
   const initState = useModel('@@initialState')
@@ -42,11 +42,18 @@ export default function useLoginModel() {
     [setCurrentToken, isRememberme, refresh]
   )
 
+  const logout = useCallback(() => {
+    clearAll()
+    setCurrentToken('')
+    refresh()
+  }, [refresh])
+
   return {
     initBackground,
     currentToken,
     isRememberme,
     toggleRememberme,
-    login
+    login,
+    logout
   }
 }

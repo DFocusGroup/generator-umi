@@ -30,7 +30,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # 移动dist目录到打包目录
-yarn run build
+yarn build
 
 if [ $? -ne 0 ]; then
   echo "Failed to generating bundle"
