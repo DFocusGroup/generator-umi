@@ -1,6 +1,6 @@
 # 主题
 
-脚手架使用 [umi-plugin-antd-theme](https://github.com/chenshuai2144/umi-plugin-antd-theme) 来提供动态主题切换功能。
+脚手架使用 [umi-plugin-dynamic-antd-theme](https://github.com/leftstick/umi-plugin-dynamic-antd-theme) 来提供动态主题切换功能。
 
 首先，多主题由 `config/theme.config.json` 定义，内容如下：
 
