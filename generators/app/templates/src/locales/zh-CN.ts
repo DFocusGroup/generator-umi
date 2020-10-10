@@ -32,5 +32,25 @@ export default {
   USER_MANAGEMENT_MENU: '用户管理',
 
   // profile
-  PROFILE_TITLE: '个人信息'
+  PROFILE_TITLE: '个人信息',
+  ADD_USER_BTN: '导入用户',
+  ADD_USER: '导入用户',
+  MODIFY_USER: '修改用户',
+  SEARCH_USER: '搜索用户',
+  CONFIRM_BTN: '确认',
+  CANCEL_BTN: '取消',
+  SELECT_USER_WARNING: '请选择一个要导入的用户',
+  NAME: '用户名',
+  TEAM: '团队',
+  EMAIL: '邮箱',
+  STATUS: '状态',
+  INITIAL: '初始化',
+  ACTIVE: '激活',
+  DISABLED: '禁用',
+  FILTER_PLACEHOLDER: '搜索 {field}',
+  SEARCH_BTN: '搜索',
+  RESET_BTN: '重置',
+  SELF: '自己',
+  ACTIONS: '操作',
+  CONFIRM_DELETE_USER: '确认要删除用户么？'
 }

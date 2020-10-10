@@ -2,11 +2,11 @@ import { RequestConfig, request as API } from 'umi'
 
 import { API_HOST } from '@/config'
 import { getToken } from '@/helpers'
-import { IInvalidInitState, IUser } from '@/types'
+import { IInvalidInitState, ILdapUser } from '@/types'
 
 // powered by https://umijs.org/plugins/plugin-initial-state
 // IInvalidInitState will be used to redirect page in layout
-export function getInitialState(): Promise<IInvalidInitState | IUser> {
+export function getInitialState(): Promise<IInvalidInitState | ILdapUser> {
   if (!getToken()) {
     Promise.resolve('LOGIN_REQUIRED')
   }

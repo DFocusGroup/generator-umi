@@ -32,5 +32,25 @@ export default {
   USER_MANAGEMENT_MENU: 'User Management',
 
   // profile
-  PROFILE_TITLE: 'User Profile'
+  PROFILE_TITLE: 'User Profile',
+  ADD_USER_BTN: 'Import User',
+  ADD_USER: 'Import User',
+  MODIFY_USER: 'Modify User',
+  SEARCH_USER: 'Search for user',
+  CONFIRM_BTN: 'Confirm',
+  CANCEL_BTN: 'Cancel',
+  SELECT_USER_WARNING: 'Please choose a user to import',
+  NAME: 'Name',
+  TEAM: 'Team',
+  EMAIL: 'Email',
+  STATUS: 'Status',
+  INITIAL: 'Initial',
+  ACTIVE: 'Active',
+  DISABLED: 'Disabled',
+  FILTER_PLACEHOLDER: 'Search {field}',
+  SEARCH_BTN: 'Search',
+  RESET_BTN: 'Reset',
+  SELF: 'Self',
+  ACTIONS: 'Action',
+  CONFIRM_DELETE_USER: 'Are you sure to delete user?'
 }

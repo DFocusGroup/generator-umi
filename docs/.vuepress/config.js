@@ -12,6 +12,12 @@ module.exports = {
           buttonText: '刷新'
         }
       }
+    },
+    '@vuepress/medium-zoom': {
+      selector: '.theme-default-content > img',
+      options: {
+        margin: 5
+      }
     }
   },
   base: '/generator-umi/',

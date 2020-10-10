@@ -6,7 +6,7 @@ import { useIntl, history, useModel } from 'umi'
 import { LangSwitch, ThemeSwitch } from '@/components'
 import { pick } from '@/helpers'
 
-import { IUser } from '@/types'
+import { ILdapUser } from '@/types'
 
 import styles from './navbar.less'
 
@@ -46,8 +46,8 @@ export default function RightsideMenu() {
     <div className={styles.rightMenuArea}>
       <Dropdown overlay={menu}>
         <div className={styles.profile}>
-          <Avatar src={(initialState as IUser).avatar} />
-          <span>{(initialState as IUser).title}</span>
+          <Avatar src={(initialState as ILdapUser).avatar} />
+          &nbsp;<span>{(initialState as ILdapUser).name}</span>
         </div>
       </Dropdown>
 

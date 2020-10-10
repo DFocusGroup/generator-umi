@@ -1,5 +1,6 @@
 import { Request, Response } from 'umi'
-import { success, failure, FAKE_ADMIN_TOKEN, FAKE_HANMEIMEI_TOKEN, SHOW_TYPE } from './_helper'
+import { success, failure, SHOW_TYPE } from './_utils/helper'
+import { UserAdmin, UserHanMeiMei, FAKE_ADMIN_TOKEN, FAKE_HANMEIMEI_TOKEN } from './_utils/LdapService'
 
 export default {
   'get /user': function(req: Request, res: Response) {
@@ -15,33 +16,11 @@ export default {
     }
 
     if (FAKE_ADMIN_TOKEN === token) {
-      return res.json(
-        success({
-          id: 1,
-          name: 'admin',
-          title: '管理员',
-          email: 'admin@gmail.com',
-          group: 'ADMIN',
-          signature: '沙滩一卧两年半，今日浪打我翻身',
-          avatar: '/admin_avatar.png',
-          permissions: ['VIEW_DASHBOARD_ANALYSIS', 'VIEW_DASHBOARD_MONITOR', 'VIEW_ADMIN_USER_MANAGEMENT']
-        })
-      )
+      return res.json(success(UserAdmin))
     }
 
     if (FAKE_HANMEIMEI_TOKEN === token) {
-      return res.json(
-        success({
-          id: 1,
-          name: 'meimei.han',
-          title: '韩梅梅',
-          email: 'meimei.han@gmail.com',
-          group: 'USER',
-          signature: 'How are you? Fine, thank you, and you?',
-          avatar: '/meimei_avatar.png',
-          permissions: ['VIEW_DASHBOARD_ANALYSIS', 'VIEW_DASHBOARD_MONITOR']
-        })
-      )
+      return res.json(success(UserHanMeiMei))
     }
 
     return res.json(

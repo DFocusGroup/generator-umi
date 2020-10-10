@@ -79,7 +79,7 @@
 
 程序代码执行路径大致如下：
 
-<img :src="$withBase('/data-flow.png')" alt="DataFlow">
+<img :src="$withBase('/callchain.png')" alt="call chain">
 
 ## 特性列表
 

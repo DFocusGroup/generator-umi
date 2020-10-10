@@ -1,6 +1,3 @@
-export const FAKE_ADMIN_TOKEN = 'oijhdvkdsiiopwejr3209jds'
-export const FAKE_HANMEIMEI_TOKEN = 'knfhsdop09923jds;kmnsdf'
-
 export enum SHOW_TYPE {
   SILENT = 0, // don't notify user
   WARN_MESSAGE = 1, // give user warning tips
@@ -42,4 +39,17 @@ export function failure(result: IResponseInfoStructure): IResponseInfoStructure 
     traceId,
     host
   }
+}
+
+export function parseCookie(cookies?: string) {
+  if (!cookies) {
+    return {}
+  }
+  return cookies
+    .split(';')
+    .map(v => v.split('='))
+    .reduce<{ [key: string]: string }>((acc, v) => {
+      acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim())
+      return acc
+    }, {})
 }

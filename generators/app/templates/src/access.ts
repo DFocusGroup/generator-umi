@@ -1,4 +1,4 @@
-import { IInvalidInitState, IUser, IAccessState } from '@/types'
+import { IInvalidInitState, ILdapUser, IAccessState } from '@/types'
 import { isString, isNotEmpty } from './helpers/object'
 
 function turnFieldOn(initState: IAccessState, field: string) {
@@ -7,7 +7,7 @@ function turnFieldOn(initState: IAccessState, field: string) {
   }
 }
 
-export default function(initState: IInvalidInitState | IUser): IAccessState | IInvalidInitState {
+export default function(initState: IInvalidInitState | ILdapUser): IAccessState | IInvalidInitState {
   if (isString(initState)) {
     return initState as IInvalidInitState
   }
@@ -16,6 +16,10 @@ export default function(initState: IInvalidInitState | IUser): IAccessState | II
     canReadDashboardAnalysis: false,
     canReadDashboardMonitor: false,
     canReadAdminUserManagement: false
+  }
+
+  if (!initState.permissions) {
+    return finalState
   }
 
   if (initState.permissions.includes('VIEW_DASHBOARD_ANALYSIS')) {
