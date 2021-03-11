@@ -9,5 +9,6 @@ export default defineConfig({
   locale: {
     antd: true,
     title: true
-  }
+  },
+  webpack5: {}
 })

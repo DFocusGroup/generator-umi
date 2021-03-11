@@ -5,7 +5,9 @@
 ![][dt-url]
 ![][license-url]
 
-Yeoman generator for umi project
+Yeoman generator for umi project.
+
+> **This generator doesn't support SSR**
 
 > Read documentation here: [https://dfocusgroup.github.io/generator-umi/](https://dfocusgroup.github.io/generator-umi/)
 

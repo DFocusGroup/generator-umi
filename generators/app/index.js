@@ -96,6 +96,7 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath('typings.d.ts'), this.destinationPath('typings.d.ts'))
 
     this.fs.copyTpl(this.templatePath('config'), this.destinationPath('config'), this.answer)
+    this.fs.copyTpl(this.templatePath('husky'), this.destinationPath('.husky'), this.answer)
     this.fs.copyTpl(this.templatePath('mock'), this.destinationPath('mock'), this.answer)
     this.fs.copyTpl(this.templatePath('public'), this.destinationPath('public'), this.answer)
     this.fs.copyTpl(this.templatePath('server'), this.destinationPath('server'), this.answer)
