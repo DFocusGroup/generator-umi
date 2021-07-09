@@ -2,7 +2,6 @@ import { Request, Response } from 'umi'
 import { success, failure, SHOW_TYPE } from './_utils/helper'
 import ResponseError from './_utils/ResponseError'
 import UserStore, { UserStatus, IRawUser } from './_utils/UserStore'
-import LdapService from './_utils/LdapService'
 
 export default {
   'get /apis/users': async function(req: Request, res: Response) {
@@ -22,23 +21,6 @@ export default {
     const users = await UserStore.findPaginationUsersByQuery(userQuery, req)
 
     return res.json(success(users))
-  },
-
-  'get /apis/ldapusers': async function(req: Request, res: Response) {
-    const { name } = req.query
-
-    const ldapUsers = await LdapService.searchUsersByName(name as string)
-
-    return res.json(
-      success(
-        ldapUsers.map(l => ({
-          name: l.name,
-          email: l.email,
-          team: l.team,
-          status: UserStatus.INITIAL
-        }))
-      )
-    )
   },
 
   'post /apis/users': async function(req: Request, res: Response) {

@@ -17,6 +17,8 @@ features:
     details: 便捷的动态主题切换功能，让你的应用从此绚丽多彩
   - title: 打包
     details: 内置 `.zip`、`docker` 镜像两种打包风格，让你的业务推动更顺滑
+  - title: mfsu 开启
+    details: 默认开启 `mfsu` ，编译速度飙升，耗时仅为不开启时的 1/20 ~ 1/5。
 footer: MIT Licensed | Copyright © 2020-present Howard.Zuo
 ---
 

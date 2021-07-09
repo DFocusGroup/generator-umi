@@ -10,5 +10,7 @@ export default defineConfig({
     antd: true,
     title: true
   },
-  webpack5: {}
+  webpack5: {},
+  dynamicImport: {},
+  mfsu: {}
 })

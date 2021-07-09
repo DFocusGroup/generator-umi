@@ -51,7 +51,7 @@ export default function useUserManagementModel() {
       }, query)
     }
 
-    if (isNotEmpty<IAntdTableSorter>(sorter)) {
+    if (isNotEmpty<IAntdTableSorter>(sorter) && isNotEmpty<string>(sorter.field) && isNotEmpty<string>(sorter.order)) {
       query = `${query}&sortField=${sorter.field}&sortOrder=${sorter.order}`
     }
 

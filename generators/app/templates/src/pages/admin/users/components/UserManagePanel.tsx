@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { FormattedMessage, useModel, useIntl } from 'umi'
 import { Popover, Form, Input, Button, Radio } from 'antd'
 import { UserOutlined, TeamOutlined, MailOutlined } from '@ant-design/icons'
-import { LdapUserSelect } from '@/components'
 import { isEmpty, pick } from '@/helpers'
 import { IUser } from '@/types'
 
@@ -14,7 +13,6 @@ interface IUserManagePanelProps {
 
 export default function UserManagePanel({ children, onFinished, value }: IUserManagePanelProps) {
   const [visible, setVisible] = useState(false)
-  const [formFilled, setFormFilled] = useState(false)
   const { formatMessage } = useIntl()
   const [form] = Form.useForm()
   const { addUser, addUserRunning, updateUser, updateUserRunning } = useModel('useUserManagementModel', m =>
@@ -33,9 +31,8 @@ export default function UserManagePanel({ children, onFinished, value }: IUserMa
       team: undefined,
       status: undefined
     })
-    setFormFilled(false)
     setVisible(false)
-  }, [form, setVisible, setFormFilled])
+  }, [form, setVisible])
 
   useEffect(() => {
     if (!isEmpty(value) && visible) {
@@ -57,33 +54,38 @@ export default function UserManagePanel({ children, onFinished, value }: IUserMa
               .then(onFinished)
           }}
         >
-          <LdapUserSelect
-            style={{ width: '100%', marginBottom: 25 }}
-            disabled={!isImportPanel}
-            onChange={u => {
-              form.setFieldsValue({
-                name: u.name,
-                email: u.email,
-                team: u.team,
-                status: u.status
-              })
-              setFormFilled(true)
-            }}
-          />
           <Form.Item name="id" hidden>
             <Input type="text" />
           </Form.Item>
-          <Form.Item name="name" rules={[{ required: true, message: formatMessage({ id: 'SELECT_USER_WARNING' }) }]}>
-            <Input disabled prefix={<UserOutlined />} placeholder={formatMessage({ id: 'NAME' })} />
+          <Form.Item
+            name="name"
+            rules={[
+              { required: true, message: formatMessage({ id: 'USER_NAME_REQUIRED' }) },
+              { max: 20, message: formatMessage({ id: 'NAME_MAX_LEN' }) }
+            ]}
+          >
+            <Input prefix={<UserOutlined />} placeholder={formatMessage({ id: 'NAME' })} />
           </Form.Item>
-          <Form.Item name="team">
-            <Input disabled prefix={<TeamOutlined />} placeholder={formatMessage({ id: 'TEAM' })} />
+          <Form.Item
+            name="team"
+            rules={[
+              { required: true, message: formatMessage({ id: 'TEAM_REQUIRED' }) },
+              { max: 10, message: formatMessage({ id: 'TEAM_MAX_LEN' }) }
+            ]}
+          >
+            <Input prefix={<TeamOutlined />} placeholder={formatMessage({ id: 'TEAM' })} />
           </Form.Item>
-          <Form.Item name="email">
-            <Input disabled prefix={<MailOutlined />} placeholder={formatMessage({ id: 'EMAIL' })} />
+          <Form.Item
+            name="email"
+            rules={[
+              { required: true, message: formatMessage({ id: 'EMAIL_REQUIRED' }) },
+              { max: 30, message: formatMessage({ id: 'EMAIL_MAX_LEN' }) }
+            ]}
+          >
+            <Input prefix={<MailOutlined />} placeholder={formatMessage({ id: 'EMAIL' })} />
           </Form.Item>
-          <Form.Item name="status">
-            <Radio.Group disabled={isImportPanel ? !formFilled : false}>
+          <Form.Item name="status" rules={[{ required: true, message: formatMessage({ id: 'STATUS_REQUIRED' }) }]}>
+            <Radio.Group>
               <Radio value="INITIAL">
                 <FormattedMessage id="INITIAL" />
               </Radio>

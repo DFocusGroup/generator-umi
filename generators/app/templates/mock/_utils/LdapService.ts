@@ -1,5 +1,4 @@
 import { Request } from 'umi'
-import faker from 'faker'
 import ResponseError from './ResponseError'
 
 export const FAKE_ADMIN_TOKEN = 'oijhdvkdsiiopwejr3209jds'
@@ -40,27 +39,6 @@ interface ILdapUser {
 }
 
 class LdapService {
-  searchUsersByName(name: string): Promise<ILdapUser[]> {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(
-          [faker.random.number(), faker.random.number(), faker.random.number()].map(n => {
-            const card = faker.helpers.contextualCard()
-            return {
-              id: n,
-              name: card.name,
-              email: card.email,
-              team: faker.commerce.department(),
-              phone: card.phone,
-              avatar: card.avatar,
-              permissions: []
-            } as ILdapUser
-          })
-        )
-      }, 500)
-    })
-  }
-
   async getCurrentUser(req: Request): Promise<ILdapUser> {
     const token = req.get('Authorization')
     if (FAKE_ADMIN_TOKEN === token) {
