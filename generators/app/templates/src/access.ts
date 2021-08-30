@@ -1,13 +1,13 @@
-import { IInvalidInitState, ILdapUser, IAccessState } from '@/types'
+import { IInvalidInitState, IUser, IAccessState } from '@/types'
 import { isString, isNotEmpty } from './helpers/object'
 
-function turnFieldOn(initState: IAccessState, field: string) {
+function turnFieldOn(initState: IAccessState, field: keyof IAccessState) {
   if (isNotEmpty(initState[field])) {
     initState[field] = true
   }
 }
 
-export default function(initState: IInvalidInitState | ILdapUser): IAccessState | IInvalidInitState {
+export default function(initState: IInvalidInitState | IUser): IAccessState | IInvalidInitState {
   if (isString(initState)) {
     return initState as IInvalidInitState
   }
@@ -15,7 +15,7 @@ export default function(initState: IInvalidInitState | ILdapUser): IAccessState 
   const finalState = {
     canReadDashboardAnalysis: false,
     canReadDashboardMonitor: false,
-    canReadAdminUserManagement: false
+    canReadAdminContactsManagement: false
   }
 
   if (!initState.permissions) {
@@ -29,7 +29,7 @@ export default function(initState: IInvalidInitState | ILdapUser): IAccessState 
     turnFieldOn(finalState, 'canReadDashboardMonitor')
   }
   if (initState.permissions.includes('VIEW_ADMIN_USER_MANAGEMENT')) {
-    turnFieldOn(finalState, 'canReadAdminUserManagement')
+    turnFieldOn(finalState, 'canReadAdminContactsManagement')
   }
 
   return finalState

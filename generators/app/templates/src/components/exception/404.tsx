@@ -1,18 +1,18 @@
 import React from 'react'
 import { history, useIntl } from 'umi'
-import { Button } from 'antd'
+import { Button, Result } from 'antd'
 
-import Base, { IExceptionView } from './Base'
+import { IExceptionView } from '@/types'
 
 export default function Exception404({ style }: IExceptionView) {
   const { formatMessage } = useIntl()
   return (
-    <Base
-      img="/errors/404.png"
+    <Result
+      status={404}
       title={404}
-      description={formatMessage({ id: 'ERROR_404' })}
+      subTitle={formatMessage({ id: 'ERROR_404' })}
       style={style}
-      action={
+      extra={
         <Button
           type="primary"
           onClick={() => {
@@ -20,7 +20,7 @@ export default function Exception404({ style }: IExceptionView) {
           }}
         >
           {formatMessage({
-            id: 'BACK_TO_HOME'
+            id: 'BACK_TO_HOME',
           })}
         </Button>
       }

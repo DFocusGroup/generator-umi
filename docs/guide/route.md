@@ -54,12 +54,12 @@ export default defineConfig({
           layout: 'BLANK'
         },
         {
-          component: '@/pages/admin/users/index',
-          path: '/admin/users',
-          title: 'USERS_TITLE',
+          component: '@/pages/admin/contacts/index',
+          path: '/admin/contacts',
+          title: 'CONTACTS_TITLE',
           layout: 'PRO_LAYOUT',
           requireSignin: true,
-          access: 'canReadAdminUserManagement'
+          access: 'canReadAdminContactsManagement'
         },
         {
           component: '@/pages/dashboard/analysis/index',
@@ -135,7 +135,7 @@ export default defineConfig({
 
 当路由的 `requireSignin = true` 时，可以设置 `access` 来描述该路由的详细权限诉求。
 
-例如分析页面 `src/pages/admin/users/index.tsx`，该路由指定了 `Users.access = 'canReadAdminUserManagement'`。
+例如分析页面 `src/pages/admin/users/index.tsx`，该路由指定了 `Users.access = 'canReadAdminContactsManagement'`。
 
 如果你使用管理员账号（`admin/123456`），就能正常访问该页面（`/admin/users`）。
 

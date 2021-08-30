@@ -1,12 +1,13 @@
 import React from 'react'
 import { IRouteProps, IRouteComponentProps } from 'umi'
+import { IAccessState } from './access'
 
 type LAYOUTS = 'BLANK' | 'PRO_LAYOUT'
 
 export interface IERoute extends IRouteProps {
   title?: string
   layout?: LAYOUTS
-  access?: string
+  access?: keyof IAccessState
   requireSignin?: boolean
   routes?: IERoute[]
 }

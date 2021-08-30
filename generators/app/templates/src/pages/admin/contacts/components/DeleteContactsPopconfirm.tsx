@@ -7,14 +7,14 @@ import { pick } from '@/helpers'
 
 import styles from '../index.less'
 
-export default function DeleteUserPopconfirm({ onConfirm, value }: { onConfirm: () => void; value: number }) {
-  const { deleteUser } = useModel('useUserManagementModel', m => pick(m, 'deleteUser'))
+export default function DeleteContactsPopconfirm({ onConfirm, value }: { onConfirm: () => void; value: number }) {
+  const { deleteContacts } = useModel('useContactsManagementModel', (m) => pick(m, 'deleteContacts'))
   const { formatMessage } = useIntl()
   return (
     <Popconfirm
-      title={formatMessage({ id: 'CONFIRM_DELETE_USER' })}
+      title={formatMessage({ id: 'CONFIRM_DELETE_CONTACTS' })}
       onConfirm={() => {
-        deleteUser(value).then(onConfirm)
+        deleteContacts(value).then(onConfirm)
       }}
       okText={formatMessage({ id: 'CONFIRM_BTN' })}
       cancelText={formatMessage({ id: 'CANCEL_BTN' })}

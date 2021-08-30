@@ -36,8 +36,8 @@ export default defineProLayoutConfig({
       children: [
         {
           icon: UserOutlined,
-          title: 'USER_MANAGEMENT_MENU',
-          path: '/admin/users'
+          title: 'CONTACTS_MANAGEMENT_MENU',
+          path: '/admin/contacts'
         }
       ]
     }
@@ -58,8 +58,8 @@ export default defineProLayoutConfig({
       ]
     },
     {
-      title: 'USER_MANAGEMENT_MENU',
-      path: '/admin/users'
+      title: 'CONTACTS_MANAGEMENT_MENU',
+      path: '/admin/contacts'
     }
   ]
 })

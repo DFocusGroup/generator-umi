@@ -6,17 +6,17 @@ import { FormattedMessage, useIntl, useModel } from 'umi'
 import { useAntdTable } from 'ahooks'
 
 import { getColumnSearchProps, pick } from '@/helpers'
-import { ILdapUser, IPageComponent, IPageComponentProps, IUser } from '@/types'
+import { IPageComponent, IPageComponentProps, IContacts, IUser } from '@/types'
 
-import UserManagePanel from './components/UserManagePanel'
-import DeleteUserPopconfirm from './components/DeleteUserPopconfirm'
+import ContactsManagePanel from './components/ContactsManagePanel'
+import DeleteContactsPopconfirm from './components/DeleteContactsPopconfirm'
 
 import styles from './index.less'
 
-const Users: IPageComponent = (props: IPageComponentProps) => {
-  const { fetchUsers } = useModel('useUserManagementModel', m => pick(m, 'fetchUsers'))
+const Contacts: IPageComponent = (props: IPageComponentProps) => {
+  const { fetchContacts } = useModel('useContactsManagementModel', m => pick(m, 'fetchContacts'))
   const { formatMessage } = useIntl()
-  const { tableProps, refresh } = useAntdTable(fetchUsers, {
+  const { tableProps, refresh } = useAntdTable(fetchContacts, {
     defaultPageSize: 10
   })
 
@@ -26,7 +26,8 @@ const Users: IPageComponent = (props: IPageComponentProps) => {
     {
       title: 'ID',
       dataIndex: 'id',
-      key: 'id'
+      key: 'id',
+      width: 150
     },
     {
       title: <FormattedMessage id="NAME" />,
@@ -34,11 +35,11 @@ const Users: IPageComponent = (props: IPageComponentProps) => {
       key: 'name',
       ...getColumnSearchProps(formatMessage({ id: 'FILTER_PLACEHOLDER' }, { field: formatMessage({ id: 'NAME' }) })),
       sorter: true,
-      render(val: string, record: IUser) {
+      render(val: string, record: IContacts) {
         return (
           <div>
             <span>{val}</span>
-            {(initialState as ILdapUser).email === record.email ? (
+            {(initialState as IUser).email === record.email ? (
               <Tag color="magenta" style={{ position: 'absolute', top: -1 }}>
                 <FormattedMessage id="SELF" />
               </Tag>
@@ -56,28 +57,28 @@ const Users: IPageComponent = (props: IPageComponentProps) => {
     {
       title: <FormattedMessage id="TEAM" />,
       dataIndex: 'team',
-      key: 'team'
+      key: 'team',
+      width: 120
     },
     {
       title: <FormattedMessage id="STATUS" />,
       dataIndex: 'status',
       key: 'status',
-      sorter: true
+      sorter: true,
+      width: 120
     },
     {
       title: <FormattedMessage id="ACTIONS" />,
       key: 'action',
-      render(val: any, record: IUser) {
-        if ((initialState as ILdapUser).email === record.email) {
-          return null
-        }
+      width: 100,
+      render(val: any, record: IContacts) {
         return (
           <div>
-            <UserManagePanel value={record} onFinished={refresh}>
+            <ContactsManagePanel value={record} onFinished={refresh}>
               <EditOutlined className={styles.iconBtn} />
-            </UserManagePanel>
+            </ContactsManagePanel>
             &nbsp;
-            <DeleteUserPopconfirm value={record.id} onConfirm={refresh} />
+            <DeleteContactsPopconfirm value={record.id} onConfirm={refresh} />
           </div>
         )
       }
@@ -94,20 +95,20 @@ const Users: IPageComponent = (props: IPageComponentProps) => {
         columns={columns}
         pagination={{ showSizeChanger: true }}
         title={() => (
-          <UserManagePanel onFinished={refresh}>
+          <ContactsManagePanel onFinished={refresh}>
             <Button type="primary">
-              <FormattedMessage id="ADD_USER_BTN" />
+              <FormattedMessage id="ADD_CONTACTS_BTN" />
             </Button>
-          </UserManagePanel>
+          </ContactsManagePanel>
         )}
       />
     </div>
   )
 }
 
-Users.title = 'USERS_TITLE'
-Users.layout = 'PRO_LAYOUT'
-Users.requireSignin = true
-Users.access = 'canReadAdminUserManagement'
+Contacts.title = 'CONTACTS_TITLE'
+Contacts.layout = 'PRO_LAYOUT'
+Contacts.requireSignin = true
+Contacts.access = 'canReadAdminContactsManagement'
 
-export default Users
+export default Contacts

@@ -3,10 +3,10 @@ import { Avatar, Dropdown, Menu } from 'antd'
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
 import { useIntl, history, useModel } from 'umi'
 
-import { LangSwitch, ThemeSwitch } from '@/components'
+import { LangSwitch<% if (answers.useDynamicTheme) { %>, ThemeSwitch<% } %> } from '@/components'
 import { pick } from '@/helpers'
 
-import { ILdapUser } from '@/types'
+import { IUser } from '@/types'
 
 import styles from './navbar.less'
 
@@ -46,13 +46,13 @@ export default function RightsideMenu() {
     <div className={styles.rightMenuArea}>
       <Dropdown overlay={menu}>
         <div className={styles.profile}>
-          <Avatar src={(initialState as ILdapUser).avatar} />
-          &nbsp;<span>{(initialState as ILdapUser).name}</span>
+          <Avatar src={(initialState as IUser).avatar} />
+          &nbsp;<span>{(initialState as IUser).name}</span>
         </div>
       </Dropdown>
 
       <LangSwitch className={styles.rightNavItem} />
-      <ThemeSwitch className={styles.rightNavItem} />
+<% if (answers.useDynamicTheme) { %><ThemeSwitch className={styles.rightNavItem} /><% } %>
     </div>
   )
 }

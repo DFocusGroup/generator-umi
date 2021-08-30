@@ -29,23 +29,26 @@ export default {
   // admin
   ADMIN_MENU: 'System Management',
   USERS_TITLE: 'User Management',
-  USER_MANAGEMENT_MENU: 'User Management',
+  CONTACTS_MANAGEMENT_MENU: 'Contacts Management',
 
   // profile
   PROFILE_TITLE: 'User Profile',
-  ADD_USER_BTN: 'New User',
-  ADD_USER: 'New User',
-  MODIFY_USER: 'Modify User',
-  SEARCH_USER: 'Search for user',
+
+  //contacts
+  ADD_CONTACTS_BTN: 'Add Contacts',
+  ADD_CONTACTS: 'Add Contacts',
+  MODIFY_CONTACTS: 'Modify Contacts',
+  SELECT_USER_TEAM: 'Select a team',
+  TEAM_QA: 'QA',
+  TEAM_DEV: 'Engineer',
+  TEAM_DATA: 'Data',
   CONFIRM_BTN: 'Confirm',
   CANCEL_BTN: 'Cancel',
-  USER_NAME_REQUIRED: 'Please enter the user name',
-  TEAM_REQUIRED: 'Please enter the team',
-  EMAIL_REQUIRED: 'Please enter the email',
-  STATUS_REQUIRED: 'Please select a status',
-  NAME_MAX_LEN: 'The name cannot exceed 20 characters',
-  TEAM_MAX_LEN: 'The team cannot exceed 10 characters',
-  EMAIL_MAX_LEN: 'The email cannot exceed 30 characters',
+  USER_REQUIRED_WARNING: 'User name is required',
+  USER_TEAM_REQUIRED_WARNING: 'User team is required',
+  USER_EMAIL_REQUIRED_WARNING: 'User email is required',
+  USER_EMAIL_FORMAT_WARNING: 'You must enter a valid email',
+  USER_STATUS_REQUIRED_WARNING: 'User status is required',
   NAME: 'Name',
   TEAM: 'Team',
   EMAIL: 'Email',
@@ -58,5 +61,5 @@ export default {
   RESET_BTN: 'Reset',
   SELF: 'Self',
   ACTIONS: 'Action',
-  CONFIRM_DELETE_USER: 'Are you sure to delete user?'
+  CONFIRM_DELETE_CONTACTS: 'Are you sure to delete contacts?'
 }

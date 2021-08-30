@@ -36,10 +36,10 @@ export function getColumnSearchProps(searchPlaceholder: string) {
           placeholder={searchPlaceholder}
           value={selectedKeys[0]}
           onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-          onPressEnter={confirm}
+          onPressEnter={() => confirm()}
           style={{ width: 188, marginBottom: 8, display: 'block' }}
         />
-        <Button type="primary" onClick={confirm} size="small" style={{ width: 90, marginRight: 8 }}>
+        <Button type="primary" onClick={() => confirm()} size="small" style={{ width: 90, marginRight: 8 }}>
           <FormattedMessage id="SEARCH_BTN" />
         </Button>
         <Button onClick={clearFilters} size="small" style={{ width: 90 }}>

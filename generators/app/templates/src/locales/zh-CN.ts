@@ -29,23 +29,26 @@ export default {
   // admin
   ADMIN_MENU: '系统管理',
   USERS_TITLE: '用户管理',
-  USER_MANAGEMENT_MENU: '用户管理',
+  CONTACTS_MANAGEMENT_MENU: '联系人管理',
 
   // profile
   PROFILE_TITLE: '个人信息',
-  ADD_USER_BTN: '新增用户',
-  ADD_USER: '新增用户',
-  MODIFY_USER: '修改用户',
-  SEARCH_USER: '搜索用户',
+
+  //contacts
+  ADD_CONTACTS_BTN: '添加联系人',
+  ADD_CONTACTS: '添加联系人',
+  MODIFY_CONTACTS: '修改联系人',
+  SELECT_USER_TEAM: '选择团队',
+  TEAM_QA: '测试',
+  TEAM_DEV: '研发',
+  TEAM_DATA: '数据',
   CONFIRM_BTN: '确认',
   CANCEL_BTN: '取消',
-  USER_NAME_REQUIRED: '请输入用户名',
-  TEAM_REQUIRED: '请输入团队',
-  EMAIL_REQUIRED: '请输入邮件',
-  STATUS_REQUIRED: '请选择状态',
-  NAME_MAX_LEN: '用户名长度不能超过20个字符',
-  TEAM_MAX_LEN: '团队长度不能超过10个字符',
-  EMAIL_MAX_LEN: '邮箱长度不能超过30个字符',
+  USER_REQUIRED_WARNING: '用户名是必须的',
+  USER_TEAM_REQUIRED_WARNING: '团队是必须的',
+  USER_EMAIL_REQUIRED_WARNING: '邮箱是必须的',
+  USER_EMAIL_FORMAT_WARNING: '邮箱格式不合法',
+  USER_STATUS_REQUIRED_WARNING: '状态是必须的',
   NAME: '用户名',
   TEAM: '团队',
   EMAIL: '邮箱',
@@ -58,5 +61,5 @@ export default {
   RESET_BTN: '重置',
   SELF: '自己',
   ACTIONS: '操作',
-  CONFIRM_DELETE_USER: '确认要删除用户么？'
+  CONFIRM_DELETE_CONTACTS: '确认要删除联系人么？'
 }

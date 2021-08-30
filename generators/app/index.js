@@ -40,27 +40,15 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
-        name: 'vscode',
-        message: 'Use vscode preference?',
-        default: true
+        name: 'useDynamicTheme',
+        default: false,
+        message: 'Would you like to enable Dynamic Theme?'
       },
       {
         type: 'confirm',
         name: 'docker',
         message: 'Create Dockerfile?',
         default: false
-      },
-      {
-        type: 'list',
-        name: 'npmOrYarn',
-        message: 'Which tool would you use for dependencies?',
-        choices: ['npm', 'yarn']
-      },
-      {
-        type: 'list',
-        name: 'registry',
-        message: 'Which registry would you use?',
-        choices: ['https://registry.npm.taobao.org', 'https://registry.npmjs.org']
       }
     ]).then(answers => {
       this.answer = {
@@ -78,9 +66,7 @@ module.exports = class extends Generator {
   writing() {
     const { answers } = this.answer
 
-    if (answers.vscode) {
-      this.fs.copy(this.templatePath('vscode'), this.destinationPath('.vscode'))
-    }
+    this.fs.copy(this.templatePath('vscode'), this.destinationPath('.vscode'))
 
     if (answers.docker) {
       this.fs.copy(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'))
@@ -104,30 +90,14 @@ module.exports = class extends Generator {
     this.fs.copyTpl(this.templatePath('src'), this.destinationPath('src'), this.answer)
   }
 
-  install() {
-    const { answers } = this.answer
-
-    if (answers.npmOrYarn === 'npm') {
-      this.npmInstall(undefined, {
-        registry: answers.registry
-      })
-    } else {
-      this.yarnInstall(undefined, {
-        registry: answers.registry
-      })
-    }
-  }
-
   end() {
     const { answers } = this.answer
 
     console.log()
-    if (answers.vscode) {
-      this.log.info(
-        'Make sure you have vscode extension https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode installed'
-      )
-      console.log()
-    }
+    this.log.info(
+      'Make sure you have vscode extension https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode installed'
+    )
+    console.log()
 
     this.log.ok(`Project ${answers.name} generated!!!`)
   }

@@ -8,7 +8,7 @@ const ADMIN_PERMISSIONS = ['VIEW_DASHBOARD_ANALYSIS', 'VIEW_DASHBOARD_MONITOR', 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const USER_PERMISSIONS = ['VIEW_DASHBOARD_ANALYSIS', 'VIEW_DASHBOARD_MONITOR']
 
-export const UserAdmin: ILdapUser = {
+export const UserAdmin: IUser = {
   id: 1,
   name: 'Admin',
   email: 'admin@gmail.com',
@@ -18,7 +18,7 @@ export const UserAdmin: ILdapUser = {
   permissions: ADMIN_PERMISSIONS
 }
 
-export const UserHanMeiMei: ILdapUser = {
+export const UserHanMeiMei: IUser = {
   id: 1,
   name: 'Meimei.Han',
   email: 'meimei.han@gmail.com',
@@ -28,7 +28,7 @@ export const UserHanMeiMei: ILdapUser = {
   permissions: USER_PERMISSIONS
 }
 
-interface ILdapUser {
+interface IUser {
   id: number
   name: string
   email: string
@@ -37,20 +37,3 @@ interface ILdapUser {
   avatar: string
   permissions?: string[]
 }
-
-class LdapService {
-  async getCurrentUser(req: Request): Promise<ILdapUser> {
-    const token = req.get('Authorization')
-    if (FAKE_ADMIN_TOKEN === token) {
-      return UserAdmin
-    }
-
-    if (FAKE_HANMEIMEI_TOKEN === token) {
-      return UserHanMeiMei
-    }
-
-    throw new ResponseError(401, 'invalid token')
-  }
-}
-
-export default new LdapService()
