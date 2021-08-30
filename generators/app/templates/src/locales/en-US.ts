@@ -28,7 +28,7 @@ export default {
 
   // admin
   ADMIN_MENU: 'System Management',
-  USERS_TITLE: 'User Management',
+  CONTACTS_TITLE: 'Contacts Management',
   CONTACTS_MANAGEMENT_MENU: 'Contacts Management',
 
   // profile

@@ -28,7 +28,7 @@ export default {
 
   // admin
   ADMIN_MENU: '系统管理',
-  USERS_TITLE: '用户管理',
+  CONTACTS_TITLE: '联系人管理',
   CONTACTS_MANAGEMENT_MENU: '联系人管理',
 
   // profile
