@@ -1,17 +1,17 @@
-import React from 'react'
-import { useIntl } from 'umi'
-
-import styles from './index.less'
+import React from 'react';
+import { useIntl } from '@umijs/max';
 
 export default function Title() {
-  const { formatMessage } = useIntl()
+  const { formatMessage } = useIntl();
   return (
-    <div className={styles.titleHeader}>
-      <div className={styles.appLogo}>
-        <img src="/app_icon.jpeg" alt="applogo" />
+    <div className="flex justify-between items-center">
+      <div>
+        <img className="w-[79px]" src="/app_icon.jpeg" alt="applogo" />
       </div>
-      <div className={styles.bar}></div>
-      <div className={styles.appTitle}>{formatMessage({ id: 'APP_TITLE' })}</div>
+      <div className="w-[1px] h-[28px] bg-[#ccc]"></div>
+      <div className="text-[24px] tracking-[4px] text-primary">
+        {formatMessage({ id: 'app_title' })}
+      </div>
     </div>
-  )
+  );
 }

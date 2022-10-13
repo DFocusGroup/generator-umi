@@ -21,7 +21,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'name',
         message: 'Your project name',
-        validate: name => {
+        validate: (name) => {
           if (!name) {
             return 'Project name cannot be empty'
           }
@@ -36,23 +36,11 @@ module.exports = class extends Generator {
             return 'Project already exist'
           }
           return true
-        }
+        },
       },
-      {
-        type: 'confirm',
-        name: 'useDynamicTheme',
-        default: false,
-        message: 'Would you like to enable Dynamic Theme?'
-      },
-      {
-        type: 'confirm',
-        name: 'docker',
-        message: 'Create Dockerfile?',
-        default: false
-      }
-    ]).then(answers => {
+    ]).then((answers) => {
       this.answer = {
-        answers
+        answers,
       }
 
       return this.answer
@@ -66,28 +54,26 @@ module.exports = class extends Generator {
   writing() {
     const { answers } = this.answer
 
-    this.fs.copy(this.templatePath('vscode'), this.destinationPath('.vscode'))
-
-    if (answers.docker) {
-      this.fs.copy(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'))
-      this.fs.copy(this.templatePath('dockerignore'), this.destinationPath('.dockerignore'))
-    }
-
     this.fs.copy(this.templatePath('eslintrc.js'), this.destinationPath('.eslintrc.js'))
     this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'))
-    this.fs.copyTpl(this.templatePath('package.json.vm'), this.destinationPath('package.json'), this.answer)
-    this.fs.copy(this.templatePath('prettierrc.js'), this.destinationPath('.prettierrc.js'))
-    this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.answer)
-    this.fs.copy(this.templatePath('tsconfig.json.vm'), this.destinationPath('tsconfig.json'))
+    this.fs.copy(this.templatePath('lintstagedrc'), this.destinationPath('.lintstagedrc'))
+    this.fs.copy(this.templatePath('npmrc'), this.destinationPath('.npmrc'))
+    this.fs.copy(this.templatePath('prettierignore'), this.destinationPath('.prettierignore'))
+    this.fs.copy(this.templatePath('prettierrc'), this.destinationPath('.prettierrc'))
+    this.fs.copy(this.templatePath('stylelintrc.js'), this.destinationPath('.stylelintrc.js'))
+
+    this.fs.copy(this.templatePath('tailwind.config.js'), this.destinationPath('tailwind.config.js'))
+    this.fs.copy(this.templatePath('tailwind.css'), this.destinationPath('tailwind.css'))
+    this.fs.copy(this.templatePath('tsconfig.json'), this.destinationPath('tsconfig.json'))
     this.fs.copy(this.templatePath('typings.d.ts'), this.destinationPath('typings.d.ts'))
 
-    this.fs.copyTpl(this.templatePath('config'), this.destinationPath('config'), this.answer)
-    this.fs.copyTpl(this.templatePath('husky'), this.destinationPath('.husky'), this.answer)
-    this.fs.copyTpl(this.templatePath('mock'), this.destinationPath('mock'), this.answer)
-    this.fs.copyTpl(this.templatePath('public'), this.destinationPath('public'), this.answer)
-    this.fs.copyTpl(this.templatePath('server'), this.destinationPath('server'), this.answer)
-    this.fs.copyTpl(this.templatePath('shells'), this.destinationPath('shells'), this.answer)
-    this.fs.copyTpl(this.templatePath('src'), this.destinationPath('src'), this.answer)
+    this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), this.answer)
+    this.fs.copyTpl(this.templatePath('package.json.vm'), this.destinationPath('package.json'), this.answer)
+
+    this.fs.copy(this.templatePath('config'), this.destinationPath('config'))
+    this.fs.copy(this.templatePath('mock'), this.destinationPath('mock'))
+    this.fs.copy(this.templatePath('public'), this.destinationPath('public'))
+    this.fs.copy(this.templatePath('src'), this.destinationPath('src'))
   }
 
   end() {

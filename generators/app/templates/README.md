@@ -1,27 +1,21 @@
 # <%= answers.name %>
 
-一个致力于打造灵活中台系统的 `umi@3` 脚手架
+a generator of `umi@4`
 
-## 安装依赖
+## install dependencies
 
 ```
-yarn
+pnpm i
 ```
 
-## 本地调试
+## local debug
 
 ```bash
-yarn start
+pnpm dev
 ```
 
-## 打包到 `.zip`
+## release
 
 ```bash
-bash shells/build.sh
-```
-
-## 打包到 `docker`
-
-```bash
-docker build --no-cache -t <app-name>:<tag> .
+pnpm build
 ```

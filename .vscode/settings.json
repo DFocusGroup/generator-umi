@@ -1,5 +1,5 @@
 {
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   "html.format.enable": false,

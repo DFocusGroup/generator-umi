@@ -1,3 +1,4 @@
 export interface IExceptionView {
-  style?: React.CSSProperties
+  style?: React.CSSProperties;
+  className?: string;
 }

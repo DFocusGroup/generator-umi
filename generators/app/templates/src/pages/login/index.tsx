@@ -1,59 +1,50 @@
-import React, { useEffect } from 'react'
-import { Tabs } from 'antd'
+import {
+  SelectLang,
+  useIntl,
+  useModel,
+  Navigate,
+  useSearchParams,
+} from '@umijs/max';
+import { Tabs } from 'antd';
+import { isNotEmpty, isInvalidInitState } from '@/utils';
 
-import { useModel, Redirect, useIntl, useLocation } from 'umi'
+import Title from './components/Title';
+import AccountPane from './components/AccountPane';
 
-import { LangSwitch, ThemeSwitch } from '@/components'
-import { isInvalidInitState, isNotEmpty, pick } from '@/helpers'
-import { IPageComponent, IPageComponentProps } from '@/types'
-
-import Title from './components/Title'
-import AccountPane from './components/AccountPane'
-
-import styles from './index.less'
-
-const Login: IPageComponent = (props: IPageComponentProps) => {
-  const { initialState } = useModel('@@initialState')
-  const { initBackground } = useModel('useLoginModel', m => pick(m, 'initBackground'))
-  const { formatMessage } = useIntl()
-  // @ts-ignore
-  const { query } = useLocation()
-
-  useEffect(() => {
-    initBackground()
-  }, [initBackground])
+const LoginPage: React.FC = () => {
+  const { initialState } = useModel('@@initialState');
+  const { formatMessage } = useIntl();
+  const [searchParams] = useSearchParams();
 
   if (isNotEmpty<string>(initialState) && !isInvalidInitState(initialState)) {
-    // @ts-ignore
-    if (query.redirectTo) {
-      return <Redirect to={{ pathname: query.redirectTo }} />
+    const redirectTo = searchParams.get('redirectTo');
+
+    if (isNotEmpty<string>(redirectTo)) {
+      return <Navigate to={decodeURIComponent(redirectTo)} />;
     }
-    return <Redirect to="/" />
+    return <Navigate to="/" />;
   }
 
   return (
-    <>
-      <div id="bg-animate" className={styles.bgContainer}></div>
-      <div className={styles.loginContainer}>
+    <div className="w-screen h-screen bg-gray-200">
+      <div className="w-[720px] h-[640px] absolute top-[50%] mt-[-320px] left-[50%] ml-[-360px] rounded-[5px] pt-[64px] pb-[136px] pl-[160px] pr-[160px] bg-white">
         <Title />
-        <Tabs defaultActiveKey="accountway" className={styles.signinContainer}>
-          <Tabs.TabPane
-            tab={formatMessage({ id: 'LOGIN_TAB_ACCOUNT' })}
-            key="accountway"
-            className={styles.signinInnerContainer}
-          >
-            <AccountPane />
-          </Tabs.TabPane>
-        </Tabs>
+        <Tabs
+          defaultActiveKey="accountway"
+          className="mt-[35px]"
+          items={[
+            {
+              label: formatMessage({ id: 'login_tab_account' }),
+              key: 'accountway',
+              className: 'pt-[25px]',
+              children: <AccountPane />,
+            },
+          ]}
+        />
       </div>
-      <ThemeSwitch className={styles.theme} />
-      <LangSwitch className={styles.lang} />
-    </>
-  )
-}
+      <SelectLang className="float-right" />
+    </div>
+  );
+};
 
-Login.title = 'LOGIN_TITLE'
-Login.layout = 'BLANK'
-Login.requireSignin = false
-
-export default Login
+export default LoginPage;

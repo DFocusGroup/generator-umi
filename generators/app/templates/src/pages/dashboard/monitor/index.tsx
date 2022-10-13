@@ -1,13 +1,7 @@
-import React from 'react'
-import { IPageComponent, IPageComponentProps } from '@/types'
+import React from 'react';
 
-const Monitor: IPageComponent = (props: IPageComponentProps) => {
-  return <div>monitor</div>
-}
+const Monitor: React.FC = () => {
+  return <div>monitor</div>;
+};
 
-Monitor.title = 'MONITOR_TITLE'
-Monitor.layout = 'PRO_LAYOUT'
-Monitor.requireSignin = true
-Monitor.access = 'canReadDashboardMonitor'
-
-export default Monitor
+export default Monitor;

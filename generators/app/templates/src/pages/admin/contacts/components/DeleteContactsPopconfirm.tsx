@@ -1,25 +1,35 @@
-import React from 'react'
-import { useIntl, useModel } from 'umi'
-import { Popconfirm } from 'antd'
-import { DeleteOutlined } from '@ant-design/icons'
+import React from 'react';
+import { useIntl, useModel } from '@umijs/max';
+import { Popconfirm } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
-import { pick } from '@/helpers'
+import { pick } from '@/utils';
 
-import styles from '../index.less'
+interface IDeleteContactsPopconfirmProps {
+  onConfirm: () => void;
+  value: string;
+}
 
-export default function DeleteContactsPopconfirm({ onConfirm, value }: { onConfirm: () => void; value: number }) {
-  const { deleteContacts } = useModel('useContactsManagementModel', (m) => pick(m, 'deleteContacts'))
-  const { formatMessage } = useIntl()
+const DeleteContactsPopconfirm: React.FC<IDeleteContactsPopconfirmProps> = ({
+  onConfirm,
+  value,
+}) => {
+  const { deleteContacts } = useModel('contacts', (m) =>
+    pick(m, 'deleteContacts'),
+  );
+  const { formatMessage } = useIntl();
   return (
     <Popconfirm
-      title={formatMessage({ id: 'CONFIRM_DELETE_CONTACTS' })}
+      title={formatMessage({ id: 'confirm_delete_contacts' })}
       onConfirm={() => {
-        deleteContacts(value).then(onConfirm)
+        deleteContacts(value).then(onConfirm);
       }}
-      okText={formatMessage({ id: 'CONFIRM_BTN' })}
-      cancelText={formatMessage({ id: 'CANCEL_BTN' })}
+      okText={formatMessage({ id: 'confirm_btn' })}
+      cancelText={formatMessage({ id: 'cancel_btn' })}
     >
-      <DeleteOutlined className={styles.iconBtn} />
+      <DeleteOutlined className="cursor-pointer hover:text-[16px]" />
     </Popconfirm>
-  )
-}
+  );
+};
+
+export default DeleteContactsPopconfirm;

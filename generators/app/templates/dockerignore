@@ -1,7 +1,0 @@
-# npm
-node_modules/
-
-# dist
-dist/
-*-zip-dist/
-*.zip

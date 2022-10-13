@@ -1,49 +1,52 @@
-import { RequestConfig, request as API } from 'umi'
+import { RequestConfig } from '@umijs/max';
+import { API_HOST } from '@/utils';
+import {USER_TOKEN_KEY } from '@/constants';
+import { IInvalidInitState, IUser } from '@/types';
+import { getCurrentUser } from '@/services';
 
-import { API_HOST } from '@/config'
-import { getToken } from '@/helpers'
-import { IInvalidInitState, IUser } from '@/types'
-
-// powered by https://umijs.org/plugins/plugin-initial-state
-// IInvalidInitState will be used to redirect page in layout
-export function getInitialState(): Promise<IInvalidInitState | IUser> {
-  if (!getToken()) {
-    Promise.resolve('LOGIN_REQUIRED')
+// 全局初始化数据配置，用于 Layout 用户信息和权限初始化
+// 更多信息见文档：https://next.umijs.org/docs/api/runtime-config#getinitialstate
+// IInvalidInitState will be handled in layout
+export async function getInitialState(): Promise<IInvalidInitState | IUser> {
+  if (!localStorage.getItem(USER_TOKEN_KEY)) {
+    return 'LOGIN_REQUIRED';
   }
 
-  return API('/user', {
-    method: 'get'
-  }).then(
-    res => {
-      if (res.success) {
-        return res.data
-      }
-      return 'LOGIN_REQUIRED'
-    },
-    () => 'LOGIN_REQUIRED'
-  )
-}
-
-interface APPHeaders {
-  Authorization: string
+  try {
+    const res = await getCurrentUser();
+    if (!res.data) {
+      return 'LOGIN_REQUIRED';
+    }
+    return res.data;
+  } catch (error) {
+    return 'LOGIN_REQUIRED';
+  }
 }
 
 // powered by https://umijs.org/plugins/plugin-request
 // have token specifid in custom header
 export const request: RequestConfig = {
-  prefix: API_HOST,
-  middlewares: [
-    (ctx, next) => {
-      const token = getToken()
+  baseURL: API_HOST,
+  requestInterceptors: [
+    (url, options) => {
+      const token = localStorage.getItem(USER_TOKEN_KEY);
       if (!token) {
-        return next()
+        return { url, options };
       }
-      if (!ctx.req.options.headers) {
-        ctx.req.options.headers = {}
+      const headers = options.headers || {};
+      headers.Authorization = JSON.parse(token);
+      return { url, options: { ...options, headers } };
+    },
+  ],
+  responseInterceptors: [
+    (response) => {
+      const { data } = response;
+      // @ts-ignore
+      if (!data.success) {
+        // @ts-ignore
+        throw new Error(data.errorMessage);
       }
-      ;(ctx.req.options.headers as APPHeaders & HeadersInit).Authorization = token
-
-      return next()
-    }
-  ]
-}
+      return response;
+    },
+  ],
+};

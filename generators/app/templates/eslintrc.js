@@ -1,3 +1,3 @@
-const style = require('react-coding-style')
-
-module.exports = style.tslint
+module.exports = {
+  extends: require.resolve('@umijs/max/eslint'),
+};

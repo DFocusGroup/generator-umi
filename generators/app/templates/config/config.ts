@@ -1,16 +1,29 @@
-import { defineConfig } from 'umi'
+import { defineConfig } from '@umijs/max'
+import routes from './routes'
 
 export default defineConfig({
-  hash: true,
-  mock: {
-    exclude: ['mock/**/_*.[jt]s', 'mock/**/_*/**']
+  antd: {
+    import: true,
+    style: 'css',
+    dark: false,
   },
-  antd: {},
+  access: {},
+  model: {},
+  initialState: {},
+  request: {},
+  npmClient: 'pnpm',
+  tailwindcss: {},
   locale: {
-    antd: true,
-    title: true
+    default: 'zh-CN',
+    title: false,
+    useLocalStorage: true,
   },
-  webpack5: {},
-  dynamicImport: {},
-  mfsu: {}
+  mock: {
+    exclude: ['mock/**/_*.[jt]s', 'mock/**/_*/**'],
+  },
+  conventionRoutes: {
+    exclude: [/\/components\//, /\/models\//],
+  },
+  routes,
+  mfsu: {},
 })

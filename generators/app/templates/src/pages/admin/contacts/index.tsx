@@ -1,114 +1,174 @@
-import React from 'react'
-import { Button, Table, Tag } from 'antd'
-import { EditOutlined } from '@ant-design/icons'
+import React, { useCallback, useEffect } from 'react';
+import { Table, Tag } from 'antd';
+import type { SorterResult } from 'antd/es/table/interface';
+import { EditOutlined } from '@ant-design/icons';
 
-import { FormattedMessage, useIntl, useModel } from 'umi'
-import { useAntdTable } from 'ahooks'
+import {
+  FormattedMessage,
+  useIntl,
+  useModel,
+  useSearchParams,
+} from '@umijs/max';
 
-import { getColumnSearchProps, pick } from '@/helpers'
-import { IPageComponent, IPageComponentProps, IContacts, IUser } from '@/types'
+import {
+  getColumnSearchProps,
+  parsePaginationQuery,
+  pick,
+  convertAntdTableArgsToQuery,
+} from '@/utils';
+import {
+  IAntdTableFilters,
+  IAntdTableSorter,
+  IContact,
+  IUser,
+  IAntdTableSorterOrder,
+} from '@/types';
 
-import ContactsManagePanel from './components/ContactsManagePanel'
-import DeleteContactsPopconfirm from './components/DeleteContactsPopconfirm'
+import ContactsManagePanel from './components/ContactsManagePanel';
+import DeleteContactsPopconfirm from './components/DeleteContactsPopconfirm';
+import ListAction from './components/ListAction';
 
-import styles from './index.less'
+const Contacts: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { contacts, loadingSearchContacts, doSearchContacts } = useModel(
+    'contacts',
+    (m) => pick(m, 'contacts', 'loadingSearchContacts', 'doSearchContacts'),
+  );
+  const { formatMessage } = useIntl();
 
-const Contacts: IPageComponent = (props: IPageComponentProps) => {
-  const { fetchContacts } = useModel('useContactsManagementModel', m => pick(m, 'fetchContacts'))
-  const { formatMessage } = useIntl()
-  const { tableProps, refresh } = useAntdTable(fetchContacts, {
-    defaultPageSize: 10
-  })
+  const query = parsePaginationQuery(searchParams, ['name', 'email']);
 
-  const { initialState } = useModel('@@initialState')
+  const { pageSize, current, sortField, sortOrder, filters } = query;
+
+  const { name: filterName, email: filterEmail } = filters;
+
+  const refreshData = useCallback(() => {
+    const sorter: IAntdTableSorter = {};
+    const filters: IAntdTableFilters = {};
+
+    if (sortField && sortOrder) {
+      sorter.sortField = sortField;
+      sorter.sortOrder = sortOrder as IAntdTableSorterOrder;
+    }
+    if (filterName) {
+      filters.name = filterName;
+    }
+    if (filterEmail) {
+      filters.email = filterEmail;
+    }
+
+    doSearchContacts({ pageSize, current, filters, sorter });
+  }, [pageSize, current, sortField, sortOrder, filterName, filterEmail]);
+
+  const { initialState } = useModel('@@initialState');
+
+  useEffect(() => {
+    refreshData();
+  }, [refreshData]);
 
   const columns = [
     {
       title: 'ID',
       dataIndex: 'id',
       key: 'id',
-      width: 150
+      width: 150,
     },
     {
-      title: <FormattedMessage id="NAME" />,
+      title: <FormattedMessage id="name" />,
       dataIndex: 'name',
       key: 'name',
-      ...getColumnSearchProps(formatMessage({ id: 'FILTER_PLACEHOLDER' }, { field: formatMessage({ id: 'NAME' }) })),
+      ...getColumnSearchProps(
+        formatMessage(
+          { id: 'filter_placeholder' },
+          { field: formatMessage({ id: 'name' }) },
+        ),
+      ),
       sorter: true,
-      render(val: string, record: IContacts) {
+      width: 180,
+      render(val: string, record: IContact) {
         return (
           <div>
             <span>{val}</span>
             {(initialState as IUser).email === record.email ? (
               <Tag color="magenta" style={{ position: 'absolute', top: -1 }}>
-                <FormattedMessage id="SELF" />
+                <FormattedMessage id="self" />
               </Tag>
             ) : null}
           </div>
-        )
-      }
+        );
+      },
     },
     {
-      title: <FormattedMessage id="EMAIL" />,
+      title: <FormattedMessage id="email" />,
       dataIndex: 'email',
       key: 'email',
-      ...getColumnSearchProps(formatMessage({ id: 'FILTER_PLACEHOLDER' }, { field: formatMessage({ id: 'EMAIL' }) }))
+      ...getColumnSearchProps(
+        formatMessage(
+          { id: 'filter_placeholder' },
+          { field: formatMessage({ id: 'email' }) },
+        ),
+      ),
     },
     {
-      title: <FormattedMessage id="TEAM" />,
+      title: <FormattedMessage id="team" />,
       dataIndex: 'team',
       key: 'team',
-      width: 120
+      width: 120,
     },
     {
-      title: <FormattedMessage id="STATUS" />,
+      title: <FormattedMessage id="status" />,
       dataIndex: 'status',
       key: 'status',
       sorter: true,
-      width: 120
+      width: 120,
     },
     {
-      title: <FormattedMessage id="ACTIONS" />,
+      title: <FormattedMessage id="actions" />,
       key: 'action',
       width: 100,
-      render(val: any, record: IContacts) {
+      render(val: any, record: IContact) {
         return (
           <div>
-            <ContactsManagePanel value={record} onFinished={refresh}>
-              <EditOutlined className={styles.iconBtn} />
+            <ContactsManagePanel value={record} onFinished={refreshData}>
+              <EditOutlined className="cursor-pointer hover:text-[16px]" />
             </ContactsManagePanel>
             &nbsp;
-            <DeleteContactsPopconfirm value={record.id} onConfirm={refresh} />
+            <DeleteContactsPopconfirm
+              value={`${record.id}`}
+              onConfirm={refreshData}
+            />
           </div>
-        )
-      }
-    }
-  ]
+        );
+      },
+    },
+  ];
 
   return (
-    <div className={styles.container}>
+    <div className="p-[15px]">
       <Table
-        {...tableProps}
-        className={styles.tableReset}
+        loading={loadingSearchContacts}
         size="small"
         rowKey="id"
         columns={columns}
-        pagination={{ showSizeChanger: true }}
-        title={() => (
-          <ContactsManagePanel onFinished={refresh}>
-            <Button type="primary">
-              <FormattedMessage id="ADD_CONTACTS_BTN" />
-            </Button>
-          </ContactsManagePanel>
-        )}
+        dataSource={contacts?.list}
+        pagination={{
+          current: current,
+          pageSize: pageSize,
+          total: contacts?.total,
+          showSizeChanger: true,
+        }}
+        onChange={(pagination, filters, sorters) => {
+          convertAntdTableArgsToQuery(
+            setSearchParams,
+            pagination,
+            filters,
+            sorters as SorterResult<IContact>,
+          );
+        }}
+        title={() => <ListAction onRefresh={refreshData} />}
       />
     </div>
-  )
-}
+  );
+};
 
-Contacts.title = 'CONTACTS_TITLE'
-Contacts.layout = 'PRO_LAYOUT'
-Contacts.requireSignin = true
-Contacts.access = 'canReadAdminContactsManagement'
-
-export default Contacts
+export default Contacts;
