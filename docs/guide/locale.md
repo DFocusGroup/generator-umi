@@ -1,20 +1,8 @@
 # 国际化
 
-国际化使用详情，参考[plugin-locale](https://umijs.org/zh-CN/plugins/plugin-locale)。
+国际化使用详情，参考[max-locale](https://umijs.org/docs/max/i18n)。
 
-唯一要注意的是页面的 title。我们依旧以登录页面（`/src/pages/login/index.tsx`）为例：
-
-```typescript
-function Login() {
-  ...
-  ...
-}
-
-// title 在应用运行时，会被 src/locales/ 下对应语言文件里的内容替换
-Login.title = 'LOGIN_TITLE'
-
-export default Login
-```
+多语言字典定义在 `src/locales` 目录下
 
 请看：
 

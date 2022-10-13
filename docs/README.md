@@ -6,17 +6,13 @@ actionText: 新手上路 →
 actionLink: /guide/
 features:
   - title: 布局管理
-    details: 内置 BLANK, PRO_LAYOU 两款布局，以及布局管理模块，按标准实现的新布局可以无缝接入系统
+    details: 轻松实现自己的布局
   - title: 权限路由
     details: 内置和用户数据打通的权限系统可以针对路由做控制，并且内置无权限展示组件
   - title: 国际化
     details: 便捷的多语言切换功能
   - title: 数据管理
     details: 不同于 redux 的数据管理体验，让 hooks 带你high个够
-  - title: 主题切换
-    details: 便捷的动态主题切换功能，让你的应用从此绚丽多彩
-  - title: 打包
-    details: 内置 `.zip`、`docker` 镜像两种打包风格，让你的业务推动更顺滑
   - title: mfsu 开启
     details: 默认开启 `mfsu` ，编译速度飙升，耗时仅为不开启时的 1/20 ~ 1/5。
 footer: MIT Licensed | Copyright © 2020-present Howard.Zuo

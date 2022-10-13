@@ -1,10 +1,10 @@
 # 项目介绍
 
-本脚手架使用了 [umi@3](https://umijs.org) + [typescript](http://www.typescriptlang.org)， 以及 [antd@4](https://ant.design)。对这三样完全不熟悉的朋友，强烈建议先做了解之后再来。（再见）
+本脚手架使用了 [umi@4](https://umijs.org) + [typescript](http://www.typescriptlang.org)， 以及 [antd@4](https://ant.design)。对这三样完全不熟悉的朋友，强烈建议先做了解之后再来。（再见）
 
-其次，本脚手架没有使用 [preset-react](https://umijs.org/plugins/preset-react)，而是单独使用了 [plugin-access](https://umijs.org/plugins/plugin-access)、[plugin-antd](https://umijs.org/plugins/plugin-antd)、[plugin-initial-state](https://umijs.org/plugins/plugin-initial-state)、[plugin-locale](https://umijs.org/plugins/plugin-locale)、[plugin-model](https://umijs.org/plugins/plugin-model)、[plugin-request](https://umijs.org/plugins/plugin-request)、[umi-plugin-antd-theme](https://github.com/chenshuai2144/umi-plugin-antd-theme)。并通过内置的 [路由系统](/guide/route.md) 和 [布局系统](/guide/layout.md) 来完成权限路由和布局选择的功能。目的是为开发者提供一个扩展性更强的 code base。
+其次，本脚手架使用 [@umijs/max](https://umijs.org/docs/max/introduce)，快速得到企业中台项目需要的基本功能，如： 权限控制、统一数据流管理、统一状态管理、多语言和 [antd](https://ant.design/components/table/#components-table-demo-reset-filter) 配置。
 
-所以对上述使用到的插件不熟悉的朋友，也需要先了解之后再往下看，再见。
+所以对上述使用到的插件不熟悉的朋友，也需要先了解 [@umijs/max](https://umijs.org/docs/max/introduce) 之后再往下看，再见。
 
 接下来，就是介绍脚手架的部分了。首先介绍下项目结构：
 
@@ -12,22 +12,26 @@
     ├── config/
     ├── mock/
     ├── public/
-    ├── server/
-    ├── shells/
     ├── src
+    │   ├── components
+    │   ├── constants
+    │   ├── layouts
+    │   ├── locales
+    │   ├── models
+    │   ├── pages
+    │   ├── services
+    │   ├── types
+    │   ├── utils
     │   ├── access.ts
-    │   ├── app.ts
-    │   └── serve.package.json
-    ├── Dockerfile
+    │   └── app.ts
+    │
     ├── package.json
+    ├── tailwind.config.js
+    ├── tailwind.css
     ├── tsconfig.json
     └── typings.d.ts
 
 ## 项目结构介绍
-
-### Dockerfile
-
-希望打包成 `docker` 镜像时使用。
 
 ### package.json
 
@@ -49,31 +53,16 @@
 
 ### mock 目录
 
-存储 `mock` 文件，此目录下所有 `.js` 和 `.ts` 文件会被解析为 `mock` 文件。
+存储 `mock` 文件，此目录下所有 `.ts` 文件会被解析为 `mock` 文件。
 
 ### public 目录
 
 此目录下所有文件会被 `copy` 到输出路径。
 
-### server 目录
-
-脚手架内置的服务启动脚本(`express` + `replace-in-file`)，为打包后的内容提供直接启用支持，无需外部再配置 `nginx` 或其他 web 容器。
-
-并且在 `docker` 镜像方式里，支持容器启动 + 环境变量修改部分配置。（这种方式在一个包，需要不同配置运行在不同环境里非常好用，无需为不同环境打不同的包）。
-
-### shells 目录
-
-打包、运行脚本。
-
-- `build.sh`：打包（`.zip`、`docker`均使用它）
-- `git.sh`：本地 `git` 环境配置命令集合（配置当前仓库的 用户名、邮箱、`git` 别名等）
-- `stop.sh`：`.zip` 包的专用停止服务脚本，
-
 ### `src` 目录
 
 应用源码，都在这里了。
 
-> `serve.package.json` 切记勿删，这个是打包时的必需品。
 
 下面介绍应用启动，即，浏览器打开 `URL`, 回车敲下后，源码的运行大致流程（方便开发者阅读理解，及后续扩展变更）。
 
@@ -87,5 +76,3 @@
 - [布局](/guide/layout.html)
 - [国际化](/guide/locale.html)
 - [数据](/guide/data.html)
-- [主题](/guide/theme.html)
-- [打包](/guide/packaging.html)
