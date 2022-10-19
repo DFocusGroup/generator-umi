@@ -2,15 +2,25 @@
 
 脚手架使用[配置路由](https://umijs.org/docs/guides/routes#%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1)。
 
-# 路由扩展属性
+## 路由扩展属性
+
+
+```typescript
+export default [
+  {
+    path: '/dashboard/monitor',
+    component: './dashboard/monitor',
+    access: 'canReadDashboardMonitor'
+  }
+]
+```
 
 ### access
 
 - Type: `string`
 
-可以用来指定该路由需要哪个权限才能访问。
+可以用来指定该路由需要哪个权限才能访问。[看这里](https://umijs.org/docs/max/access) 找到更多关于她的资料。
 
-例如分析页面 `src/pages/admin/contacts/index.tsx`，该路由指定了 `access = 'canReadAdminContactsManagement'`。
 
 如果你使用管理员账号（`admin/123456`），就能正常访问该页面（`/admin/contacts`）。
 

@@ -48,7 +48,7 @@ footer: MIT Licensed | Copyright © 2020-present Howard.Zuo
 安装 umi 中台 助手
 
 ```bash
-yarn global add yo generator-umi
+sudo npm i -g yo generator-umi
 ```
 
 然后，利用助手，创建一个 code base
