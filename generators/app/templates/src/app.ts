@@ -1,6 +1,6 @@
 import { RequestConfig } from '@umijs/max';
-import { API_HOST } from '@/utils';
-import {USER_TOKEN_KEY } from '@/constants';
+import { API_HOST, destoryGlobalSpinner } from '@/utils';
+import { USER_TOKEN_KEY } from '@/constants';
 import { IInvalidInitState, IUser } from '@/types';
 import { getCurrentUser } from '@/services';
 
@@ -8,6 +8,8 @@ import { getCurrentUser } from '@/services';
 // 更多信息见文档：https://next.umijs.org/docs/api/runtime-config#getinitialstate
 // IInvalidInitState will be handled in layout
 export async function getInitialState(): Promise<IInvalidInitState | IUser> {
+  destoryGlobalSpinner();
+
   if (!localStorage.getItem(USER_TOKEN_KEY)) {
     return 'LOGIN_REQUIRED';
   }

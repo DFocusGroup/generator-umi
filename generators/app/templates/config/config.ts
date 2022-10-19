@@ -1,5 +1,6 @@
 import { defineConfig } from '@umijs/max'
 import routes from './routes'
+import {scripts, styles} from './splash'
 
 export default defineConfig({
   antd: {
@@ -26,4 +27,6 @@ export default defineConfig({
   },
   routes,
   mfsu: {},
+  scripts,
+  styles
 })
