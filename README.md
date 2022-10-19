@@ -34,7 +34,11 @@ yo umi
 ## Start debugging
 
 ```bash
-npm start
+# install dependencies
+pnpm i
+
+# launch debug server
+pnpm dev
 ```
 
 
