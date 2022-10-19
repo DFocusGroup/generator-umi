@@ -37,7 +37,13 @@ function toPagination(result: any[], page: number, size: number): IPagination {
 }
 
 class ContactsStore {
-  contacts: IContact[] = [];
+  contacts: IContact[] = [{
+    id: new Date().getTime(),
+    name: 'dage.liang',
+    email: 'dage.liang@gmail.com',
+    team: 'QA',
+    status: ContactsStatus.ACTIVE
+  }];
 
   async findPaginationContactsByQuery(query: IQuery) {
     const result = (Object.keys(query) as (keyof IQuery)[])

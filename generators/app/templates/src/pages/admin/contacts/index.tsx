@@ -83,6 +83,7 @@ const Contacts: React.FC = () => {
           { field: formatMessage({ id: 'name' }) },
         ),
       ),
+      filteredValue: filterName ? [filterName]: null,
       sorter: true,
       width: 180,
       render(val: string, record: IContact) {
@@ -108,6 +109,7 @@ const Contacts: React.FC = () => {
           { field: formatMessage({ id: 'email' }) },
         ),
       ),
+      filteredValue: filterEmail ? [filterEmail]: null,
     },
     {
       title: <FormattedMessage id="team" />,

@@ -14,27 +14,34 @@ const RightsideMenu: React.FC = () => {
 
   const menu = useMemo(
     () => (
-      <Menu className="w-[250px]">
-        <Menu.Item
-          key="profile"
-          onClick={() => {
+      <Menu className="w-[250px]" items={[
+        {
+          key: 'profile',
+          onClick: () => {
             history.push('/profile');
-          }}
-        >
-          <UserOutlined className="mr-[5px]" />
-          {formatMessage({ id: 'profile_btn' })}
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item
-          key="logout"
-          onClick={() => {
-            logout();
-          }}
-        >
-          <LogoutOutlined className="mr-[5px]" />
-          {formatMessage({ id: 'logout_btn' })}
-        </Menu.Item>
-      </Menu>
+          },
+          label: (
+            <>
+              <UserOutlined className="mr-[5px]" />
+              {formatMessage({ id: 'profile_btn' })}
+            </>
+          ),
+        },
+        {
+          key: 'divider',
+          type: 'divider',
+        },
+        {
+          key: 'logout',
+          label: (
+            <>
+              <LogoutOutlined className="mr-[5px]" />
+              {formatMessage({ id: 'logout_btn' })}
+            </>
+          ),
+          onClick: logout,
+        },
+      ]} />
     ),
     [formatMessage, logout],
   );
